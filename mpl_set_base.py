@@ -26,7 +26,7 @@ class PlotBase(metaclass=ABCMeta):
     def get_order(self):
         return self.colors_order
 
-    def add_zbild(self, ax, zbild, xloc, yloc, tum=True, fontsize=10,
+    def add_zbild(self, ax, xloc, yloc, zbild, tum=True, fontsize=10,
                   color='grey'):
         x_min = ax.get_xlim()[0]
         x_max = ax.get_xlim()[1]

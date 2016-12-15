@@ -21,7 +21,7 @@ def test_colors_1():
     ax.set_yticklabels(c_order[::-1])
     ax.set_xticklabels([])
     ax.grid(False)
-    ewk_plt.add_zbild(ax, zbild='88-xxx-B16', xloc=0.005, yloc=0.01)
+    ewk_plt.add_zbild(ax, xloc=0.005, yloc=0.01, zbild='88-xxx-B16')
     plt.tight_layout()
     plt.show()
     return
@@ -51,7 +51,7 @@ def test_colors_2():
     ax.set_ylabel(r'electric Power ($\mathrm{kW}$)')
     ax.set_xlabel(r'Power ($kW$)')
     ax.legend()
-    ewk_plt.add_zbild(ax, zbild='88-xxx-B16', xloc=0.83, yloc=1.02,
+    ewk_plt.add_zbild(ax, xloc=0.83, yloc=1.02, zbild='88-xxx-B16',
                       fontsize=10)
     fig.tight_layout()
 
