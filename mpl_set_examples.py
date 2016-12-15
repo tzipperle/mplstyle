@@ -41,7 +41,7 @@ def test_colors_2():
     ax.legend()
 
     ax = fig.add_subplot(212)
-    ewk_plt.set_style(color_order_style='default-2')
+    ewk_plt.set_style(color_order_style='example')
 
     x = np.arange(0, 2 * np.pi, 0.01)
     for c in range(7):
@@ -60,8 +60,10 @@ def test_colors_2():
 
 if __name__ == "__main__":
     ewk_plt = EWKPlot()
-    ewk_plt.set_style(plt_style='default', color_style='default',
-                      color_order_style='default')
 
     test_colors_2()
-    test_colors_1()
+
+    ewk_plt.set_all_style('example')
+    test_colors_2()
+
+    # test_colors_1()
