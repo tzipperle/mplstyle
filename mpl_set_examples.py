@@ -51,7 +51,8 @@ def test_colors_2():
     ax.set_ylabel(r'electric Power ($\mathrm{kW}$)')
     ax.set_xlabel(r'Power ($kW$)')
     ax.legend()
-    ewk_plt.add_zbild(ax, zbild='88-xxx-B16', xloc=0.83, yloc=1.02, fontsize=10)
+    ewk_plt.add_zbild(ax, zbild='88-xxx-B16', xloc=0.83, yloc=1.02,
+                      fontsize=10)
     fig.tight_layout()
 
     plt.show()
