@@ -8,7 +8,8 @@ def example_1():
     c_order = ewk_plt.get_order()
 
     x = [0, 1]
-    ax = plt.subplot()
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
 
     for i, c in enumerate(c_order):
         y = [len(c_order) - i] * 2
