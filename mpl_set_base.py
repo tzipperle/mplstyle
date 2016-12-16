@@ -5,14 +5,14 @@ from cycler import cycler
 class PlotBase:
     """ Set own plot and color style."""
 
-    DEFAULT_COLOR_ORDER = ['mediumblue', 'darkblue', 'mdarkblue', 'mlightblue',
+    _DEFAULT_COLOR_ORDER = ['mediumblue', 'darkblue', 'mdarkblue', 'mlightblue',
                            'lightblue', 'mediumred', 'darkred',
                            'mdarkred', 'mlightred', 'lightred', 'mediumgreen',
                            'darkgreen', 'mdarkgreen', 'mlightgreen',
                            'lightgreen', 'mediumgrey', 'black', 'darkgrey',
                            'mlightgrey', 'lightgrey']
 
-    DEFAULT_COLORS = {  # (R,G,B) tuples with range (0-255)
+    _DEFAULT_COLORS = {  # (R,G,B) tuples with range (0-255)
         'darkblue': (1, 21, 62),
         'mdarkblue': (0, 82, 147),
         'mediumblue': (100, 149, 237),
@@ -103,7 +103,7 @@ class PlotBase:
 
     def _set_color_order(self):
         if self._color_order_style == 'default':
-            self._colors_order = self.DEFAULT_COLOR_ORDER
+            self._colors_order = self._DEFAULT_COLOR_ORDER
         else:
             self._colors_order = self._get_colors_order(
                 self._color_order_style)
@@ -124,7 +124,7 @@ class PlotBase:
 
     def _set_colors(self):
         if self._color_style == 'default':
-            _colors = self.DEFAULT_COLORS
+            _colors = self._DEFAULT_COLORS
         else:
             _colors = self._get_colors(self._color_style)
         if _colors is None:
@@ -202,10 +202,10 @@ class PlotBase:
         self._prop_cycle_colors = color_list
 
     def _get_colors(self, style):
-        return self.DEFAULT_COLORS
+        return self._DEFAULT_COLORS
 
     def _get_colors_order(self, style):
-        return self.DEFAULT_COLOR_ORDER
+        return self._DEFAULT_COLOR_ORDER
 
     def _set_plt_style(self, style, colors, prop_cycle_colors):
         self._set_default_plt_style()
