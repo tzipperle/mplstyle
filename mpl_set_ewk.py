@@ -4,44 +4,40 @@ from cycler import cycler
 
 
 class EWKPlot(PlotBase):
+    """ EWKPlot class, children of PlotBase"""
+
     def _get_colors(self, style):
         if style == 'example':
             return {
-                'mdarkred': (187 / 255, 63 / 255, 63 / 255),
-                'mediumred': (244 / 255, 54 / 255, 5 / 255),
-                'mlightred': (250 / 255, 128 / 255, 114 / 255),
-                'lightred': (255 / 255, 177 / 255, 154 / 255),
-                'darkgreen': (10 / 255, 72 / 255, 30 / 255),
-                'mdarkgreen': (79 / 255, 145 / 255, 83 / 255),
-                'mediumgreen': (82 / 255, 171 / 255, 82 / 255),
-                'mlightgreen': (131 / 255, 191 / 255, 150 / 255),
-                'lightgreen': (178 / 255, 213 / 255, 189 / 255),
-                'darkblue': (1 / 255, 21 / 255, 62 / 255),
-                'mdarkblue': (0 / 255, 82 / 255, 147 / 255),
-                'mediumblue': (100 / 255, 149 / 255, 237 / 255),
-                'mlightblue': (177 / 255, 202 / 255, 246 / 255),
-                'lightblue': (208 / 255, 227 / 255, 253 / 255),
-                'darkred': (157 / 255, 2 / 255, 22 / 255),
+                'mdarkred': (187, 63, 63),
+                'mediumred': (244, 54, 5),
+                'lightred': (255, 177, 154),
+                'darkgreen': (10, 72, 30),
+                'mediumgreen': (82, 171, 82),
+                'mlightgreen': (131, 191, 150),
+                'lightgreen': (178, 213, 189),
+                'darkblue': (1, 21, 62),
+                'mediumblue': (100, 149, 237),
+                'lightblue': (208, 227, 253),
+                'darkred': (157, 2, 22),
                 'black': (0, 0, 0),
-                'darkgrey': (76 / 255, 76 / 255, 76 / 255),
-                'mediumgrey': (127 / 255, 127 / 255, 127 / 255),
-                'mlightgrey': (178 / 255, 178 / 255, 178 / 255),
-                'lightgrey': (216 / 255, 216 / 255, 216 / 255),
+                'darkgrey': (76, 76, 76),
+                'mediumgrey': (127, 127, 127),
+                'mlightgrey': (178, 178, 178),
             }
         return None
 
     def _get_colors_order(self, style):
         if style == 'example':
-            return ['darkblue', 'mdarkblue', 'mediumblue',
-                    'mlightblue', 'lightblue', 'darkred', 'mdarkred',
-                    'mediumred', 'mlightred', 'lightred', 'darkgreen',
-                    'mdarkgreen', 'mediumgreen', 'mlightgreen',
-                    'lightgreen', 'black', 'darkgrey', 'mediumgrey',
-                    'mlightgrey', 'lightgrey']
+            return ['mdarkred', 'mediumred', 'lightred', 'darkgreen',
+                    'mediumgreen', 'mlightgreen', 'lightgreen', 'darkblue',
+                    'mediumblue', 'lightblue', 'darkred', 'black', 'darkgrey',
+                    'mediumgrey', 'mlightgrey', ]
         return None
 
     def _set_plt_style(self, style, colors, prop_cycle_colors):
         if style == 'example':
+            mpl.style.use('ggplot')
             fs = 18
             lw = 2
             mpl.rc('font', size=fs)
@@ -50,9 +46,9 @@ class EWKPlot(PlotBase):
                    edgecolor=colors['darkred'],
                    fontsize=fs - 2, numpoints=1, handlelength=1,
                    loc='best')
-            mpl.rc('axes', edgecolor=colors['lightgrey'], grid=True,
+            mpl.rc('axes', edgecolor=colors['mlightgrey'], grid=True,
                    xmargin=0, labelsize=fs, titlesize=fs)
-            mpl.rc('grid', linestyle=':', color=self._colors['mlightgrey'])
+            mpl.rc('grid', linestyle=':', color=self._colors['mediumgrey'])
             mpl.rc('lines', lw=lw, markersize=10)
             mpl.rc('xtick', labelsize=fs - 2)
             mpl.rc('ytick', labelsize=fs - 2)

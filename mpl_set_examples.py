@@ -1,12 +1,9 @@
 import numpy as np
-import matplotlib as mpl
 import matplotlib.pyplot as plt
 from mpl_set_ewk import EWKPlot
 
 
-def test_colors_1():
-    mpl.style.use('ggplot')
-
+def example_1():
     colors = ewk_plt.get_colors()
     c_order = ewk_plt.get_order()
 
@@ -27,7 +24,7 @@ def test_colors_1():
     return
 
 
-def test_colors_2():
+def example_2():
     fig = plt.figure()
     ax = fig.add_subplot(211)
 
@@ -41,8 +38,6 @@ def test_colors_2():
     ax.legend()
 
     ax = fig.add_subplot(212)
-    ewk_plt.set_style(color_order_style='example')
-
     x = np.arange(0, 2 * np.pi, 0.01)
     for c in range(7):
         y = x * 0 - c
@@ -54,16 +49,14 @@ def test_colors_2():
     ewk_plt.add_zbild(ax, xloc=0.83, yloc=1.02, zbild='88-xxx-B16',
                       fontsize=10)
     fig.tight_layout()
-
     plt.show()
 
 
 if __name__ == "__main__":
     ewk_plt = EWKPlot()
-
-    test_colors_2()
+    example_2()
+    example_1()
 
     ewk_plt.set_all_style('example')
-    test_colors_2()
+    example_1()
 
-    # test_colors_1()

@@ -3,34 +3,37 @@ from cycler import cycler
 
 
 class PlotBase:
-    DEFAULT_COLOR_ORDER = ['mediumblue', 'darkblue', 'mdarkblue',
-                           'mlightblue', 'lightblue', 'mediumred', 'darkred',
+    """ Set own plot and color style."""
+
+    DEFAULT_COLOR_ORDER = ['mediumblue', 'darkblue', 'mdarkblue', 'mlightblue',
+                           'lightblue', 'mediumred', 'darkred',
                            'mdarkred', 'mlightred', 'lightred', 'mediumgreen',
                            'darkgreen', 'mdarkgreen', 'mlightgreen',
                            'lightgreen', 'mediumgrey', 'black', 'darkgrey',
                            'mlightgrey', 'lightgrey']
 
-    DEFAULT_COLORS = {'darkblue': (1 / 255, 21 / 255, 62 / 255),
-                      'mdarkblue': (0 / 255, 82 / 255, 147 / 255),
-                      'mediumblue': (100 / 255, 149 / 255, 237 / 255),
-                      'mlightblue': (177 / 255, 202 / 255, 246 / 255),
-                      'lightblue': (208 / 255, 227 / 255, 253 / 255),
-                      'darkred': (157 / 255, 2 / 255, 22 / 255),
-                      'mdarkred': (187 / 255, 63 / 255, 63 / 255),
-                      'mediumred': (244 / 255, 54 / 255, 5 / 255),
-                      'mlightred': (250 / 255, 128 / 255, 114 / 255),
-                      'lightred': (255 / 255, 177 / 255, 154 / 255),
-                      'darkgreen': (10 / 255, 72 / 255, 30 / 255),
-                      'mdarkgreen': (79 / 255, 145 / 255, 83 / 255),
-                      'mediumgreen': (82 / 255, 171 / 255, 82 / 255),
-                      'mlightgreen': (131 / 255, 191 / 255, 150 / 255),
-                      'lightgreen': (178 / 255, 213 / 255, 189 / 255),
-                      'black': (0, 0, 0),
-                      'darkgrey': (76 / 255, 76 / 255, 76 / 255),
-                      'mediumgrey': (127 / 255, 127 / 255, 127 / 255),
-                      'mlightgrey': (178 / 255, 178 / 255, 178 / 255),
-                      'lightgrey': (216 / 255, 216 / 255, 216 / 255),
-                      }
+    DEFAULT_COLORS = {  # (R,G,B) tuples with range (0-255)
+        'darkblue': (1, 21, 62),
+        'mdarkblue': (0, 82, 147),
+        'mediumblue': (100, 149, 237),
+        'mlightblue': (177, 202, 246),
+        'lightblue': (208, 227, 253),
+        'darkred': (157, 2, 22),
+        'mdarkred': (187, 63, 63),
+        'mediumred': (244, 54, 5),
+        'mlightred': (250, 128, 114),
+        'lightred': (255, 177, 154),
+        'darkgreen': (10, 72, 30),
+        'mdarkgreen': (79, 145, 83),
+        'mediumgreen': (82, 171, 82),
+        'mlightgreen': (131, 191, 150),
+        'lightgreen': (178, 213, 189),
+        'black': (0, 0, 0),
+        'darkgrey': (76, 76, 76),
+        'mediumgrey': (127, 127, 127),
+        'mlightgrey': (178, 178, 178),
+        'lightgrey': (216, 216, 216),
+    }
 
     def _set_default_plt_style(self):
         fs = 18
@@ -52,6 +55,14 @@ class PlotBase:
 
     def __init__(self, plt_style='default', color_style='default',
                  color_order_style='default'):
+        """ Set plot style, colors and color order.
+
+        Args:
+            plt_style: optional string for plt style; default: ('default')
+            color_style: optional string for color order; default: ('default')
+            color_order_style: optional string for color order style;
+                                default: ('default')
+        """
         self._color_style = color_style
         self._color_order_style = color_order_style
         self._plt_style = plt_style
@@ -60,11 +71,25 @@ class PlotBase:
         self.set_style()
 
     def set_all_style(self, style):
+        """ Set same style for all options.
+
+        Args:
+            style: string for chosen style
+        """
         self._color_order_style = style
         self._color_style = style
         self._plt_style = style
+        self.set_style()
 
     def set_style(self, **kwargs):
+        """ Set plot style, colors and color order.
+
+        Args:
+            plt_style: optional string for plt style; default: ('default')
+            color_style: optional string for color order; default: ('default')
+            color_order_style: optional string for color order style;
+                                default: ('default')
+        """
         for k, v in kwargs.items():
             setattr(self, k, v)
 
@@ -99,12 +124,20 @@ class PlotBase:
 
     def _set_colors(self):
         if self._color_style == 'default':
-            self._colors = self.DEFAULT_COLORS
+            _colors = self.DEFAULT_COLORS
         else:
-            self._colors = self._get_colors(self._color_style)
-        if self._colors is None:
+            _colors = self._get_colors(self._color_style)
+        if _colors is None:
             raise NotImplementedError(
                 'Color style {} not defined'.format(self._color_style))
+
+        self._colors = self._to_rgb_mpl(_colors)
+
+    def _to_rgb_mpl(self, _colors):
+        _to_rgb = lambda r, g, b: tuple(x / 255. for x in (r, g, b))
+        for key, val in _colors.items():
+            _colors[key] = _to_rgb(*val)
+        return _colors
 
     def _check_color_consistence(self):
         colors = self._colors
@@ -117,13 +150,34 @@ class PlotBase:
                         c, self._color_order_style, self._color_style))
 
     def get_colors(self):
+        """ Get colors form chosen style.
+
+        Returns:
+            Dictionary of colors
+        """
         return self._colors
 
     def get_order(self):
+        """ Get ordered color list form chosen style.
+
+        Returns:
+            List of ordered colors
+        """
         return self._colors_order
 
     def add_zbild(self, ax, xloc, yloc, zbild, tum=True, fontsize=10,
                   color='grey'):
+        """ Set ZBild number as text in the chart.
+
+        Args:
+            ax: a matplotlib Axes instance
+            xloc: float for position; ymin = 0, ymax = 1
+            yloc: float for position; xmin = 0, xmax = 1
+            zbild: string for text
+            tum: optional boolean; for copyright; default: (tum=True)
+            fontsize: optional float for font size; default: (10)
+            color: optional string for mpl color; default: ('gray')
+        """
         x_min = ax.get_xlim()[0]
         x_max = ax.get_xlim()[1]
         y_min = ax.get_ylim()[0]
