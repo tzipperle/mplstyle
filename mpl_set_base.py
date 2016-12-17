@@ -36,6 +36,7 @@ class PlotBase:
     }
 
     def _set_default_plt_style(self):
+        mpl.style.use('default')
         fs = 18
         lw = 2
         mpl.rc('font', size=fs)
