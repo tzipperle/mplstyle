@@ -70,14 +70,14 @@ class PlotBase:
         self._colors = None
         self.set_style()
 
-    def set_all_style(self, style):
+    def set_all_style(self, style='default'):
         """ Set same style for all options.
 
         Args:
-            style: string for chosen style
+            style: string for chosen style; default: ('default')
         """
-        self._color_order_style = style
         self._color_style = style
+        self._color_order_style = style
         self._plt_style = style
         self.set_style()
 
@@ -124,9 +124,9 @@ class PlotBase:
 
     def _set_colors(self):
         if self._color_style == 'default':
-            _colors = self._DEFAULT_COLORS
+            _colors = self._DEFAULT_COLORS.copy()
         else:
-            _colors = self._get_colors(self._color_style)
+            _colors = self._get_colors(self._color_style).copy()
         if _colors is None:
             raise NotImplementedError(
                 'Color style {} not defined'.format(self._color_style))
@@ -157,7 +157,7 @@ class PlotBase:
         """
         return self._colors
 
-    def get_order(self):
+    def get_color_order(self):
         """ Get ordered color list form chosen style.
 
         Returns:
