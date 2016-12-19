@@ -5,12 +5,12 @@ from cycler import cycler
 class PlotBase:
     """ Set own plot and color style."""
 
-    _DEFAULT_COLOR_ORDER = ['mediumblue', 'darkblue', 'mdarkblue', 'mlightblue',
-                           'lightblue', 'mediumred', 'darkred',
-                           'mdarkred', 'mlightred', 'lightred', 'mediumgreen',
-                           'darkgreen', 'mdarkgreen', 'mlightgreen',
-                           'lightgreen', 'mediumgrey', 'black', 'darkgrey',
-                           'mlightgrey', 'lightgrey']
+    _DEFAULT_COLOR_ORDER = ['mediumblue', 'darkblue', 'mdarkblue',
+                            'mlightblue', 'lightblue', 'mediumred', 'darkred',
+                            'mdarkred', 'mlightred', 'lightred', 'mediumgreen',
+                            'darkgreen', 'mdarkgreen', 'mlightgreen',
+                            'lightgreen', 'mediumgrey', 'black', 'darkgrey',
+                            'mlightgrey', 'lightgrey']
 
     _DEFAULT_COLORS = {  # (R,G,B) tuples with range (0-255)
         'darkblue': (1, 21, 62),
@@ -92,7 +92,7 @@ class PlotBase:
                                 default: ('default')
         """
         for k, v in kwargs.items():
-            setattr(self, '_'+k, v)
+            setattr(self, '_{}'.format(k), v)
 
         self._set_colors()
         self._set_color_order()
@@ -110,7 +110,7 @@ class PlotBase:
                 self._color_order_style)
         if self._colors_order is None:
             raise NotImplementedError(
-                'Color order style {} not defined'.format(
+                'Color order style \'{}\' not defined'.format(
                     self._color_order_style))
 
     def _set_selected_plt_style(self):
@@ -121,7 +121,7 @@ class PlotBase:
                                           self._prop_cycle_colors)
             if not success:
                 raise NotImplementedError(
-                    'Plt style {} not defined'.format(self._plt_style))
+                    'Plt style \'{}\' not defined'.format(self._plt_style))
 
     def _set_colors(self):
         if self._color_style == 'default':
@@ -130,7 +130,7 @@ class PlotBase:
             _colors = self._get_colors(self._color_style).copy()
         if _colors is None:
             raise NotImplementedError(
-                'Color style {} not defined'.format(self._color_style))
+                'Color style \'{}\' not defined'.format(self._color_style))
 
         self._colors = self._to_rgb_mpl(_colors)
 
