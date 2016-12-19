@@ -92,7 +92,7 @@ class PlotBase:
                                 default: ('default')
         """
         for k, v in kwargs.items():
-            setattr(self, k, v)
+            setattr(self, '_'+k, v)
 
         self._set_colors()
         self._set_color_order()
