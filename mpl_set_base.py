@@ -5,29 +5,29 @@ from cycler import cycler
 class PlotBase:
     """ Set own plot and color style."""
 
-    _DEFAULT_COLOR_ORDER = ['mediumblue', 'darkblue', 'mdarkblue',
-                            'mlightblue', 'lightblue', 'mediumred', 'darkred',
-                            'mdarkred', 'mlightred', 'lightred', 'mediumgreen',
-                            'darkgreen', 'mdarkgreen', 'mlightgreen',
-                            'lightgreen', 'mediumgrey', 'black', 'darkgrey',
+    _DEFAULT_COLOR_ORDER = ['darkblue', 'mdarkblue', 'mediumblue',
+                            'mlightblue', 'lightblue', 'darkred', 'mdarkred',
+                            'mediumred', 'mlightred', 'lightred', 'darkgreen',
+                            'mdarkgreen', 'mediumgreen', 'mlightgreen',
+                            'lightgreen', 'black', 'darkgrey', 'mediumgrey',
                             'mlightgrey', 'lightgrey']
 
     _DEFAULT_COLORS = {  # (R,G,B) tuples with range (0-255)
-        'darkblue': (1, 21, 62),
-        'mdarkblue': (0, 82, 147),
-        'mediumblue': (100, 149, 237),
-        'mlightblue': (177, 202, 246),
-        'lightblue': (208, 227, 253),
-        'darkred': (157, 2, 22),
-        'mdarkred': (187, 63, 63),
-        'mediumred': (244, 54, 5),
-        'mlightred': (250, 128, 114),
-        'lightred': (255, 177, 154),
-        'darkgreen': (10, 72, 30),
-        'mdarkgreen': (79, 145, 83),
-        'mediumgreen': (82, 171, 82),
-        'mlightgreen': (131, 191, 150),
-        'lightgreen': (178, 213, 189),
+        'darkblue': (9, 30, 67),
+        'mdarkblue': (21, 71, 157),
+        'mediumblue': (53, 117, 227),
+        'mlightblue': (143, 178, 240),
+        'lightblue': (210, 224, 249),
+        'darkred': (65, 12, 12),
+        'mdarkred': (151, 28, 28),
+        'mediumred': (219, 61, 61),
+        'mlightred': (235, 147, 147),
+        'lightred': (247, 212, 212),
+        'darkgreen': (26, 51, 26),
+        'mdarkgreen': (61, 118, 61),
+        'mediumgreen': (83, 172, 83),
+        'mlightgreen': (152, 205, 152),
+        'lightgreen': (204, 229, 204),
         'black': (0, 0, 0),
         'darkgrey': (76, 76, 76),
         'mediumgrey': (127, 127, 127),
@@ -36,23 +36,46 @@ class PlotBase:
     }
 
     def _set_default_plt_style(self):
-        mpl.style.use('default')
-        fs = 18
+        mpl.style.use('ggplot')
+        figsz = 12
+        fntsz = 18
         lw = 2
-        mpl.rc('font', size=fs)
-        mpl.rc('figure', figsize=[11, 7], titlesize=fs)
-        mpl.rc('legend', framealpha=None,
-               edgecolor=self._colors['lightgrey'],
-               fontsize=fs - 2, numpoints=1, handlelength=1,
-               loc='upper right')
-        mpl.rc('axes', edgecolor=self._colors['lightgrey'], grid=True,
-               xmargin=0, labelsize=fs, titlesize=fs)
-        mpl.rc('grid', linestyle=':', color=self._colors['mlightgrey'])
+        fntcol = 'dimgray'  # self._colors['darkgrey']
+
+        font = {'family': 'arial', 'weight': 'light', 'size': fntsz}
+        mpl.rc('font', **font)
+        mpl.rc('figure', figsize=(figsz, figsz / 1.8), titlesize=fntsz)
+        mpl.rc('legend', framealpha=None, fancybox=True,
+               edgecolor=self._colors['mlightgrey'], fontsize=fntsz - 2,
+               numpoints=1, handlelength=1,
+               loc='best')
+        mpl.rcParams['text.color'] = fntcol
+        mpl.rc('axes', edgecolor='w', grid=True,
+               xmargin=0, labelsize=fntsz - 2, titlesize=fntsz)
+        mpl.rc('grid', color='w', linestyle='-', linewidth=0.5)
         mpl.rc('lines', lw=lw, markersize=10)
-        mpl.rc('xtick', labelsize=fs - 2)
-        mpl.rc('ytick', labelsize=fs - 2)
+        mpl.rc('xtick', color=fntcol, labelsize=fntsz - 2)
+        mpl.rc('ytick', color=fntcol, labelsize=fntsz - 2)
         mpl.rcParams['axes.prop_cycle'] = cycler('color',
                                                  self._prop_cycle_colors)
+        #
+        # mpl.style.use('default')
+        # fs = 18
+        # lw = 2
+        # mpl.rc('font', size=fs)
+        # mpl.rc('figure', figsize=[11, 7], titlesize=fs)
+        # mpl.rc('legend', framealpha=None,
+        #        edgecolor=self._colors['lightgrey'],
+        #        fontsize=fs - 2, numpoints=1, handlelength=1,
+        #        loc='upper right')
+        # mpl.rc('axes', edgecolor=self._colors['lightgrey'], grid=True,
+        #        xmargin=0, labelsize=fs, titlesize=fs)
+        # mpl.rc('grid', linestyle=':', color=self._colors['mlightgrey'])
+        # mpl.rc('lines', lw=lw, markersize=10)
+        # mpl.rc('xtick', labelsize=fs - 2)
+        # mpl.rc('ytick', labelsize=fs - 2)
+        # mpl.rcParams['axes.prop_cycle'] = cycler('color',
+        #                                          self._prop_cycle_colors)
 
     def __init__(self, plt_style='default', color_style='default',
                  color_order_style='default'):

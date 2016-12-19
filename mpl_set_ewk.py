@@ -32,31 +32,26 @@ class EWKPlot(PlotBase):
             return ['mdarkred', 'mediumred', 'lightred', 'darkgreen',
                     'mediumgreen', 'mlightgreen', 'lightgreen', 'darkblue',
                     'mediumblue', 'lightblue', 'darkred', 'black', 'darkgrey',
-                    'mediumgrey', 'mlightgrey', ]
+                    'mediumgrey', 'mlightgrey']
         return None
 
     def _set_plt_style(self, style, colors, prop_cycle_colors):
         if style == 'example':
-            mpl.style.use('ggplot')
-            figsz = 12
-            fntsz = 18
+            mpl.style.use('default')
+            fs = 18
             lw = 2
-            fntcol = 'dimgray'  # self._colors['darkgrey']
-
-            font = {'family': 'arial', 'weight': 'light', 'size': fntsz}
-            mpl.rc('font', **font)
-            mpl.rc('figure', figsize=(figsz, figsz / 1.8), titlesize=fntsz)
-            mpl.rc('legend', framealpha=None, fancybox=True,
-                   edgecolor=colors['mlightgrey'], fontsize=fntsz - 2,
-                   numpoints=1, handlelength=1,
-                   loc='best')
-            mpl.rcParams['text.color'] = fntcol
-            mpl.rc('axes', edgecolor='w', grid=True,
-                   xmargin=0, labelsize=fntsz-2, titlesize=fntsz)
-            mpl.rc('grid', color='w', linestyle='-', linewidth=0.5)
+            mpl.rc('font', size=fs)
+            mpl.rc('figure', figsize=[11, 7], titlesize=fs)
+            mpl.rc('legend', framealpha=None,
+                   edgecolor=colors['mlightgrey'],
+                   fontsize=fs - 2, numpoints=1, handlelength=1,
+                   loc='upper right')
+            mpl.rc('axes', edgecolor=colors['mlightgrey'], grid=True,
+                   xmargin=0, labelsize=fs, titlesize=fs)
+            mpl.rc('grid', linestyle=':', color=colors['mlightgrey'])
             mpl.rc('lines', lw=lw, markersize=10)
-            mpl.rc('xtick', color=fntcol, labelsize=fntsz - 2)
-            mpl.rc('ytick', color=fntcol, labelsize=fntsz - 2)
+            mpl.rc('xtick', labelsize=fs - 2)
+            mpl.rc('ytick', labelsize=fs - 2)
             mpl.rcParams['axes.prop_cycle'] = cycler('color',
                                                      prop_cycle_colors)
             return True
