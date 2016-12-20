@@ -79,11 +79,40 @@ def example_and_default():
     plt.show()
 
 
+def color_map_example():
+    """ An example of how to use get_cmap."""
+    ewk_plt.set_all_style('default')
+    fig = plt.figure(figsize=(14, 12))
+    ax0 = fig.add_subplot(311)
+    colors = [(21, 71, 157), (53, 117, 227), (210, 224, 249)]
+    plt.pcolor(np.random.rand(25, 50), cmap=ewk_plt.get_cmap(colors, bit=True))
+    plt.colorbar()
+    ax0.set_title('Define own color maps: Default style')
+
+    ax1 = fig.add_subplot(312)
+    ewk_colors = ewk_plt.get_colors()
+    colors = [ewk_colors['lightred'], ewk_colors['mdarkred']]
+    plt.pcolor(np.random.rand(25, 50), cmap=ewk_plt.get_cmap(colors))
+    plt.colorbar()
+    ax1.set_title('Default color style')
+
+    ax2 = fig.add_subplot(313)
+    ewk_plt.set_style(plt_style='example')
+    colors = [(0.4, 0.2, 0.0), (1, 1, 1), (0, 0.3, 0.4)]
+    position = [0, 0.2, 1]
+    plt.pcolor(np.random.rand(25, 50),
+               cmap=ewk_plt.get_cmap(colors, position=position))
+    plt.colorbar()
+    ax2.set_title('Example plt style')
+
+    ewk_plt.add_zbild(ax2, xloc=.82, yloc=1.02, zbild='88-xxx-B16')
+    plt.show()
+
+
 if __name__ == "__main__":
     ewk_plt = EWKPlot()
     example()
     ewk_plt.set_all_style('example')
     example()
     example_and_default()
-
-
+    color_map_example()
