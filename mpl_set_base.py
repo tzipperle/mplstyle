@@ -36,7 +36,7 @@ class PlotBase:
     }
 
     def _set_default_plt_style(self):
-        mpl.style.use('ggplot')
+        # mpl.style.use('ggplot')
         figsz = 12
         fntsz = 18
         lw = 2
