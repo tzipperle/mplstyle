@@ -1,4 +1,6 @@
+import sys
 import matplotlib as mpl
+import numpy as np
 from cycler import cycler
 
 
@@ -36,46 +38,30 @@ class PlotBase:
     }
 
     def _set_default_plt_style(self):
-        # mpl.style.use('ggplot')
-        figsz = 12
+        mpl.style.use('default')
         fntsz = 18
         lw = 2
-        fntcol = 'dimgray'  # self._colors['darkgrey']
-
-        font = {'family': 'arial', 'weight': 'light', 'size': fntsz}
+        fntcol = 'black'
+        font = {'family': 'arial', 'weight': 'normal', 'size': fntsz}
         mpl.rc('font', **font)
-        mpl.rc('figure', figsize=(figsz, figsz / 1.8), titlesize=fntsz)
-        mpl.rc('legend', framealpha=None, fancybox=True,
-               edgecolor=self._colors['mlightgrey'], fontsize=fntsz - 2,
-               numpoints=1, handlelength=1,
-               loc='best')
-        mpl.rcParams['text.color'] = fntcol
-        mpl.rc('axes', edgecolor='w', grid=True,
-               xmargin=0, labelsize=fntsz - 2, titlesize=fntsz)
-        mpl.rc('grid', color='w', linestyle='-', linewidth=0.5)
+        mpl.rc('figure', figsize=[11, 7], titlesize=fntsz)
+        mpl.rc('legend', framealpha=None,
+               edgecolor=self._colors['mlightgrey'],
+               fontsize=fntsz - 2, numpoints=1, handlelength=1,
+               loc='best', frameon=True, shadow=False,
+               fancybox=False)
+        mpl.rcParams['text.color'] = self._colors[fntcol]
+        mpl.rc('axes', edgecolor=self._colors['black'], grid=True,
+               xmargin=0, labelsize=fntsz-1, titlesize=fntsz, linewidth=0.9)
+        mpl.rcParams['axes.spines.right'] = False
+        mpl.rcParams['axes.spines.top'] = False
+        mpl.rc('grid', linestyle=':', color=self._colors['mediumgrey'],
+               linewidth=0.5)
         mpl.rc('lines', lw=lw, markersize=10)
-        mpl.rc('xtick', color=fntcol, labelsize=fntsz - 2)
-        mpl.rc('ytick', color=fntcol, labelsize=fntsz - 2)
+        mpl.rc('xtick', color=self._colors[fntcol], labelsize=fntsz - 2)
+        mpl.rc('ytick', color=self._colors[fntcol], labelsize=fntsz - 2)
         mpl.rcParams['axes.prop_cycle'] = cycler('color',
                                                  self._prop_cycle_colors)
-        #
-        # mpl.style.use('default')
-        # fs = 18
-        # lw = 2
-        # mpl.rc('font', size=fs)
-        # mpl.rc('figure', figsize=[11, 7], titlesize=fs)
-        # mpl.rc('legend', framealpha=None,
-        #        edgecolor=self._colors['lightgrey'],
-        #        fontsize=fs - 2, numpoints=1, handlelength=1,
-        #        loc='upper right')
-        # mpl.rc('axes', edgecolor=self._colors['lightgrey'], grid=True,
-        #        xmargin=0, labelsize=fs, titlesize=fs)
-        # mpl.rc('grid', linestyle=':', color=self._colors['mlightgrey'])
-        # mpl.rc('lines', lw=lw, markersize=10)
-        # mpl.rc('xtick', labelsize=fs - 2)
-        # mpl.rc('ytick', labelsize=fs - 2)
-        # mpl.rcParams['axes.prop_cycle'] = cycler('color',
-        #                                          self._prop_cycle_colors)
 
     def __init__(self, plt_style='default', color_style='default',
                  color_order_style='default'):
@@ -233,3 +219,47 @@ class PlotBase:
 
     def _set_plt_style(self, style, colors, prop_cycle_colors):
         self._set_default_plt_style()
+
+    def get_cmap(self, colors, position=None, bit=False):
+        """ Generate custom color maps for Matplotlib.
+
+        The method allows you to create a list of tuples with 8-bit (0 to 255)
+        or arithmetic (0.0 to 1.0) RGB values to create linear color maps.
+        Arrange your tuples so that the first color is the lowest value for
+        the color bar and the last is the highest.
+
+        Args:
+            colors: list of RGB tuples with 8-bit (0 to 255) or
+                    arithmetic (0 to 1); default: arithmetic
+            position: contains a list from 0 to 1 to dictate the location
+                      of each color
+            bit: boolean; default: False (arithmetic); True (RGB)
+
+        Returns:
+            cmap: a color map with equally spaced colors
+
+        Example:
+            >>> cmap = get_cmap(colors=[(255, 0, 0), (0, 157, 0),)], bit=True)
+            >>> cmap = get_cmap([(1, 1, 1), (0.5, 0, 0)], position=[0, 1]))
+        """
+
+        bit_rgb = np.linspace(0, 1, 256)
+        if position is None:
+            position = np.linspace(0, 1, len(colors))
+        else:
+            if len(position) != len(colors):
+                sys.exit("position length must be the same as colors")
+            elif position[0] != 0 or position[-1] != 1:
+                sys.exit("position must start with 0 and end with 1")
+        if bit:
+            for i in range(len(colors)):
+                colors[i] = (bit_rgb[colors[i][0]],
+                             bit_rgb[colors[i][1]],
+                             bit_rgb[colors[i][2]])
+        cdict = {'red': [], 'green': [], 'blue': []}
+        for pos, color in zip(position, colors):
+            cdict['red'].append((pos, color[0], color[0]))
+            cdict['green'].append((pos, color[1], color[1]))
+            cdict['blue'].append((pos, color[2], color[2]))
+
+        return mpl.colors.LinearSegmentedColormap('my_colormap', cdict, 256)

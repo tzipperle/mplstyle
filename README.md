@@ -7,4 +7,6 @@ Keep them in a separate directory that [keep always on the Python search path](h
 Set own plot and color style. TODO: ***
 
 ### Dependencies
-  - [matplotlib==2.0.0rc1](http://http://matplotlib.org/)
+  - [matplotlib](http://http://matplotlib.org/): Version 2.0.0rc2
+  - [cycler](http://matplotlib.org/cycler/)
+  - [numpy](http://www.numpy.org/)
