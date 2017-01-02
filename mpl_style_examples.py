@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from mpl_set_ewk import EWKPlot
+from mpl_style_ewk import EWKPlot
 
 
 def example():
