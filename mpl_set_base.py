@@ -38,25 +38,28 @@ class PlotBase:
     }
 
     def _set_default_plt_style(self):
-        mpl.style.use('ggplot')
-        figsz = 12
+        mpl.style.use('default')
         fntsz = 18
         lw = 2
-        fntcol = 'dimgray'
-        font = {'family': 'arial', 'weight': 'light', 'size': fntsz}
+        fntcol = 'black'
+        font = {'family': 'arial', 'weight': 'normal', 'size': fntsz}
         mpl.rc('font', **font)
-        mpl.rc('figure', figsize=(figsz, figsz / 1.8), titlesize=fntsz)
-        mpl.rc('legend', framealpha=None, fancybox=True,
-               edgecolor=self._colors['mlightgrey'], fontsize=fntsz - 2,
-               numpoints=1, handlelength=1,
-               loc='best')
-        mpl.rcParams['text.color'] = fntcol
-        mpl.rc('axes', edgecolor='w', grid=True,
-               xmargin=0, labelsize=fntsz - 2, titlesize=fntsz)
-        mpl.rc('grid', color='w', linestyle='-', linewidth=0.5)
+        mpl.rc('figure', figsize=[11, 7], titlesize=fntsz)
+        mpl.rc('legend', framealpha=None,
+               edgecolor=self._colors['mlightgrey'],
+               fontsize=fntsz - 2, numpoints=1, handlelength=1,
+               loc='best', frameon=True, shadow=False,
+               fancybox=False)
+        mpl.rcParams['text.color'] = self._colors[fntcol]
+        mpl.rc('axes', edgecolor=self._colors['black'], grid=True,
+               xmargin=0, labelsize=fntsz-1, titlesize=fntsz, linewidth=0.9)
+        mpl.rcParams['axes.spines.right'] = False
+        mpl.rcParams['axes.spines.top'] = False
+        mpl.rc('grid', linestyle=':', color=self._colors['mediumgrey'],
+               linewidth=0.5)
         mpl.rc('lines', lw=lw, markersize=10)
-        mpl.rc('xtick', color=fntcol, labelsize=fntsz - 2)
-        mpl.rc('ytick', color=fntcol, labelsize=fntsz - 2)
+        mpl.rc('xtick', color=self._colors[fntcol], labelsize=fntsz - 2)
+        mpl.rc('ytick', color=self._colors[fntcol], labelsize=fntsz - 2)
         mpl.rcParams['axes.prop_cycle'] = cycler('color',
                                                  self._prop_cycle_colors)
 
