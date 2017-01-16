@@ -52,7 +52,7 @@ class PlotBase:
                fancybox=False)
         mpl.rcParams['text.color'] = self._colors[fntcol]
         mpl.rc('axes', edgecolor=self._colors['black'], grid=True,
-               xmargin=0, labelsize=fntsz-1, titlesize=fntsz, linewidth=0.9)
+               xmargin=0, labelsize=fntsz - 1, titlesize=fntsz, linewidth=0.9)
         mpl.rcParams['axes.spines.right'] = False
         mpl.rcParams['axes.spines.top'] = False
         mpl.rc('grid', linestyle=':', color=self._colors['mediumgrey'],
@@ -64,7 +64,7 @@ class PlotBase:
                                                  self._prop_cycle_colors)
 
     def __init__(self, plt_style='default', color_style='default',
-                 color_order_style='default'):
+                 color_order_style='default', enable_color_order=True):
         """ Set plot style, colors and color order.
 
         Args:
@@ -72,10 +72,13 @@ class PlotBase:
             color_style: optional string for color order; default: ('default')
             color_order_style: optional string for color order style;
                                 default: ('default')
+            enable_color_order: enable or disable color_order_style;
+                                default: True
         """
         self._color_style = color_style
         self._color_order_style = color_order_style
         self._plt_style = plt_style
+        self._enable_color_order = enable_color_order
         self._colors_order = None
         self._colors = None
         self.set_style()
@@ -99,6 +102,8 @@ class PlotBase:
             color_style: optional string for color order; default: ('default')
             color_order_style: optional string for color order style;
                                 default: ('default')
+            enable_color_order: optional enable or disable color_order_style;
+                                default: True
         """
         for k, v in kwargs.items():
             setattr(self, '_{}'.format(k), v)
@@ -106,9 +111,10 @@ class PlotBase:
         self._set_colors()
         self._set_color_order()
 
-        self._check_color_consistence()
+        if self._enable_color_order is True:
+            self._check_color_consistence()
+            self.__sort_colors_cycle()
 
-        self.__sort_colors_cycle()
         self._set_selected_plt_style()
 
     def _set_color_order(self):
@@ -126,8 +132,12 @@ class PlotBase:
         if self._plt_style == 'default':
             self._set_default_plt_style()
         else:
-            success = self._set_plt_style(self._plt_style, self._colors,
-                                          self._prop_cycle_colors)
+            if self._enable_color_order is True:
+                success = self._set_plt_style(self._plt_style, self._colors,
+                                              self._prop_cycle_colors)
+            else:
+                success = self._set_plt_style(self._plt_style, self._colors,
+                                              prop_cycle_colors=None)
             if not success:
                 raise NotImplementedError(
                     'Plt style \'{}\' not defined'.format(self._plt_style))
