@@ -64,7 +64,7 @@ class PlotBase:
                                                  self._prop_cycle_colors)
 
     def __init__(self, plt_style='default', color_style='default',
-                 color_order_style='default', enable_color_order=True):
+                 color_order_style='default', enable_color_order=False):
         """ Set plot style, colors and color order.
 
         Args:
@@ -72,8 +72,8 @@ class PlotBase:
             color_style: optional string for color order; default: ('default')
             color_order_style: optional string for color order style;
                                 default: ('default')
-            enable_color_order: enable or disable color_order_style;
-                                default: True
+            enable_color_order: optional enable color_order_style;
+                                default: False
         """
         self._color_style = color_style
         self._color_order_style = color_order_style
@@ -83,12 +83,17 @@ class PlotBase:
         self._colors = None
         self.set_style()
 
-    def set_all_style(self, style='default'):
+    def set_all_style(self, style='default', **kwargs):
         """ Set same style for all options.
 
         Args:
             style: string for chosen style; default: ('default')
+            enable_color_order: optional enable color_order_style;
+                                default: False
         """
+        for k, v in kwargs.items():
+            setattr(self, '_{}'.format(k), v)
+
         self._color_style = style
         self._color_order_style = style
         self._plt_style = style
@@ -102,8 +107,8 @@ class PlotBase:
             color_style: optional string for color order; default: ('default')
             color_order_style: optional string for color order style;
                                 default: ('default')
-            enable_color_order: optional enable or disable color_order_style;
-                                default: True
+            enable_color_order: optional enable color_order_style;
+                                default: False
         """
         for k, v in kwargs.items():
             setattr(self, '_{}'.format(k), v)
@@ -111,7 +116,10 @@ class PlotBase:
         self._set_colors()
         self._set_color_order()
 
-        if self._enable_color_order is True:
+        if self._enable_color_order is True or (
+                            self._color_style is 'default' and
+                            self._color_order_style is 'default' and
+                        self._plt_style is 'default') is True:
             self._check_color_consistence()
             self.__sort_colors_cycle()
 

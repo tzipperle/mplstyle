@@ -114,7 +114,7 @@ def color_map_example():
 if __name__ == "__main__":
     ewk_plt = EWKPlot()
     example()
-    ewk_plt.set_all_style('example')
+    ewk_plt.set_all_style(style='example', enable_color_order=True)
     example()
     example_and_default()
     color_map_example()
