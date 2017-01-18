@@ -3,8 +3,8 @@ import matplotlib as mpl
 from cycler import cycler
 
 
-class PLTStyle(PLTbase):
-    """ PLTStyle class, children of PLTbase"""
+class PLTdatabay(PLTbase):
+    """ PLTdatabay class, children of PLTbase"""
 
     def _get_colors(self, style):
         if style == 'databay':
