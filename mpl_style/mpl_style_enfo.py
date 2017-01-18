@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from .mpl_style_base import PlotBase
 import matplotlib as mpl
 

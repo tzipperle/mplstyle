@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import matplotlib as mpl
 from cycler import cycler
 from .mpl_style_base import PlotBase
