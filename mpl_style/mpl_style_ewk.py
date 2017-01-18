@@ -1,6 +1,6 @@
-from mpl_style_base import PlotBase
 import matplotlib as mpl
 from cycler import cycler
+from .mpl_style_base import PlotBase
 
 
 class EWKPlot(PlotBase):

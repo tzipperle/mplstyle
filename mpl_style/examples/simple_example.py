@@ -1,6 +1,11 @@
-import numpy as np
 import matplotlib.pyplot as plt
-from mpl_style_ewk import EWKPlot
+import numpy as np
+import os
+import sys
+
+# add dir mpl_style to python path
+sys.path.append(os.path.split(os.path.dirname(os.getcwd()))[-2])
+from mpl_style.mpl_style_ewk import EWKPlot
 
 
 def plt_color_order(title):
