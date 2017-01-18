@@ -4,7 +4,7 @@ import numpy as np
 from cycler import cycler
 
 
-class PlotBase:
+class PLTbase:
     """ Set own plot and color style."""
 
     _DEFAULT_COLOR_ORDER = ['darkblue', 'mdarkblue', 'mediumblue',

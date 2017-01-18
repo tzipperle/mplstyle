@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 import matplotlib as mpl
 from cycler import cycler
-from .mpl_style_base import PlotBase
+from .style_base import PLTbase
 
 
-class EWKPlot(PlotBase):
-    """ EWKPlot class, children of PlotBase"""
+class PLTewk(PLTbase):
+    """ PLTewk class, children of PLTbase"""
 
     def _get_colors(self, style):
         if style is 'example':

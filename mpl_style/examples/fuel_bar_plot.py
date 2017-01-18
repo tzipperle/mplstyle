@@ -6,7 +6,7 @@ import sys
 
 # add dir mpl_style to python path
 sys.path.append(os.path.split(os.path.dirname(os.getcwd()))[-2])
-from mpl_style.mpl_style_ewk import EWKPlot
+from mpl_style.style_ewk import PLTewk
 
 
 def read_data(name):
@@ -45,7 +45,7 @@ def _x_axis_tick(ax, n=5):
 
 
 if __name__ == '__main__':
-    ewk_plt = EWKPlot()
+    ewk_plt = PLTewk()
     ewk_plt.set_all_style(style='enfo')
 
     name_input_file = 'ghd_bs'

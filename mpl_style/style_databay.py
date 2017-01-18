@@ -1,10 +1,10 @@
-from .mpl_style_base import PlotBase
+from .style_base import PLTbase
 import matplotlib as mpl
 from cycler import cycler
 
 
-class PLTStyle(PlotBase):
-    """ PLTStyle class, children of PlotBase"""
+class PLTStyle(PLTbase):
+    """ PLTStyle class, children of PLTbase"""
 
     def _get_colors(self, style):
         if style == 'databay':
@@ -29,7 +29,7 @@ class PLTStyle(PlotBase):
                 'mediumgrey': (127, 127, 127),
                 'mlightgrey': (178, 178, 178),
                 'lightgrey': (216, 216, 216),
-            }    
+            }
         elif style == 'databay2':
             return {
                 'darkblue': (21, 41, 55),
@@ -60,7 +60,7 @@ class PLTStyle(PlotBase):
             return ['darkblue', 'mdarkblue', 'mediumblue', 'mlightblue',
                     'lightblue',
                     'darkred', 'mdarkred', 'mediumred', 'mlightred',
-                    'lightred', 
+                    'lightred',
                     'darkgreen', 'mdarkgreen', 'mediumgreen', 'mlightgreen',
                     'lightgreen',
                     'black', 'darkgrey', 'mediumgrey', 'mlightgrey',
@@ -72,7 +72,7 @@ class PLTStyle(PlotBase):
             fs = 18
             lw = 2
             fntcol = 'black'
-            
+
             font = {'family': 'arial', 'weight': 'normal', 'size': fs}
             mpl.rc('font', **font)
             mpl.rc('figure', figsize=[11, 7], titlesize=fs)
@@ -99,7 +99,7 @@ class PLTStyle(PlotBase):
             fs = 18
             lw = 2
             fntcol = 'black'
-            
+
             font = {'family': 'arial', 'weight': 'normal', 'size': fs}
             mpl.rc('font', **font)
             mpl.rc('figure', figsize=[11, 7], titlesize=fs)
@@ -112,7 +112,7 @@ class PLTStyle(PlotBase):
                    xmargin=0, labelsize=fs, titlesize=fs, linewidth=1)
             mpl.rcParams['axes.spines.right'] = False
             mpl.rcParams['axes.spines.top'] = False
-            mpl.rc('grid', 
+            mpl.rc('grid',
                     linestyle=':', color=colors['mlightgrey'], linewidth=0.5)
             mpl.rc('lines', lw=lw, markersize=10)
             mpl.rc('xtick', color = colors[fntcol], labelsize=fs - 2)

@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-from .mpl_style_base import PlotBase
+from .style_base import PLTbase
 import matplotlib as mpl
 
 
-class EnFoPLT(PlotBase):
-    """ EnFoPLT class, children of PlotBase"""
+class PLTenfo(PLTbase):
+    """ PLTenfo class, children of PLTbase"""
 
     def _get_colors(self, style):
         if style == 'enfo':

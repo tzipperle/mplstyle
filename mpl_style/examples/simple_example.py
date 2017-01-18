@@ -5,7 +5,7 @@ import sys
 
 # add dir mpl_style to python path
 sys.path.append(os.path.split(os.path.dirname(os.getcwd()))[-2])
-from mpl_style.mpl_style_ewk import EWKPlot
+from mpl_style.style_ewk import PLTewk
 
 
 def plt_color_order(title):
@@ -85,6 +85,6 @@ def simple_subplot():
 
 
 if __name__ == "__main__":
-    ewk_plt = EWKPlot()
+    ewk_plt = PLTewk()
     plt_color_order(title='default style')
     simple_subplot()

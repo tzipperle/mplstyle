@@ -1,2 +1,2 @@
-from .mpl_style_base import PlotBase
-from .mpl_style_ewk import EWKPlot
+from .style_base import PLTbase
+from .style_ewk import PLTewk
