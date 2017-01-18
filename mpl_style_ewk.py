@@ -7,7 +7,7 @@ class EWKPlot(PlotBase):
     """ EWKPlot class, children of PlotBase"""
 
     def _get_colors(self, style):
-        if style == 'example':
+        if style is 'example':
             return {
                 'mdarkred': (187, 63, 63),
                 'mediumred': (244, 54, 5),
@@ -25,10 +25,21 @@ class EWKPlot(PlotBase):
                 'mediumgrey': (127, 127, 127),
                 'mlightgrey': (178, 178, 178),
             }
+        elif style is 'enfo':
+            return {
+                'Steinkohle': (88, 88, 90),
+                'Braunkohle': (116, 66, 65),
+                'Öl': (120, 81, 80),
+                'Gas': (255, 230, 72),
+                'Strom': (147, 78, 136),
+                'Fernwärme': (214, 76, 19),
+                'Erneuerbare Energien': (0, 124, 48),
+                'Kernenergie': (196, 7, 27),
+            }
         return None
 
     def _get_colors_order(self, style):
-        if style == 'example':
+        if style is 'example':
             return ['mdarkred', 'mediumred', 'lightred', 'darkgreen',
                     'mediumgreen', 'mlightgreen', 'lightgreen', 'darkblue',
                     'mediumblue', 'lightblue', 'darkred', 'black', 'darkgrey',
@@ -36,7 +47,7 @@ class EWKPlot(PlotBase):
         return None
 
     def _set_plt_style(self, style, colors, prop_cycle_colors):
-        if style == 'example':
+        if style is 'example':
             mpl.style.use('ggplot')
             figsz = 12
             fntsz = 18
@@ -58,5 +69,30 @@ class EWKPlot(PlotBase):
             mpl.rc('ytick', color=fntcol, labelsize=fntsz - 2)
             mpl.rcParams['axes.prop_cycle'] = cycler('color',
                                                      prop_cycle_colors)
+            return True
+        elif style is 'enfo':
+            mpl.style.use('default')
+            fntsz = 18
+            lw = 2
+            fntcol = 'black'
+            font = {'family': 'arial', 'weight': 'normal', 'size': fntsz}
+            mpl.rc('font', **font)
+            mpl.rc('figure', figsize=[11, 7], titlesize=fntsz)
+            mpl.rc('legend', framealpha=None,
+                   edgecolor='gainsboro',
+                   fontsize=fntsz - 2, numpoints=1, handlelength=1,
+                   loc='best', frameon=True, shadow=False,
+                   fancybox=False)
+            mpl.rcParams['text.color'] = fntcol
+            mpl.rc('axes', edgecolor=fntcol, grid=True,
+                   xmargin=0, labelsize=fntsz - 1, titlesize=fntsz,
+                   linewidth=0.9)
+            mpl.rcParams['axes.spines.right'] = False
+            mpl.rcParams['axes.spines.top'] = False
+            mpl.rc('grid', linestyle=':', color='darkgrey',
+                   linewidth=0.5)
+            mpl.rc('lines', lw=lw, markersize=10)
+            mpl.rc('xtick', color=fntcol, labelsize=fntsz - 2)
+            mpl.rc('ytick', color=fntcol, labelsize=fntsz - 2)
             return True
         return False

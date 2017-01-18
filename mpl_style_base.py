@@ -73,57 +73,54 @@ class PlotBase:
             color_order_style: optional string for color order style;
                                 default: ('default')
             enable_color_order: optional enable color_order_style;
-                                default: False
+                                default: (False)
         """
         self._color_style = color_style
         self._color_order_style = color_order_style
         self._plt_style = plt_style
-        self._enable_color_order = enable_color_order
         self._colors_order = None
         self._colors = None
-        self.set_style()
+        self.set_style(enable_color_order=enable_color_order)
 
-    def set_all_style(self, style='default', **kwargs):
+    def set_all_style(self, style='default', enable_color_order=False):
         """ Set same style for all options.
 
         Args:
             style: string for chosen style; default: ('default')
             enable_color_order: optional enable color_order_style;
-                                default: False
+                                default: (False)
         """
-        for k, v in kwargs.items():
-            setattr(self, '_{}'.format(k), v)
-
         self._color_style = style
         self._color_order_style = style
         self._plt_style = style
-        self.set_style()
+        self.set_style(enable_color_order=enable_color_order)
 
-    def set_style(self, **kwargs):
+    def set_style(self, enable_color_order=False, **kwargs):
         """ Set plot style, colors and color order.
 
         Args:
+            enable_color_order: optional enable color_order_style;
+                    default: (False)
             plt_style: optional string for plt style; default: ('default')
             color_style: optional string for color order; default: ('default')
             color_order_style: optional string for color order style;
-                                default: ('default')
-            enable_color_order: optional enable color_order_style;
-                                default: False
+                    default: ('default')
         """
         for k, v in kwargs.items():
             setattr(self, '_{}'.format(k), v)
 
         self._set_colors()
-        self._set_color_order()
 
-        if self._enable_color_order is True or (
-                            self._color_style is 'default' and
-                            self._color_order_style is 'default' and
-                        self._plt_style is 'default') is True:
+        check_default = (self._color_style is 'default' and
+                         self._color_order_style is 'default' and
+                         self._plt_style is 'default')
+
+        if enable_color_order is True or check_default is True:
+            self._set_color_order()
             self._check_color_consistence()
             self.__sort_colors_cycle()
 
-        self._set_selected_plt_style()
+        self._set_selected_plt_style(enable_color_order)
 
     def _set_color_order(self):
         if self._color_order_style == 'default':
@@ -136,11 +133,11 @@ class PlotBase:
                 'Color order style \'{}\' not defined'.format(
                     self._color_order_style))
 
-    def _set_selected_plt_style(self):
+    def _set_selected_plt_style(self, enable_color_order):
         if self._plt_style == 'default':
             self._set_default_plt_style()
         else:
-            if self._enable_color_order is True:
+            if enable_color_order is True:
                 success = self._set_plt_style(self._plt_style, self._colors,
                                               self._prop_cycle_colors)
             else:
@@ -171,7 +168,7 @@ class PlotBase:
         colors = self._colors
         sort_order = self._colors_order
         for c in sort_order:
-            if not c in colors:
+            if c not in colors:
                 raise AttributeError(
                     'The color \'{}\' in the sort order style \'{}\''
                     ' is not defined in the colors style \'{}\''.format(
@@ -214,7 +211,7 @@ class PlotBase:
         x = x_min + xloc * (x_max - x_min)
         y = y_min + yloc * (y_max - y_min)
 
-        if tum == True:
+        if tum is True:
             zbild = '$\copyright$ TUM IfE {}'.format(zbild)
 
         ax.text(x, y, zbild, fontsize=fontsize, color=color)
