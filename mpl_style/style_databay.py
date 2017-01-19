@@ -91,9 +91,7 @@ class PLTdatabay(PLTbase):
             mpl.rc('lines', lw=lw, markersize=10)
             mpl.rc('xtick', color = colors[fntcol], labelsize=fs - 2)
             mpl.rc('ytick', color = colors[fntcol], labelsize=fs - 2)
-            mpl.rcParams['axes.prop_cycle'] = cycler(
-                                                     'color',
-                                                     prop_cycle_colors)
+
             return True
         elif style == 'test':
             fs = 18
