@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from .style_base import PLTbase
 import matplotlib as mpl
+from cycler import cycler
 
 
 class PLTenfo(PLTbase):
@@ -64,5 +65,7 @@ class PLTenfo(PLTbase):
             mpl.rc('lines', lw=lw, markersize=10)
             mpl.rc('xtick', color=fntcol, labelsize=fntsz - 2)
             mpl.rc('ytick', color=fntcol, labelsize=fntsz - 2)
+            mpl.rcParams['axes.prop_cycle'] = cycler('color',
+                                                     prop_cycle_colors)
             return True
         return False

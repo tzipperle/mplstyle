@@ -120,7 +120,7 @@ class PLTbase:
             self._check_color_consistence()
             self.__sort_colors_cycle()
 
-        self._set_selected_plt_style(enable_color_order)
+        self._set_selected_plt_style()
 
     def _set_color_order(self):
         if self._color_order_style == 'default':
@@ -133,16 +133,12 @@ class PLTbase:
                 'Color order style \'{}\' not defined'.format(
                     self._color_order_style))
 
-    def _set_selected_plt_style(self, enable_color_order):
+    def _set_selected_plt_style(self):
         if self._plt_style == 'default':
             self._set_default_plt_style()
         else:
-            if enable_color_order is True:
-                success = self._set_plt_style(self._plt_style, self._colors,
-                                              self._prop_cycle_colors)
-            else:
-                success = self._set_plt_style(self._plt_style, self._colors,
-                                              prop_cycle_colors=None)
+            success = self._set_plt_style(self._plt_style, self._colors,
+                                          self._prop_cycle_colors)
             if not success:
                 raise NotImplementedError(
                     'Plt style \'{}\' not defined'.format(self._plt_style))
