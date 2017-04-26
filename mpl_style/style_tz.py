@@ -8,7 +8,7 @@ class PLTtz(PLTbase):
     """ PLTtz class, child of PLTbase"""
 
     def _get_colors(self, style):
-        if style == 'tz':
+        if style == 'blue':
             return {
                 'darkblue': (11, 85, 159),
                 'mdarkblue': (42, 122, 185),
@@ -20,13 +20,13 @@ class PLTtz(PLTbase):
         return None
 
     def _get_colors_order(self, style):
-        if style == 'tz':
+        if style == 'blue':
             return ['darkblue', 'mdarkblue', 'mediumblue', 'mlightblue',
                     'lightblue', 'pastelblue']
         return None
 
     def _set_plt_style(self, style, colors, prop_cycle_colors):
-        if style == 'tz-jupyter':
+        if style == 'jupyter-notebook':
             mpl.style.use('default')
             fntsz = 12
             lw = 2
