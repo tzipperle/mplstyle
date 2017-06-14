@@ -1,3 +1,7 @@
+# mpl-style
+[![Documentation Status](https://readthedocs.org/projects/mpl-style/badge/?version=latest)](http://mpl-style.readthedocs.io/en/latest/?badge=latest)
+
+
 # Matplotlib
 
 Keep them in a separate directory that [keep always on the Python search path](http://stackoverflow.com/q/17806673/2375855) so you can include them like installed site-packages.
