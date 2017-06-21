@@ -24,7 +24,7 @@ Add the package `mpl-style` automatically to sys.path:
 
       ```
       import site
-      site.addsitedir(r'C:\Users\ojdo\Any\Folder\You\Like\Libs')
+      site.addsitedir(r'C:\Users\Name\Any\Folder\You\Like\Libs')
       ```
 
   4. The directory now is automatically added to sys.path in every (I)Python session.
