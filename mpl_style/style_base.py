@@ -64,7 +64,7 @@ class PLTbase:
                                                  self._prop_cycle_colors)
 
     def __init__(self, plt_style='default', color_style='default',
-                 color_order_style='default', enable_color_order=False):
+                 color_order_style='default'):
         """ Set plot style, colors and color order.
 
         Args:
@@ -72,55 +72,165 @@ class PLTbase:
             color_style: optional string for color order; default: ('default')
             color_order_style: optional string for color order style;
                                 default: ('default')
-            enable_color_order: optional enable color_order_style;
-                                default: (False)
         """
         self._color_style = color_style
         self._color_order_style = color_order_style
         self._plt_style = plt_style
         self._colors_order = None
         self._colors = None
-        self.set_style(enable_color_order=enable_color_order)
+        self._styles_available = {
+            'color_style': ['default'],
+            'color_order_style': ['default'],
+            'plt_style': ['default']}
+        self.set_style('default')
 
-    def set_all_style(self, style='default', enable_color_order=False):
-        """ Set same style for all options.
-
-        Args:
-            style: string for chosen style; default: ('default')
-            enable_color_order: optional enable color_order_style;
-                                default: (False)
-        """
-        self._color_style = style
-        self._color_order_style = style
-        self._plt_style = style
-        self.set_style(enable_color_order=enable_color_order)
-
-    def set_style(self, enable_color_order=False, **kwargs):
+    def set_style(self, *args, **kwargs):
         """ Set plot style, colors and color order.
 
         Args:
-            enable_color_order: optional enable color_order_style;
-                    default: (False)
+            only argument: all style
             plt_style: optional string for plt style; default: ('default')
             color_style: optional string for color order; default: ('default')
             color_order_style: optional string for color order style;
                     default: ('default')
         """
+        enable_color_order = False
+
+        for arg in args:
+            enable_color_order = self._set_all_style(arg)
+
         for k, v in kwargs.items():
-            setattr(self, '_{}'.format(k), v)
+            if k in self._styles_available.keys():
+                setattr(self, '_{}'.format(k), v)
+            else:
+                raise NotImplementedError(
+                    'Invalid style type: \'{}\''.format(k))
 
         self._set_colors()
 
-        check_default = (self._color_style is 'default' and
-                         self._color_order_style is 'default' and
-                         self._plt_style is 'default')
-
-        if enable_color_order is True or check_default is True:
+        if 'color_order_style' in kwargs.keys() or enable_color_order is True:
             self._set_color_order()
             self._check_color_consistence()
             self.__sort_colors_cycle()
 
         self._set_selected_plt_style()
+
+    def get_colors(self):
+        """ Get colors form chosen style.
+
+        Returns:
+            Dictionary of colors
+        """
+        return self._colors
+
+    def get_color_order(self):
+        """ Get ordered color list form chosen style.
+
+        Returns:
+            List of ordered colors
+        """
+        return self._colors_order
+
+    def get_available_styles(self):
+        """ Get available style.
+
+        Returns:
+            List of styles
+        """
+
+        print('Available styles for:\n')
+        for i in self._styles_available.keys():
+            print('\'{}\': {}\n'.format(i, self._styles_available[i]))
+
+    def get_cmap(self, colors, position=None, bit=False):
+        """ Generate custom color maps for Matplotlib.
+
+        The method allows you to create a list of tuples with 8-bit (0 to 255)
+        or arithmetic (0.0 to 1.0) RGB values to create linear color maps.
+        Arrange your tuples so that the first color is the lowest value for
+        the color bar and the last is the highest.
+
+        Args:
+            colors: list of RGB tuples with 8-bit (0 to 255) or
+                    arithmetic (0 to 1); default: arithmetic
+            position: contains a list from 0 to 1 to dictate the location
+                      of each color
+            bit: boolean; default: False (arithmetic); True (RGB)
+
+        Returns:
+            cmap: a color map with equally spaced colors
+
+        Example:
+            >>> cmap = get_cmap(colors=[(255, 0, 0), (0, 157, 0),)], bit=True)
+            >>> cmap = get_cmap([(1, 1, 1), (0.5, 0, 0)], position=[0, 1]))
+        """
+
+        bit_rgb = np.linspace(0, 1, 256)
+        if position is None:
+            position = np.linspace(0, 1, len(colors))
+        else:
+            if len(position) != len(colors):
+                sys.exit("position length must be the same as colors")
+            elif position[0] != 0 or position[-1] != 1:
+                sys.exit("position must start with 0 and end with 1")
+        if bit:
+            for i in range(len(colors)):
+                colors[i] = (bit_rgb[colors[i][0]],
+                             bit_rgb[colors[i][1]],
+                             bit_rgb[colors[i][2]])
+        cdict = {'red': [], 'green': [], 'blue': []}
+        for pos, color in zip(position, colors):
+            cdict['red'].append((pos, color[0], color[0]))
+            cdict['green'].append((pos, color[1], color[1]))
+            cdict['blue'].append((pos, color[2], color[2]))
+
+        return mpl.colors.LinearSegmentedColormap('my_colormap', cdict, 256)
+
+    def add_zbild(self, ax, xloc, yloc, zbild, tum=True, fontsize=10,
+                  color='grey'):
+        """ Set ZBild number as text in the chart.
+
+        Args:
+            ax: a matplotlib Axes instance
+            xloc: float for position; ymin = 0, ymax = 1
+            yloc: float for position; xmin = 0, xmax = 1
+            zbild: string for text
+            tum: optional boolean; for copyright; default: (tum=True)
+            fontsize: optional float for font size; default: (10)
+            color: optional string for mpl color; default: ('gray')
+        """
+        x_min = ax.get_xlim()[0]
+        x_max = ax.get_xlim()[1]
+        y_min = ax.get_ylim()[0]
+        y_max = ax.get_ylim()[1]
+
+        x = x_min + xloc * (x_max - x_min)
+        y = y_min + yloc * (y_max - y_min)
+
+        if tum is True:
+            zbild = '$\copyright$ TUM IfE {}'.format(zbild)
+
+        ax.text(x, y, zbild, fontsize=fontsize, color=color)
+
+    def _set_all_style(self, all_style):
+        """ Set same style for all options.
+
+        Args:
+            all_style: string for chosen style; default: ('default')
+        """
+
+        enable_color_order = self._check_style_consistence(all_style)
+
+        if enable_color_order is True:
+            self._color_style = all_style
+            self._color_order_style = all_style
+            self._plt_style = all_style
+
+        else:
+            self._color_style = all_style
+            self._plt_style = all_style
+
+        return enable_color_order
 
     def _set_color_order(self):
         if self._color_order_style == 'default':
@@ -170,48 +280,6 @@ class PLTbase:
                     ' is not defined in the colors style \'{}\''.format(
                         c, self._color_order_style, self._color_style))
 
-    def get_colors(self):
-        """ Get colors form chosen style.
-
-        Returns:
-            Dictionary of colors
-        """
-        return self._colors
-
-    def get_color_order(self):
-        """ Get ordered color list form chosen style.
-
-        Returns:
-            List of ordered colors
-        """
-        return self._colors_order
-
-    def add_zbild(self, ax, xloc, yloc, zbild, tum=True, fontsize=10,
-                  color='grey'):
-        """ Set ZBild number as text in the chart.
-
-        Args:
-            ax: a matplotlib Axes instance
-            xloc: float for position; ymin = 0, ymax = 1
-            yloc: float for position; xmin = 0, xmax = 1
-            zbild: string for text
-            tum: optional boolean; for copyright; default: (tum=True)
-            fontsize: optional float for font size; default: (10)
-            color: optional string for mpl color; default: ('gray')
-        """
-        x_min = ax.get_xlim()[0]
-        x_max = ax.get_xlim()[1]
-        y_min = ax.get_ylim()[0]
-        y_max = ax.get_ylim()[1]
-
-        x = x_min + xloc * (x_max - x_min)
-        y = y_min + yloc * (y_max - y_min)
-
-        if tum is True:
-            zbild = '$\copyright$ TUM IfE {}'.format(zbild)
-
-        ax.text(x, y, zbild, fontsize=fontsize, color=color)
-
     def __sort_colors_cycle(self):
         colors = self._colors
         sort_order = self._colors_order
@@ -231,46 +299,32 @@ class PLTbase:
     def _set_plt_style(self, style, colors, prop_cycle_colors):
         self._set_default_plt_style()
 
-    def get_cmap(self, colors, position=None, bit=False):
-        """ Generate custom color maps for Matplotlib.
+    def _add_available_styles(self, styles_available=None):
+        if styles_available is not None:
+            styles = {}
+            for i in self._styles_available.keys():
+                try:
+                    styles[i] = self._styles_available[i] + styles_available[i]
+                except KeyError:
+                    styles[i] = self._styles_available[i]
 
-        The method allows you to create a list of tuples with 8-bit (0 to 255)
-        or arithmetic (0.0 to 1.0) RGB values to create linear color maps.
-        Arrange your tuples so that the first color is the lowest value for
-        the color bar and the last is the highest.
+            self._styles_available = styles
 
-        Args:
-            colors: list of RGB tuples with 8-bit (0 to 255) or
-                    arithmetic (0 to 1); default: arithmetic
-            position: contains a list from 0 to 1 to dictate the location
-                      of each color
-            bit: boolean; default: False (arithmetic); True (RGB)
+    def _check_style_consistence(self, all_style):
+        plt_style = set(self._styles_available['plt_style'])
+        color_style = set(self._styles_available['color_style'])
+        color_order_style = set(self._styles_available['color_order_style'])
 
-        Returns:
-            cmap: a color map with equally spaced colors
-
-        Example:
-            >>> cmap = get_cmap(colors=[(255, 0, 0), (0, 157, 0),)], bit=True)
-            >>> cmap = get_cmap([(1, 1, 1), (0.5, 0, 0)], position=[0, 1]))
-        """
-
-        bit_rgb = np.linspace(0, 1, 256)
-        if position is None:
-            position = np.linspace(0, 1, len(colors))
+        # check consistence for all options
+        if set([all_style]).intersection(color_style, plt_style,
+                                         color_order_style):
+            enable_color_order = True
+        # check consistence for color_style and plt_style
+        elif set([all_style]).intersection(color_style, plt_style):
+            enable_color_order = False
         else:
-            if len(position) != len(colors):
-                sys.exit("position length must be the same as colors")
-            elif position[0] != 0 or position[-1] != 1:
-                sys.exit("position must start with 0 and end with 1")
-        if bit:
-            for i in range(len(colors)):
-                colors[i] = (bit_rgb[colors[i][0]],
-                             bit_rgb[colors[i][1]],
-                             bit_rgb[colors[i][2]])
-        cdict = {'red': [], 'green': [], 'blue': []}
-        for pos, color in zip(position, colors):
-            cdict['red'].append((pos, color[0], color[0]))
-            cdict['green'].append((pos, color[1], color[1]))
-            cdict['blue'].append((pos, color[2], color[2]))
-
-        return mpl.colors.LinearSegmentedColormap('my_colormap', cdict, 256)
+            raise AttributeError(
+                'Selected style \'{}\' does not exist for plt_style'
+                ' and color_style'.format(
+                    all_style))
+        return enable_color_order

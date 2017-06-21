@@ -33,7 +33,7 @@ def plt_color_order(title):
 
 
 def simple_subplot():
-    ewk_plt.set_all_style('enfo')
+    ewk_plt.set_style('ewk')
     fig = plt.figure()
     ax0 = fig.add_subplot(221)
 
@@ -42,7 +42,7 @@ def simple_subplot():
         y = np.sin(x) + c
         ax0.plot(x, y, label=c)
 
-    ax0.set_title('enfo style')
+    ax0.set_title('ewk style')
     ax0.set_ylabel(r'Pressure ($\mathrm{bar}_{\mathrm{g}}$)')
     ax0.set_xlabel(r'Power ($kW$)')
     ax0.legend()
@@ -57,7 +57,8 @@ def simple_subplot():
     ax1.set_xlabel(r'Power ($kW$)')
     ax1.legend()
 
-    ewk_plt.set_all_style('example', enable_color_order=True)
+    ewk_plt.set_style(color_order_style='default', color_style='default',
+                      plt_style='example')
     ax2 = fig.add_subplot(222)
     for c in range(4):
         y = np.sin(x) + c
@@ -86,5 +87,6 @@ def simple_subplot():
 
 if __name__ == "__main__":
     ewk_plt = PLTewk()
-    plt_color_order(title='default style')
+    ewk_plt.get_available_styles()
+    # plt_color_order(title='default style')
     simple_subplot()

@@ -46,7 +46,7 @@ def _x_axis_tick(ax, n=5):
 
 if __name__ == '__main__':
     ewk_plt = PLTewk()
-    ewk_plt.set_all_style(style='enfo')
+    ewk_plt.set_style('ewk')
 
     name_input_file = 'ghd_bs'
     title = 'GHD Endenergieverbrauch in PJ nach Brennstoffen'

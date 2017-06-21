@@ -5,10 +5,24 @@ from .style_base import PLTbase
 
 
 class PLTewk(PLTbase):
-    """ PLTewk class, children of PLTbase"""
+    """ PLTewk class, child of PLTbase"""
+
+    EXAMPLE = 'example'
+    EKW = 'ewk'
+
+    def __init__(self):
+        PLTbase.__init__(self)
+
+        styles_available = {
+            'color_style': [self.EXAMPLE, self.EKW],
+            'color_order_style': [self.EXAMPLE],
+            'plt_style': [self.EXAMPLE, self.EKW]}
+
+        self._add_available_styles(styles_available)
 
     def _get_colors(self, style):
-        if style is 'example':
+
+        if style is self.EXAMPLE:
             return {
                 'mdarkred': (187, 63, 63),
                 'mediumred': (244, 54, 5),
@@ -26,7 +40,7 @@ class PLTewk(PLTbase):
                 'mediumgrey': (127, 127, 127),
                 'mlightgrey': (178, 178, 178),
             }
-        elif style is 'enfo':
+        elif style is self.EKW:
             return {
                 'Steinkohle': (88, 88, 90),
                 'Braunkohle': (116, 66, 65),
@@ -40,7 +54,8 @@ class PLTewk(PLTbase):
         return None
 
     def _get_colors_order(self, style):
-        if style is 'example':
+
+        if style is self.EXAMPLE:
             return ['mdarkred', 'mediumred', 'lightred', 'darkgreen',
                     'mediumgreen', 'mlightgreen', 'lightgreen', 'darkblue',
                     'mediumblue', 'lightblue', 'darkred', 'black', 'darkgrey',
@@ -48,7 +63,8 @@ class PLTewk(PLTbase):
         return None
 
     def _set_plt_style(self, style, colors, prop_cycle_colors):
-        if style is 'example':
+
+        if style is self.EXAMPLE:
             mpl.style.use('ggplot')
             figsz = 12
             fntsz = 18
@@ -71,7 +87,7 @@ class PLTewk(PLTbase):
             mpl.rcParams['axes.prop_cycle'] = cycler('color',
                                                      prop_cycle_colors)
             return True
-        elif style is 'enfo':
+        elif style is self.EKW:
             mpl.style.use('default')
             fntsz = 18
             lw = 2

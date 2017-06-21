@@ -5,10 +5,22 @@ from cycler import cycler
 
 
 class PLTdynamis(PLTbase):
-    """ PLTdynamis class, children of PLTbase"""
+    """ PLTdynamis class, child of PLTbase"""
+
+    DYN = 'dyn'
+    DYN_KLEE = 'dyn_klee'
+
+    def __init__(self):
+        PLTbase.__init__(self)
+
+        styles_available = {
+            'color_style': [self.DYN, self.DYN_KLEE],
+            'plt_style': [self.DYN]}
+
+        self._add_available_styles(styles_available)
 
     def _get_colors(self, style):
-        if style is 'dyn':
+        if style is self.DYN:
             return {
                 'rw': (153, 0, 0),
                 'ww': (191, 0, 0),
@@ -20,7 +32,7 @@ class PLTdynamis(PLTbase):
                 'b': (240, 240, 111),
                 'ikt': (154, 205, 50),
             }
-        elif style is 'dyn_klee':
+        elif style is self.DYN_KLEE:
             return {
                 'rw': (255, 153, 0),
                 'ww': (255, 102, 0),
@@ -35,7 +47,7 @@ class PLTdynamis(PLTbase):
         return None
 
     def _set_plt_style(self, style, colors, prop_cycle_colors):
-        if style is 'dyn':
+        if style is self.DYN:
             mpl.style.use('default')
             fntsz = 18
             lw = 2

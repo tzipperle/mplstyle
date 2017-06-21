@@ -6,8 +6,22 @@ from cycler import cycler
 class PLTdatabay(PLTbase):
     """ PLTdatabay class, children of PLTbase"""
 
+    DATAYBAY = 'databay'
+    DATAYBAY2 = 'databay2'
+    TEST = 'test'
+
+    def __init__(self):
+        PLTbase.__init__(self)
+
+        styles_available = {
+            'color_style': [self.DATAYBAY, self.DATAYBAY2],
+            'color_order_style': [self.DATAYBAY],
+            'plt_style': [self.DATAYBAY, self.TEST]}
+
+        self._add_available_styles(styles_available)
+
     def _get_colors(self, style):
-        if style == 'databay':
+        if style == self.DATAYBAY:
             return {
                 'darkblue': (9, 30, 67),
                 'mdarkblue': (21, 71, 157),
@@ -30,7 +44,7 @@ class PLTdatabay(PLTbase):
                 'mlightgrey': (178, 178, 178),
                 'lightgrey': (216, 216, 216),
             }
-        elif style == 'databay2':
+        elif style == self.DATAYBAY2:
             return {
                 'darkblue': (21, 41, 55),
                 'mdarkblue': (49, 95, 129),
@@ -56,7 +70,7 @@ class PLTdatabay(PLTbase):
         return None
 
     def _get_colors_order(self, style):
-        if style == 'databay':
+        if style == self.DATAYBAY:
             return ['darkblue', 'mdarkblue', 'mediumblue', 'mlightblue',
                     'lightblue',
                     'darkred', 'mdarkred', 'mediumred', 'mlightred',
@@ -68,7 +82,7 @@ class PLTdatabay(PLTbase):
         return None
 
     def _set_plt_style(self, style, colors, prop_cycle_colors):
-        if style == 'databay':
+        if style == self.DATAYBAY:
             fs = 18
             lw = 2
             fntcol = 'black'
@@ -80,7 +94,7 @@ class PLTdatabay(PLTbase):
                    edgecolor=colors['mlightgrey'],
                    fontsize=fs - 2, numpoints=1, handlelength=1,
                    loc='best', frameon=True, shadow=False,
-                   fancybox = False)
+                   fancybox=False)
             mpl.rcParams['text.color'] = colors[fntcol]
             mpl.rc('axes', edgecolor=colors['black'], grid=True,
                    xmargin=0, labelsize=fs, titlesize=fs, linewidth=0.8)
@@ -89,11 +103,11 @@ class PLTdatabay(PLTbase):
             mpl.rc('grid', linestyle=':', color=colors['mediumgrey'],
                    linewidth=0.5)
             mpl.rc('lines', lw=lw, markersize=10)
-            mpl.rc('xtick', color = colors[fntcol], labelsize=fs - 2)
-            mpl.rc('ytick', color = colors[fntcol], labelsize=fs - 2)
+            mpl.rc('xtick', color=colors[fntcol], labelsize=fs - 2)
+            mpl.rc('ytick', color=colors[fntcol], labelsize=fs - 2)
 
             return True
-        elif style == 'test':
+        elif style == self.TEST:
             fs = 18
             lw = 2
             fntcol = 'black'
@@ -111,10 +125,10 @@ class PLTdatabay(PLTbase):
             mpl.rcParams['axes.spines.right'] = False
             mpl.rcParams['axes.spines.top'] = False
             mpl.rc('grid',
-                    linestyle=':', color=colors['mlightgrey'], linewidth=0.5)
+                   linestyle=':', color=colors['mlightgrey'], linewidth=0.5)
             mpl.rc('lines', lw=lw, markersize=10)
-            mpl.rc('xtick', color = colors[fntcol], labelsize=fs - 2)
-            mpl.rc('ytick', color = colors[fntcol], labelsize=fs - 2)
+            mpl.rc('xtick', color=colors[fntcol], labelsize=fs - 2)
+            mpl.rc('ytick', color=colors[fntcol], labelsize=fs - 2)
             mpl.rcParams['axes.prop_cycle'] = cycler('color',
                                                      prop_cycle_colors)
             return True
