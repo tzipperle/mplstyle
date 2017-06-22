@@ -7,20 +7,21 @@ from cycler import cycler
 class PLTtz(PLTbase):
     """ PLTtz class, child of PLTbase"""
 
-    BLUE = 'blue'
-    JUPYTER_NOTEBOOK = 'jupyter-notebook'
+    _BLUE = 'blue'
+    _JUPYTER_NOTEBOOK = 'jupyter-notebook'
 
     def __init__(self):
         PLTbase.__init__(self)
 
         available_styles = {
-            'color_style': [self.BLUE],
-            'color_order_style': [self.BLUE],
-            'plt_style': [self.JUPYTER_NOTEBOOK]}
+            'color_style': [self._BLUE],
+            'color_order_style': [self._BLUE],
+            'plt_style': [self._JUPYTER_NOTEBOOK]}
 
         self._add_available_styles(available_styles)
+
     def _get_colors(self, style):
-        if style == self.BLUE:
+        if style == self._BLUE:
             return {
                 'darkblue': (11, 85, 159),
                 'mdarkblue': (42, 122, 185),
@@ -32,13 +33,13 @@ class PLTtz(PLTbase):
         return None
 
     def _get_colors_order(self, style):
-        if style == self.BLUE:
+        if style == self._BLUE:
             return ['darkblue', 'mdarkblue', 'mediumblue', 'mlightblue',
                     'lightblue', 'pastelblue']
         return None
 
     def _set_plt_style(self, style, colors, prop_cycle_colors):
-        if style == self.JUPYTER_NOTEBOOK:
+        if style == self._JUPYTER_NOTEBOOK:
             mpl.style.use('default')
             fntsz = 12
             lw = 2

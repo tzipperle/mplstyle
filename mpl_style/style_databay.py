@@ -6,22 +6,22 @@ from cycler import cycler
 class PLTdatabay(PLTbase):
     """ PLTdatabay class, children of PLTbase"""
 
-    DATAYBAY = 'databay'
-    DATAYBAY2 = 'databay2'
-    TEST = 'test'
+    _DATAYBAY = 'databay'
+    _DATAYBAY2 = 'databay2'
+    _TEST = 'test'
 
     def __init__(self):
         PLTbase.__init__(self)
 
         available_styles = {
-            'color_style': [self.DATAYBAY, self.DATAYBAY2],
-            'color_order_style': [self.DATAYBAY],
-            'plt_style': [self.DATAYBAY, self.TEST]}
+            'color_style': [self._DATAYBAY, self._DATAYBAY2],
+            'color_order_style': [self._DATAYBAY],
+            'plt_style': [self._DATAYBAY, self._TEST]}
 
         self._add_available_styles(available_styles)
 
     def _get_colors(self, style):
-        if style == self.DATAYBAY:
+        if style == self._DATAYBAY:
             return {
                 'darkblue': (9, 30, 67),
                 'mdarkblue': (21, 71, 157),
@@ -44,7 +44,7 @@ class PLTdatabay(PLTbase):
                 'mlightgrey': (178, 178, 178),
                 'lightgrey': (216, 216, 216),
             }
-        elif style == self.DATAYBAY2:
+        elif style == self._DATAYBAY2:
             return {
                 'darkblue': (21, 41, 55),
                 'mdarkblue': (49, 95, 129),
@@ -70,7 +70,7 @@ class PLTdatabay(PLTbase):
         return None
 
     def _get_colors_order(self, style):
-        if style == self.DATAYBAY:
+        if style == self._DATAYBAY:
             return ['darkblue', 'mdarkblue', 'mediumblue', 'mlightblue',
                     'lightblue',
                     'darkred', 'mdarkred', 'mediumred', 'mlightred',
@@ -82,7 +82,7 @@ class PLTdatabay(PLTbase):
         return None
 
     def _set_plt_style(self, style, colors, prop_cycle_colors):
-        if style == self.DATAYBAY:
+        if style == self._DATAYBAY:
             fs = 18
             lw = 2
             fntcol = 'black'
@@ -107,7 +107,7 @@ class PLTdatabay(PLTbase):
             mpl.rc('ytick', color=colors[fntcol], labelsize=fs - 2)
 
             return True
-        elif style == self.TEST:
+        elif style == self._TEST:
             fs = 18
             lw = 2
             fntcol = 'black'

@@ -7,19 +7,19 @@ from cycler import cycler
 class PLTenfo(PLTbase):
     """ PLTenfo class, child of PLTbase"""
 
-    ENFO = 'enfo'
+    _ENFO = 'enfo'
 
     def __init__(self):
         PLTbase.__init__(self)
 
         available_styles = {
-            'color_style': [self.ENFO],
-            'plt_style': [self.ENFO]}
+            'color_style': [self._ENFO],
+            'plt_style': [self._ENFO]}
 
         self._add_available_styles(available_styles)
 
     def _get_colors(self, style):
-        if style == self.ENFO:
+        if style == self._ENFO:
             return {
                 'Steinkohle': (88, 88, 90),
                 'Braunkohle': (116, 66, 65),
@@ -52,7 +52,7 @@ class PLTenfo(PLTbase):
         return None
 
     def _set_plt_style(self, style, colors, prop_cycle_colors):
-        if style == self.ENFO:
+        if style == self._ENFO:
             mpl.style.use('default')
             fntsz = 18
             lw = 2

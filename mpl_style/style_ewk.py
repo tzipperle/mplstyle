@@ -7,22 +7,22 @@ from .style_base import PLTbase
 class PLTewk(PLTbase):
     """ PLTewk class, child of PLTbase"""
 
-    EXAMPLE = 'example'
-    EKW = 'ewk'
+    _EXAMPLE = 'example'
+    _EKW = 'ewk'
 
     def __init__(self):
         PLTbase.__init__(self)
 
         available_styles = {
-            'color_style': [self.EXAMPLE, self.EKW],
-            'color_order_style': [self.EXAMPLE],
-            'plt_style': [self.EXAMPLE, self.EKW]}
+            'color_style': [self._EXAMPLE, self._EKW],
+            'color_order_style': [self._EXAMPLE],
+            'plt_style': [self._EXAMPLE, self._EKW]}
 
         self._add_available_styles(available_styles)
 
     def _get_colors(self, style):
 
-        if style is self.EXAMPLE:
+        if style is self._EXAMPLE:
             return {
                 'mdarkred': (187, 63, 63),
                 'mediumred': (244, 54, 5),
@@ -40,7 +40,7 @@ class PLTewk(PLTbase):
                 'mediumgrey': (127, 127, 127),
                 'mlightgrey': (178, 178, 178),
             }
-        elif style is self.EKW:
+        elif style is self._EKW:
             return {
                 'Steinkohle': (88, 88, 90),
                 'Braunkohle': (116, 66, 65),
@@ -55,7 +55,7 @@ class PLTewk(PLTbase):
 
     def _get_colors_order(self, style):
 
-        if style is self.EXAMPLE:
+        if style is self._EXAMPLE:
             return ['mdarkred', 'mediumred', 'lightred', 'darkgreen',
                     'mediumgreen', 'mlightgreen', 'lightgreen', 'darkblue',
                     'mediumblue', 'lightblue', 'darkred', 'black', 'darkgrey',
@@ -64,7 +64,7 @@ class PLTewk(PLTbase):
 
     def _set_plt_style(self, style, colors, prop_cycle_colors):
 
-        if style is self.EXAMPLE:
+        if style is self._EXAMPLE:
             mpl.style.use('ggplot')
             figsz = 12
             fntsz = 18
@@ -87,7 +87,7 @@ class PLTewk(PLTbase):
             mpl.rcParams['axes.prop_cycle'] = cycler('color',
                                                      prop_cycle_colors)
             return True
-        elif style is self.EKW:
+        elif style is self._EKW:
             mpl.style.use('default')
             fntsz = 18
             lw = 2
