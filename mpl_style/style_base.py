@@ -142,6 +142,20 @@ class PLTbase:
         for i in self._styles_available.keys():
             print('\'{}\': {}\n'.format(i, self._styles_available[i]))
 
+    def get_used_style(self):
+        """ Get available style.
+
+        Returns:
+            List of styles
+        """
+
+        print('Selected style:\n \n'
+              'plt_style: \'{}\'\n'
+              'color_style: \'{}\'\n'
+              'color_order_style: \'{}\'\n'.format(self._plt_style,
+                                                   self._color_style,
+                                                   self._color_order_style))
+
     def get_cmap(self, colors, position=None, bit=False):
         """ Generate custom color maps for Matplotlib.
 
