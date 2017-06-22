@@ -142,8 +142,8 @@ class PLTbase:
         for i in self._styles_available.keys():
             print('\'{}\': {}\n'.format(i, self._styles_available[i]))
 
-    def get_used_style(self):
-        """ Get used style.
+    def get_selected_style(self):
+        """ Get selected style.
 
         Returns:
             Nothing
