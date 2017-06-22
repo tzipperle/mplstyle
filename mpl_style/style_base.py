@@ -88,23 +88,31 @@ class PLTbase:
         """ Set plot style, colors and color order.
 
         Args:
-            only argument: all style
-            plt_style: optional string for plt style; default: ('default')
-            color_style: optional string for color order; default: ('default')
+            *args: optional string for the uniform style; i.e. non-key worded
+                ('default')
+            plt_style: optional string for plt style;
+                (plt_style='default')
+            color_style: optional string for color order;
+                (color_style='default')
             color_order_style: optional string for color order style;
-                    default: ('default')
+                    (color_order_style='default')
         """
         enable_color_order = False
 
-        for arg in args:
-            enable_color_order = self._set_all_style(arg)
+        if len(args) > 1:
+            raise ValueError('Only ONE or NO argument is allowed.')
+        else:
+            for arg in args:
+                enable_color_order = self._set_all_style(arg)
 
         for k, v in kwargs.items():
             if k in self._styles_available.keys():
                 setattr(self, '_{}'.format(k), v)
             else:
                 raise NotImplementedError(
-                    'Invalid style type: \'{}\''.format(k))
+                    'Invalid style type: {}\n\n'
+                    'Possible style types are: color_style, '
+                    'color_order_style or plt_style.'.format(k))
 
         self._set_colors()
 
