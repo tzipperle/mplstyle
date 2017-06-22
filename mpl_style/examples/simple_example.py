@@ -88,5 +88,5 @@ def simple_subplot():
 if __name__ == "__main__":
     ewk_plt = PLTewk()
     ewk_plt.get_available_styles()
-    # plt_color_order(title='default style')
+    plt_color_order(title='default style')
     simple_subplot()
