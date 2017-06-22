@@ -13,11 +13,11 @@ class PLTdynamis(PLTbase):
     def __init__(self):
         PLTbase.__init__(self)
 
-        styles_available = {
+        available_styles = {
             'color_style': [self.DYN, self.DYN_KLEE],
             'plt_style': [self.DYN]}
 
-        self._add_available_styles(styles_available)
+        self._add_available_styles(available_styles)
 
     def _get_colors(self, style):
         if style is self.DYN:

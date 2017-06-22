@@ -299,12 +299,12 @@ class PLTbase:
     def _set_plt_style(self, style, colors, prop_cycle_colors):
         self._set_default_plt_style()
 
-    def _add_available_styles(self, styles_available=None):
-        if styles_available is not None:
+    def _add_available_styles(self, available_styles=None):
+        if available_styles is not None:
             styles = {}
             for i in self._styles_available.keys():
                 try:
-                    styles[i] = self._styles_available[i] + styles_available[i]
+                    styles[i] = self._styles_available[i] + available_styles[i]
                 except KeyError:
                     styles[i] = self._styles_available[i]
 

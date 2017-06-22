@@ -13,12 +13,12 @@ class PLTdatabay(PLTbase):
     def __init__(self):
         PLTbase.__init__(self)
 
-        styles_available = {
+        available_styles = {
             'color_style': [self.DATAYBAY, self.DATAYBAY2],
             'color_order_style': [self.DATAYBAY],
             'plt_style': [self.DATAYBAY, self.TEST]}
 
-        self._add_available_styles(styles_available)
+        self._add_available_styles(available_styles)
 
     def _get_colors(self, style):
         if style == self.DATAYBAY:

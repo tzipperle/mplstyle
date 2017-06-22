@@ -13,12 +13,12 @@ class PLTtz(PLTbase):
     def __init__(self):
         PLTbase.__init__(self)
 
-        styles_available = {
+        available_styles = {
             'color_style': [self.BLUE],
             'color_order_style': [self.BLUE],
             'plt_style': [self.JUPYTER_NOTEBOOK]}
 
-        self._add_available_styles(styles_available)
+        self._add_available_styles(available_styles)
     def _get_colors(self, style):
         if style == self.BLUE:
             return {

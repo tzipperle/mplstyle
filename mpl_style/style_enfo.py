@@ -12,11 +12,11 @@ class PLTenfo(PLTbase):
     def __init__(self):
         PLTbase.__init__(self)
 
-        styles_available = {
+        available_styles = {
             'color_style': [self.ENFO],
             'plt_style': [self.ENFO]}
 
-        self._add_available_styles(styles_available)
+        self._add_available_styles(available_styles)
 
     def _get_colors(self, style):
         if style == self.ENFO:
