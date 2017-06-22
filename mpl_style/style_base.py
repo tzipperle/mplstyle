@@ -135,7 +135,7 @@ class PLTbase:
         """ Get available style.
 
         Returns:
-            List of styles
+            Nothing
         """
 
         print('Available styles for:\n')
@@ -143,10 +143,10 @@ class PLTbase:
             print('\'{}\': {}\n'.format(i, self._styles_available[i]))
 
     def get_used_style(self):
-        """ Get available style.
+        """ Get used style.
 
         Returns:
-            List of styles
+            Nothing
         """
 
         print('Selected style:\n \n'
