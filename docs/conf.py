@@ -11,9 +11,9 @@ extensions = [
 source_suffix = '.rst'
 master_doc = 'index'
 
-project = u'prodyn'
-copyright = u'2016, Dennis Atabay'
-author = u'Dennis Atabay'
+project = u'mpl-style'
+copyright = u'2017, Thomas Zipperle and Dennis Atabay'
+author = u'Thomas Zipperle and Dennis Atabay'
 version = '0.1'
 release = '0.1'
 
@@ -22,7 +22,7 @@ exclude_patterns = ['_build']
 
 # HTML output
 
-htmlhelp_basename = 'prodyndoc'
+htmlhelp_basename = 'mpl-styledoc'
 
 # LaTeX output
 
@@ -35,8 +35,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  (master_doc, 'prodyn.tex', u'prodyn Documentation',
-   u'Dannis Atabay', 'manual'),
+  (master_doc, 'mpl-style.tex', u'mpl-style Documentation',
+   u'Thomas Zipperl and Dennis Atabay', 'manual'),
 ]
 
 # Manual page output
@@ -44,7 +44,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'prodyn', u'prodyn Documentation',
+    (master_doc, 'mpl-style', u'mpl-style Documentation',
      [author], 1)
 ]
 
@@ -55,17 +55,17 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  (master_doc, 'prodyn', u'prodyn Documentation',
-   author, 'prodyn', 'Implementation of the dymaic programming algorithm for optimal system control',
+  (master_doc, 'mpl-style', u'mpl-style Documentation',
+   author, 'mpl-style', 'Name Name',
    'Miscellaneous'),
 ]
 # Epub output
 
 # Bibliographic Dublin Core info.
-epub_title = u'prodyn'
-epub_author = u'Dennis Atabay'
-epub_publisher = u'Dennis Atabay'
-epub_copyright = u'2016, Dennis Atabay'
+epub_title = u'mpl-style'
+epub_author = u'Thomas Zipperle and Dennis Atabay'
+epub_publisher = u'Thomas Zipperle and Dennis Atabay'
+epub_copyright = u'2017, Thomas Zipperle and Dennis Atabay'
 
 epub_exclude_files = ['search.html']
 
