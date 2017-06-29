@@ -12,9 +12,8 @@ mpl-style: Name name
 :Date: |today|
 :Copyright:
   This documentation is licensed under a `Creative Commons Attribution 4.0 
-  International`__ license.
+  International`_ license.
 
-.. __: http://creativecommons.org/licenses/by/4.0/
 
 
 
@@ -58,6 +57,7 @@ Dependencies (Python)
 
    
 .. _Institute for Energy Economy and Application Technology: http://www.ewk.ei.tum.de/
+.. _Creative Commons Attribution 4.0 International: http://creativecommons.org/licenses/by/4.0/
 .. _numpy: http://www.numpy.org/
 .. _pandas: https://pandas.pydata.org
 .. _download: https://github.com/yabata/prodyn/archive/master.zip
