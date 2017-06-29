@@ -2,10 +2,10 @@
 
 .. module:: mpl-style
 
-mpl-style: Implementation of the dymaic programming algorithm for optimal system control
+mpl-style: Name name
 ================================================================
 
-:Maintainer: Dennis Atabay, <dennis.atabay@tum.de>
+:Maintainers: Dennis Atabay <dennis.atabay@tum.de>, Thomas Zipperle <thomas.zipperle@tum.de> 
 :Organization: `Institute for Energy Economy and Application Technology`_,
                Technische Universität München
 :Version: |version|
