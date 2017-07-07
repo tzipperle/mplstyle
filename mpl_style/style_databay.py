@@ -10,8 +10,8 @@ class PLTdatabay(PLTbase):
     _DATAYBAY2 = 'databay2'
     _TEST = 'test'
 
-    def __init__(self, **kwargs):
-        PLTbase.__init__(self, **kwargs)
+    def __init__(self):
+        PLTbase.__init__(self)
 
         available_styles = {
             'color_style': [self._DATAYBAY, self._DATAYBAY2],

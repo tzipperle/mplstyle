@@ -11,8 +11,8 @@ class PLTtz(PLTbase):
     _JUPYTER_NOTEBOOK = 'jupyter-notebook'
     _MPL_V2 = 'mpl2_colors'
 
-    def __init__(self, **kwargs):
-        PLTbase.__init__(self, **kwargs)
+    def __init__(self):
+        PLTbase.__init__(self)
 
         available_styles = {
             'color_style': [self._BLUE, self._MPL_V2],

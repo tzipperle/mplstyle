@@ -9,8 +9,8 @@ class PLTenfo(PLTbase):
 
     _ENFO = 'enfo'
 
-    def __init__(self, **kwargs):
-        PLTbase.__init__(self, **kwargs)
+    def __init__(self):
+        PLTbase.__init__(self)
 
         available_styles = {
             'color_style': [self._ENFO],
