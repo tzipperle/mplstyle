@@ -37,6 +37,8 @@ class PLTbase:
         'lightgrey': (216, 216, 216),
     }
 
+    _DEFAULT_STYLE = 'default'
+
     def _set_default_plt_style(self):
         mpl.style.use('default')
         fntsz = 18
@@ -63,26 +65,17 @@ class PLTbase:
         mpl.rcParams['axes.prop_cycle'] = cycler('color',
                                                  self._prop_cycle_colors)
 
-    def __init__(self, plt_style='default', color_style='default',
-                 color_order_style='default'):
-        """ Set plot style, colors and color order.
-
-        Args:
-            plt_style: optional string for plt style; default: ('default')
-            color_style: optional string for color order; default: ('default')
-            color_order_style: optional string for color order style;
-                                default: ('default')
-        """
-        self._color_style = color_style
-        self._color_order_style = color_order_style
-        self._plt_style = plt_style
+    def __init__(self):
+        self._color_style = self._DEFAULT_STYLE
+        self._color_order_style = self._DEFAULT_STYLE
+        self._plt_style = self._DEFAULT_STYLE
+        self._styles_available = {
+            'color_style': [self._DEFAULT_STYLE],
+            'color_order_style': [self._DEFAULT_STYLE],
+            'plt_style': [self._DEFAULT_STYLE]}
         self._colors_order = None
         self._colors = None
-        self._styles_available = {
-            'color_style': ['default'],
-            'color_order_style': ['default'],
-            'plt_style': ['default']}
-        self.set_style('default')
+        self.set_style(self._DEFAULT_STYLE)
 
     def set_style(self, *args, **kwargs):
         """ Set plot style, colors and color order.
