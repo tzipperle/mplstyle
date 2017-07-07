@@ -46,20 +46,20 @@ class PLTbase:
         mpl.rc('font', **font)
         mpl.rc('figure', figsize=[11, 7], titlesize=fntsz)
         mpl.rc('legend', framealpha=None,
-               edgecolor=self._colors['mlightgrey'],
+               edgecolor='dimgray',
                fontsize=fntsz - 2, numpoints=1, handlelength=1,
                loc='best', frameon=True, shadow=False,
                fancybox=False)
-        mpl.rcParams['text.color'] = self._colors[fntcol]
-        mpl.rc('axes', edgecolor=self._colors['black'], grid=True,
+        mpl.rcParams['text.color'] = fntcol
+        mpl.rc('axes', edgecolor='black', grid=True,
                xmargin=0, labelsize=fntsz - 1, titlesize=fntsz, linewidth=0.9)
         mpl.rcParams['axes.spines.right'] = False
         mpl.rcParams['axes.spines.top'] = False
-        mpl.rc('grid', linestyle=':', color=self._colors['mediumgrey'],
+        mpl.rc('grid', linestyle=':', color='dimgray',
                linewidth=0.5)
         mpl.rc('lines', lw=lw, markersize=10)
-        mpl.rc('xtick', color=self._colors[fntcol], labelsize=fntsz - 2)
-        mpl.rc('ytick', color=self._colors[fntcol], labelsize=fntsz - 2)
+        mpl.rc('xtick', color=fntcol, labelsize=fntsz - 2)
+        mpl.rc('ytick', color=fntcol, labelsize=fntsz - 2)
         mpl.rcParams['axes.prop_cycle'] = cycler('color',
                                                  self._prop_cycle_colors)
 
@@ -289,7 +289,10 @@ class PLTbase:
     def _to_rgb_mpl(self, _colors):
         _to_rgb = lambda r, g, b: tuple(x / 255. for x in (r, g, b))
         for key, val in _colors.items():
-            _colors[key] = _to_rgb(*val)
+            if isinstance(val, tuple):
+                _colors[key] = _to_rgb(*val)
+            else:
+                _colors[key] = mpl.colors.to_rgb(val)
         return _colors
 
     def _check_color_consistence(self):
