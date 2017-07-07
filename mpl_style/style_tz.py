@@ -15,8 +15,8 @@ class PLTtz(PLTbase):
         PLTbase.__init__(self)
 
         available_styles = {
-            'color_style': [self._BLUE],
-            'color_order_style': [self._BLUE],
+            'color_style': [self._BLUE, self._MPL_V2],
+            'color_order_style': [self._BLUE, self._MPL_V2],
             'plt_style': [self._JUPYTER_NOTEBOOK]}
 
         self._add_available_styles(available_styles)
