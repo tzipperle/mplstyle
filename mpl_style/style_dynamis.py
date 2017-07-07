@@ -10,8 +10,8 @@ class PLTdynamis(PLTbase):
     _DYN = 'dyn'
     _DYN_KLEE = 'dyn_klee'
 
-    def __init__(self):
-        PLTbase.__init__(self)
+    def __init__(self, **kwargs):
+        PLTbase.__init__(self, **kwargs)
 
         available_styles = {
             'color_style': [self._DYN, self._DYN_KLEE],

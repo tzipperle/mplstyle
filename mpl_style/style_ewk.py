@@ -10,8 +10,8 @@ class PLTewk(PLTbase):
     _EXAMPLE = 'example'
     _EKW = 'ewk'
 
-    def __init__(self):
-        PLTbase.__init__(self)
+    def __init__(self, **kwargs):
+        PLTbase.__init__(self, **kwargs)
 
         available_styles = {
             'color_style': [self._EXAMPLE, self._EKW],
