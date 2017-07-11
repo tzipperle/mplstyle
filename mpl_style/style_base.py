@@ -139,9 +139,9 @@ class PLTbase:
             Nothing
         """
 
-        print('Available styles for:\n')
+        print('Available styles:\n')
         for i in self._styles_available.keys():
-            print('\'{}\': {}\n'.format(i, self._styles_available[i]))
+            print('{}: {}'.format(i, self._styles_available[i]))
 
     def get_selected_style(self):
         """ Get selected style.
