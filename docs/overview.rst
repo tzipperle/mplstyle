@@ -14,6 +14,15 @@ The core of **mpl-style** is a **PLTbase** class contained list of functions, wh
    
    Figure 1: Plotting changes by applying **PLTbase** class
    
+All changes are distributed between three settings: **color style**, **color order style** and **plt style**. Each of them according to **PLTbase** has only one way of rewriting initial corresponding **matplotlib** setting. This way is called a **default** style. Figure 2 illustrates above mentioned **PLTbase** structure. 
+
+.. figure:: img/PLTbase.png
+   :width: 70%
+   :align: center
+   
+   Figure 2: **PLTbase** class structure
+
+   
 
    
 
