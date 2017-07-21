@@ -22,7 +22,7 @@ All changes are distributed between three settings: **color style**, **color ord
    
    Figure 2: **PLTbase** class structure
    
-Besides **PLTbase** there are five more classes: **PLTdatabay**, **PLTdynamis**, **PLTenfo**, **PLTewk** and **PLTtz**. Each class is based on **PLTbase** class by adding other styles of reconfiguring initial settings. Structure one of those classes is presented in the Figure 3. 
+Besides **PLTbase** there are five more classes: **PLTdatabay**, **PLTdynamis**, **PLTenfo**, **PLTewk** and **PLTtz**. Each class is based on **PLTbase** class by adding other styles of reconfiguring initial settings. The structure of one of those classes is presented in the Figure 3. 
 
 .. figure:: img/PLTtz.png
    :width: 70%
