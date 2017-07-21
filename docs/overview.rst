@@ -21,6 +21,17 @@ All changes are distributed between three settings: **color style**, **color ord
    :align: center
    
    Figure 2: **PLTbase** class structure
+   
+Besides **PLTbase** there are five more classes: **PLTdatabay**, **PLTdynamis**, **PLTenfo**, **PLTewk** and **PLTtz**. Each class is based on **PLTbase** class by adding other styles of reconfiguring initial settings. Structure one of those classes is presented in the Figure 3. 
+
+.. figure:: img/PLTtz.png
+   :width: 70%
+   :align: center
+   
+   Figure 3: **PLTtz** class structure
+   
+As can be seen **PLTtz** keeps **PLTbase** styles and also contains additionals. Other four classes have exactly the same structure, but with their own additional styles. With **mpl-style** you can use already uploaded classes or create your own class.    
+
 
    
 
