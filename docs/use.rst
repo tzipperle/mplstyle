@@ -130,7 +130,7 @@ Starts work with 3rd plot by changing only **plt_style** setting. According to i
 Makes 3rd plot similar to 1st and 2nd. Then shows all three together. Figure 4 illustrates these three plots with their respective configurations.
 
 .. figure:: img/select_style2.png
-   :width: 90%
+   :width: 100%
    :align: center
    
    Figure 4: Comparison of three identical plots made with three different configurations
@@ -152,4 +152,5 @@ Makes 3rd plot similar to 1st and 2nd. Then shows all three together. Figure 4 i
 .. _os: https://docs.python.org/3/library/os.html#module-os
 .. _sys: https://docs.python.org/3/library/sys.html
 .. _git: http://git-scm.com/
-.. _downloaded: https://github.com/yabata/prodyn/archive/master.zip
+.. _downloaded: https://github.com/tzipperle/mpl-style/archive/master.zip
+
