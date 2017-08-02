@@ -135,6 +135,7 @@ Makes 3rd plot similar to 1st and 2nd. Then shows all three together. Figure 4 i
    
    Figure 4: Comparison of three identical plots made with three different configurations
 
+As can be seen from this script, with **set_style()** function any from three plot settings (**color style**, **color order style** and **plt style**) can be changed quite easily. 
 
 
 
