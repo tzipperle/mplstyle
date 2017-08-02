@@ -127,7 +127,7 @@ Starts work with 3rd plot by changing only **plt_style** setting. According to i
 	fig.tight_layout()
 	plt.show()
 
-Makes 3rd plot similar to 1st and 2nd. Then shows all three together. Figure 4 illustrates these three plots with their respective configurations.
+Makes 3rd plot similar to 1st and 2nd. Then shows all three together. Figure 4 illustrates these three plots with their respective configurations written in the title and placed near each plot.
 
 .. figure:: img/select_style2.png
    :width: 100%
