@@ -5,7 +5,7 @@ import sys
 
 # add dir mpl_style to python path
 sys.path.append(os.path.split(os.path.dirname(os.getcwd()))[-2])
-from mpl_style.style_ewk import PLTewk
+from mpl_style.PLT_ewk import PLTewk
 
 
 def color_map_example():

@@ -7,7 +7,7 @@ import sys
 
 # add dir mpl_style to python path
 sys.path.append(os.path.split(os.path.dirname(os.getcwd()))[-2])
-from mpl_style.style_base import PLTbase
+from mpl_style.PLT_base import PLTbase
 
 
 def plot_3d():

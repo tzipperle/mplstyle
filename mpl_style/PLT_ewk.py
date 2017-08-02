@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
 import matplotlib as mpl
 from cycler import cycler
-from .style_base import PLTbase
+from .PLT_base import PLTbase
 
 
 class PLTewk(PLTbase):
