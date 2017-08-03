@@ -34,7 +34,7 @@ This command allows to use **mpl-style** for the case, when the package wasn't a
 .. note::
 
 	
-        The procedure of adding **mpl-style** package to the sys.path, which will allow to include it as installed site-package, is written here. 
+        The procedure of adding **mpl-style** package to the sys.path, which will allow to include it as installed site-package, is written `here`_. 
 
 ::
 
@@ -46,7 +46,7 @@ Imports **PLTtz** class from a file ``PLT_tz.py``, where this class is described
 .. note::
 
 	
-        When a new initialized instance of the chosen class is obtained, all three settings (**color style**, **color order style** and **plt style**) are immediately rewritten. Since this moment each setting works according to its own 'default' style, kept in **PLTbase** class. 
+        When a new initialized instance of the chosen class is obtained, all three settings (**color style**, **color order style** and **plt style**) are immediately rewritten. Since this moment each setting works according to its own **'default'** style, kept in **PLTbase** class. 
         
 ::
 
@@ -154,4 +154,5 @@ As can be seen from this script, with **set_style()** function any from three pl
 .. _sys: https://docs.python.org/3/library/sys.html
 .. _git: http://git-scm.com/
 .. _downloaded: https://github.com/tzipperle/mpl-style/archive/master.zip
+.. _here: https://github.com/tzipperle/mpl-style/tree/dev
 
