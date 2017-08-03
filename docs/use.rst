@@ -46,7 +46,7 @@ Imports **PLTtz** class from a file ``PLT_tz.py``, where this class is described
 .. note::
 
 	
-        When a new initialized instance of the chosen class is obtained, all three settings (**color style**, **color order style** and **plt style**) are immediately rewritten. Since this moment each setting works according to its own **'default'** style, kept in **PLTbase** class. 
+        When a new initialized instance of the chosen class is obtained, all three settings (**color style**, **color order style** and **plt style**) are immediately rewritten. Since this moment each setting works according to its own **default** style, kept in **PLTbase** class. 
         
 ::
 
