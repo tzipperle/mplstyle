@@ -1,20 +1,14 @@
 # mpl-style
-Short description.  **TODO**
+Automation of changing plot settings in matplotlib.
 
 [![Documentation Status](https://readthedocs.org/projects/mpl-style/badge/?version=latest)](http://mpl-style.readthedocs.io/en/latest/?badge=latest)
 
-## Features
-
-Set own plot and color style. **TODO**
-
-## Dependencies
+### Dependencies
   - [matplotlib](http://http://matplotlib.org/)
   - [cycler](http://matplotlib.org/cycler/)
   - [numpy](http://www.numpy.org/)
 
-**check if there are more**
-
-## Useful settings: Custom directory for own packages
+### Useful settings: Custom directory for own packages
 
 Add the package `mpl-style` automatically to sys.path:
 
