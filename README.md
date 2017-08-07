@@ -1,14 +1,19 @@
-# mpl-style
-Automation of changing plot settings in matplotlib.
+# mplstyle
+
+**mplstyle** is a Python package, which allows **matplotlib** users to simplify the process of improving plots' quality. Quite often font, size, legend, colors and other settings should be changed for making plots look better. Such changes can be remembered and stored in your own style, which can automatically change the way of making plots by importing it as a usual Python toolbox. In other words, with **mplstyle** you can set plotting settings once and use created configuration many times.
 
 [![Documentation Status](https://readthedocs.org/projects/mpl-style/badge/?version=latest)](http://mpl-style.readthedocs.io/en/latest/?badge=latest)
 
-### Dependencies
+## Screenshot
+<a href="docs/img/with_without.png"><img src="docs/img/with_without.png" alt="Plotting changes by applying **PLTbase** class" style="width:400px">
+</a>
+
+## Dependencies
   - [matplotlib](http://http://matplotlib.org/)
   - [cycler](http://matplotlib.org/cycler/)
   - [numpy](http://www.numpy.org/)
 
-### Useful settings: Custom directory for own packages
+## Useful settings: Custom directory for own packages
 
 Add the package `mpl-style` automatically to sys.path:
 
