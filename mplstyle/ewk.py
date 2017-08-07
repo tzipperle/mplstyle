@@ -1,6 +1,6 @@
 import matplotlib as mpl
 from cycler import cycler
-from .PLT_base import PLTbase
+from .base import PLTbase
 
 
 class PLTewk(PLTbase):

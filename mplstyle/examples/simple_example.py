@@ -3,9 +3,9 @@ import numpy as np
 import os
 import sys
 
-# add dir mpl_style to python path
+# add dir mplstyle to python path
 sys.path.append(os.path.split(os.path.dirname(os.getcwd()))[-2])
-from mpl_style.PLT_ewk import PLTewk
+from mplstyle.ewk import PLTewk
 
 
 def plt_color_order(title):

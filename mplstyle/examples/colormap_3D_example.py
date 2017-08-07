@@ -5,9 +5,9 @@ from mpl_toolkits.mplot3d import Axes3D
 import os
 import sys
 
-# add dir mpl_style to python path
+# add dir mplstyle to python path
 sys.path.append(os.path.split(os.path.dirname(os.getcwd()))[-2])
-from mpl_style.PLT_base import PLTbase
+from mplstyle.base import PLTbase
 
 
 def plot_3d():

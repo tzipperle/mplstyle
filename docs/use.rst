@@ -38,7 +38,7 @@ This command allows to use **mpl-style** for the case, when the package wasn't a
 
 ::
 
-    from mpl_style.PLT_tz import PLTtz
+    from mplstyle.tz import PLTtz
     tz_plt=PLTtz()
 
 Imports **PLTtz** class from a file ``PLT_tz.py``, where this class is described as a child of **PLTbase**. Then creates an instance of the class and assigns it to the local variable **tz_plt**.

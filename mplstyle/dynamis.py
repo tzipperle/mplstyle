@@ -1,57 +1,52 @@
-from .PLT_base import PLTbase
+from .base import PLTbase
 import matplotlib as mpl
 from cycler import cycler
 
 
-class PLTenfo(PLTbase):
-    """ PLTenfo class, child of PLTbase"""
+class PLTdynamis(PLTbase):
+    """ PLTdynamis class, child of PLTbase"""
 
-    _ENFO = 'enfo'
+    _DYN = 'dyn'
+    _DYN_KLEE = 'dyn_klee'
 
     def __init__(self):
         PLTbase.__init__(self)
 
         available_styles = {
-            'color_style': [self._ENFO],
-            'plt_style': [self._ENFO]}
+            'color_style': [self._DYN, self._DYN_KLEE],
+            'plt_style': [self._DYN]}
 
         self._add_available_styles(available_styles)
 
     def _get_colors(self, style):
-        if style == self._ENFO:
+        if style is self._DYN:
             return {
-                'Steinkohle': (88, 88, 90),
-                'Braunkohle': (116, 66, 65),
-                'Mineralölprodukte': (120, 81, 80),
-                'Mineralöle': (120, 81, 80),
-                'Heizöl': (120, 81, 80),
-                'Gase': (255, 230, 72),
-                'Erdgas': (255, 230, 72),
-                'Nichterneuerbare Abfälle': (105, 8, 90),
-                'Strom': (147, 78, 136),
-                'Fernwärme': (214, 76, 19),
-                'Erneuerbare Energien': (0, 124, 48),
-                'Beleuchtung': (255, 230, 72),
-                'Mechanische Energie': (0, 0, 128),
-                'IKT': (96, 101, 250),
-                'Prozesswärme': (156, 13, 22),
-                'Warmwasser': (255, 102, 0),
-                'Raumwärme': (220, 154, 79),
-                'Prozesskälte': (51, 102, 255),
-                'Klimakälte': (0, 153, 204),
-                'Kühlen/Lüften/Haustechnik': (147, 127, 96),
-                'Sonstige': (217, 218, 219),
-                'Wasserstoff': (204, 210, 116),
-                'Personenverkehr': (0, 115, 207),
-                'Güterverkehr': (152, 198, 234),
-                'Kernenergie': (196, 7, 27),
-                'Nettoimporte Strom': (217, 218, 219),
-                'Sonstige Sekundärenergieträger': (148, 182, 210),
+                'rw': (153, 0, 0),
+                'ww': (191, 0, 0),
+                'pw': (255, 102, 102),
+                'spw': (255, 229, 204),
+                'pk': (24, 116, 205),
+                'kk': (0, 0, 128),
+                'me': (224, 224, 224),
+                'b': (240, 240, 111),
+                'ikt': (154, 205, 50),
+            }
+        elif style is self._DYN_KLEE:
+            return {
+                'rw': (255, 153, 0),
+                'ww': (255, 102, 0),
+                'pw': (255, 0, 0),
+                'spw': (255, 0, 0),
+                'pk': (51, 102, 255),
+                'kk': (1, 153, 204),
+                'me': (0, 0, 128),
+                'b': (255, 255, 153),
+                'ikt': (255, 0, 255),
             }
         return None
 
     def _set_plt_style(self, style, colors, prop_cycle_colors):
-        if style == self._ENFO:
+        if style is self._DYN:
             mpl.style.use('default')
             fntsz = 18
             lw = 2

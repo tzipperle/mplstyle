@@ -1,4 +1,4 @@
-from .PLT_base import PLTbase
+from .base import PLTbase
 import matplotlib as mpl
 from cycler import cycler
 

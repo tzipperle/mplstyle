@@ -5,31 +5,31 @@ import sys
 
 sys.path.append(os.path.split(os.path.dirname(os.getcwd()))[-2])
 
-from mpl_style.PLT_tz import PLTtz
-tz_plt=PLTtz()
+from mplstyle.tz import PLTtz
 
+tz_plt = PLTtz()
 
-fig = plt.figure(figsize=[8,9])
+fig = plt.figure(figsize=[8, 9])
 
-#1st plot
+# 1st plot
 #########
 ax0 = fig.add_subplot(311)
 
-#setting four trigonometric functions
+# setting four trigonometric functions
 x = np.arange(0, 2 * np.pi, 0.01)
 for c in range(4):
     y = np.sin(x) + c
     ax0.plot(x, y, label=c)
 
-#labeling axises, putting legend and title 
+# labeling axises, putting legend and title
 ax0.set_title('default - default - default')
 ax0.set_ylabel(r'Pressure ($\mathrm{bar}_{\mathrm{g}}$)')
 ax0.set_xlabel(r'Power ($kW$)')
 ax0.legend()
 
-#2nd plot
+# 2nd plot
 #########
-#changing all plot settings
+# changing all plot settings
 tz_plt.set_style(color_style='mpl2_colors')
 tz_plt.set_style(color_order_style='mpl2_colors')
 tz_plt.set_style(plt_style='jupyter-notebook')
@@ -46,9 +46,9 @@ ax1.set_ylabel(r'Pressure ($\mathrm{bar}_{\mathrm{g}}$)')
 ax1.set_xlabel(r'Power ($kW$)')
 ax1.legend()
 
-#3rd plot
+# 3rd plot
 #########
-#changing all plot settings
+# changing all plot settings
 tz_plt.set_style(plt_style='default')
 
 ax2 = fig.add_subplot(313)
