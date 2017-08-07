@@ -1,6 +1,7 @@
-from .base import PLTbase
 import matplotlib as mpl
+import matplotlib.pyplot as plt
 from cycler import cycler
+from .base import PLTbase
 
 
 class PLTdatabay(PLTbase):
@@ -83,6 +84,7 @@ class PLTdatabay(PLTbase):
 
     def _set_plt_style(self, style, colors, prop_cycle_colors):
         if style == self._DATAYBAY:
+            plt.style.use('default')
             fs = 18
             lw = 2
             fntcol = 'black'
@@ -108,6 +110,7 @@ class PLTdatabay(PLTbase):
 
             return True
         elif style == self._TEST:
+            plt.style.use('default')
             fs = 18
             lw = 2
             fntcol = 'black'

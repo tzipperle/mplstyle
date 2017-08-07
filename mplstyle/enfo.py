@@ -1,6 +1,7 @@
-from .base import PLTbase
 import matplotlib as mpl
+import matplotlib.pyplot as plt
 from cycler import cycler
+from .base import PLTbase
 
 
 class PLTenfo(PLTbase):
@@ -52,7 +53,7 @@ class PLTenfo(PLTbase):
 
     def _set_plt_style(self, style, colors, prop_cycle_colors):
         if style == self._ENFO:
-            mpl.style.use('default')
+            plt.style.use('default')
             fntsz = 18
             lw = 2
             fntcol = 'black'

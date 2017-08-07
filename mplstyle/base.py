@@ -1,5 +1,6 @@
 import sys
 import matplotlib as mpl
+import matplotlib.pyplot as plt
 import numpy as np
 from cycler import cycler
 
@@ -40,7 +41,7 @@ class PLTbase:
     _DEFAULT_STYLE = 'default'
 
     def _set_default_plt_style(self):
-        mpl.style.use('default')
+        plt.style.use('default')
         fntsz = 18
         lw = 2
         fntcol = 'black'

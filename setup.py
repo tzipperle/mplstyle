@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='mplstyle',
-    version='v0.1',
+    version='v0.2',
     packages=['mplstyle'],
     url='https://github.com/tzipperle/mpl-style',
     license='GNU General Public License v3.0',

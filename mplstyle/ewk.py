@@ -1,4 +1,5 @@
 import matplotlib as mpl
+import matplotlib.pyplot as plt
 from cycler import cycler
 from .base import PLTbase
 
@@ -64,7 +65,7 @@ class PLTewk(PLTbase):
     def _set_plt_style(self, style, colors, prop_cycle_colors):
 
         if style is self._EXAMPLE:
-            mpl.style.use('ggplot')
+            plt.style.use('ggplot')
             figsz = 12
             fntsz = 18
             lw = 2
@@ -87,7 +88,7 @@ class PLTewk(PLTbase):
                                                      prop_cycle_colors)
             return True
         elif style is self._EKW:
-            mpl.style.use('default')
+            plt.style.use('default')
             fntsz = 18
             lw = 2
             fntcol = 'black'
