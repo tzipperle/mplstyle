@@ -14,8 +14,8 @@
   - [numpy](http://www.numpy.org/)
   
 ## Installation
-  - from GitHub: pip install `git+https://github.com/tzipperle/mpl-style.git@master`
-  - from source: pip . install
+  - from GitHub: `pip install git+https://github.com/tzipperle/mpl-style.git@master`
+  - from source: `pip . install`
 
 ## Useful settings: Custom directory for own packages
 
