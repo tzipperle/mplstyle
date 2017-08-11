@@ -226,7 +226,7 @@ class PLTbase:
         if tum is True:
             zbild = '$\copyright$ TUM IfE {}'.format(zbild)
 
-        ax.text(x, y, zbild, fontsize=fontsize, color=color)
+        ax.text(x, y, zbild, fontsize=fontsize, color=color,  zorder=10)
 
     def _set_all_style(self, all_style):
         """ Set same style for all options.
