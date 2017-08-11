@@ -32,7 +32,6 @@ def plot_fig(df, title):
               bbox_to_anchor=(0.5, -0.04))
 
     ax.set_title(title, fontsize=20, fontweight='bold')
-    ewk_plt.add_zbild(ax, 0.4, -0.2, '88-001-B17', tum=True)
     fig.tight_layout()
     plt.show()
 
