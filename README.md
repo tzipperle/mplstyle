@@ -9,7 +9,7 @@
 </a>
 
 ## Dependencies
-  - [matplotlib](http://http://matplotlib.org/)
+  - [matplotlib](http://matplotlib.org/)
   - [cycler](http://matplotlib.org/cycler/)
   - [numpy](http://www.numpy.org/)
   
