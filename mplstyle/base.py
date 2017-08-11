@@ -202,15 +202,15 @@ class PLTbase:
 
         return mpl.colors.LinearSegmentedColormap('my_colormap', cdict, 256)
 
-    def add_zbild(self, ax, xloc, yloc, zbild, tum=True, fontsize=10,
+    def add_zbild(self, ax, x, y, text, tum=True, fontsize=10,
                   color='grey'):
         """ Set ZBild number as text in the chart.
 
         Args:
             ax: a matplotlib Axes instance
-            xloc: float for position; ymin = 0, ymax = 1
-            yloc: float for position; xmin = 0, xmax = 1
-            zbild: string for text
+            x: float for position; ymin = 0, ymax = 1
+            y: float for position; xmin = 0, xmax = 1
+            text: string for text
             tum: optional boolean; for copyright; default: (tum=True)
             fontsize: optional float for font size; default: (10)
             color: optional string for mpl color; default: ('gray')
@@ -220,13 +220,13 @@ class PLTbase:
         y_min = ax.get_ylim()[0]
         y_max = ax.get_ylim()[1]
 
-        x = x_min + xloc * (x_max - x_min)
-        y = y_min + yloc * (y_max - y_min)
+        x_loc = x_min + x * (x_max - x_min)
+        y_loc = y_min + y * (y_max - y_min)
 
         if tum is True:
-            zbild = '$\copyright$ TUM IfE {}'.format(zbild)
+            text = '$\copyright$ TUM IfE {}'.format(text)
 
-        ax.text(x, y, zbild, fontsize=fontsize, color=color,  zorder=10)
+        ax.text(x_loc, y_loc, text, fontsize=fontsize, color=color, zorder=10)
 
     def _set_all_style(self, all_style):
         """ Set same style for all options.

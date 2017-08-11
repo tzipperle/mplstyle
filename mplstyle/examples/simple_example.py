@@ -26,7 +26,7 @@ def plt_color_order(title):
     ax.grid(True)
     ax.set_title(title)
 
-    ewk_plt.add_zbild(ax, xloc=0.005, yloc=0.01, zbild='88-xxx-B16')
+    ewk_plt.add_zbild(ax=ax, x=0.005, y=0.01, text='88-000-B17')
     plt.tight_layout()
     plt.show()
     return
@@ -79,8 +79,8 @@ def simple_subplot():
     ax3.set_xlabel(r'Power ($kW$)')
     ax3.legend()
 
-    ewk_plt.add_zbild(ax3, xloc=0.7, yloc=1.02, zbild='88-xxx-B16',
-                      fontsize=10)
+    ewk_plt.add_zbild(ax=ax3, x=0.73, y=1.02, text='88-001-B17',
+                      fontsize=8)
     fig.tight_layout()
     plt.show()
 
