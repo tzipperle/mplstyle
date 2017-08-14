@@ -28,7 +28,7 @@ for c in range(4):
     ax0.plot(x, y, label=c)
 
 # labeling axises, putting legend and title
-ax0.set_title('default - default - default')
+ax0.set_title('plot #1 (default - default - default)')
 ax0.set_ylabel(r'Pressure ($\mathrm{bar}_{\mathrm{g}}$)')
 ax0.set_xlabel(r'Power ($kW$)')
 ax0.legend()
@@ -47,7 +47,7 @@ for c1 in range(4):
     y1 = np.sin(x1) + c1
     ax1.plot(x1, y1, label=c1)
 
-ax1.set_title('mpl2_colors - mpl2_colors - jupyter-notebook')
+ax1.set_title('plot #2 (mpl2_colors - mpl2_colors - jupyter-notebook)')
 ax1.set_ylabel(r'Pressure ($\mathrm{bar}_{\mathrm{g}}$)')
 ax1.set_xlabel(r'Power ($kW$)')
 ax1.legend()
@@ -69,7 +69,7 @@ for c2 in range(4):
     y2 = np.sin(x2) + c2
     ax2.plot(x2, y2, label=c2)
 
-ax2.set_title('mpl2_colors - mpl2_colors - default')
+ax2.set_title('plot #3 (mpl2_colors - mpl2_colors - default)')
 ax2.set_ylabel(r'Pressure ($\mathrm{bar}_{\mathrm{g}}$)')
 ax2.set_xlabel(r'Power ($kW$)')
 ax2.legend()
@@ -86,7 +86,7 @@ for c3 in range(4):
     y3 = np.sin(x3) + c3
     ax3.plot(x3, y3, label=c3)
 
-ax3.set_title('mpl2_colors - mpl2_colors - default')
+ax3.set_title('plot #4 (default - default - default)')
 ax3.set_ylabel(r'Pressure ($\mathrm{bar}_{\mathrm{g}}$)')
 ax3.set_xlabel(r'Power ($kW$)')
 ax3.legend()
