@@ -27,14 +27,14 @@ Four packages are included:
 
 ::
 
-    sys.path.append(os.path.split(os.path.dirname(os.getcwd()))[-2])
+    sys.path.append('C:/.../mpl-style/')
     
-This command allows to use **mplstyle** for the case, when the package wasn't added to Python search path. This step is really necessary, if, for example, you have just `downloaded`_ or cloned (with `git`_) this repository to a directory of your choice, and you want to run codes **_inside_** this directory trying to figure out how **mplstyle** is working. 
+This command allows to use **mplstyle** for the case, when the package wasn't added to Python search path. This step is really necessary, if, for example, you have just `downloaded`_ or cloned (with `git`_) this repository to a directory of your choice, and you want to run examples' codes **_inside_** or **_outside_** this directory trying to figure out how **mplstyle** is working. 
 
 .. note::
 
 	
-        The procedure of adding **mpl-style** package to the sys.path, which will allow to include it as installed site-package, is written `here`_. 
+        There are two ways of adding **mplstyle** package to the sys.path, which will allow to include it as installed site-package.  can be done  written `here`_. 
 
 ::
 
