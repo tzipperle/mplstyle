@@ -5,7 +5,7 @@
 How to Use
 ========================
 
-This section explains and shows how any of the classes from **mpl-style** can be used. **PLTtz** class, which was already mentioned in the :ref:`overview <overview>`, is taken as an example. Its implementation in the ``trigonometric_functions.py`` is explained very detailed by moving step by step through the script. Other classes are used completely similar.
+This section explains and shows how any of the classes from **mplstyle** can be used. **PLTtz** class, which was already mentioned in the :ref:`overview <overview>`, is taken as an example. Its implementation in the ``trigonometric_functions.py`` is explained very detailed by moving step by step through the script. Other classes are used completely similar.
 
 trigonometric_functions.py
 """""""""""""""""""""""
@@ -29,7 +29,7 @@ Four packages are included:
 
     sys.path.append(os.path.split(os.path.dirname(os.getcwd()))[-2])
     
-This command allows to use **mpl-style** for the case, when the package wasn't added to Python search path. This step is really necessary, if, for example, you have just `downloaded`_ or cloned (with `git`_) this repository to a directory of your choice, and you want to run codes inside this directory trying to figure out how **mpl-style** is working. 
+This command allows to use **mplstyle** for the case, when the package wasn't added to Python search path. This step is really necessary, if, for example, you have just `downloaded`_ or cloned (with `git`_) this repository to a directory of your choice, and you want to run codes **_inside_** this directory trying to figure out how **mplstyle** is working. 
 
 .. note::
 
