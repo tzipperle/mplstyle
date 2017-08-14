@@ -2,8 +2,6 @@
 
 .. _overview:
 
-.. _overview-ref:
-
 Overview
 ============
 **mplstyle** is a Python package, which allows **matplotlib** users to simplify the process of improving plots' quality. Quite often font, size, legend, colors and other settings should be changed for making plots look better. Such changes can be remembered and stored in your own plot style, which can automatically change the way of making plots by importing it as a usual Python toolbox. In other words, with **mplstyle** you can set plotting settings once and use created configuration many times.           
@@ -23,7 +21,9 @@ All changes are distributed between three settings: **color style**, **color ord
    :align: center
    
    Figure 2: **PLTbase** class structure
-   
+
+.. _overview-ref:
+
 Besides **PLTbase** there are five more classes: **PLTdatabay**, **PLTdynamis**, **PLTenfo**, **PLTewk** and **PLTtz**. Each class is based on **PLTbase** class by adding other styles of reconfiguring initial settings. The structure of one of those classes is presented in the Figure 3. 
 
 .. figure:: img/PLTtz.png
