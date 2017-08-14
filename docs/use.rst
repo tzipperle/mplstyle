@@ -172,7 +172,7 @@ Does similar to previous operations for making the 4th plot. 3rd and 4th plots a
    
    Figure 5: Comparison of two identical plots made with two different configurations 
 
-Script for the 3rd and the 4th plots together with the figure 5 show, that configuration can also be changed partially. In addition, **set_style()** function allows to change all plot settings at one time by mentioning just the name of the style in brackets without writing a specific parameter (**color style**, **color order style** and **plt style**). 
+Comparing 2nd and 3rd plots partial change in the configuration can be observed. From the part of script dedicated to the 4th plot can be seen, that **set_style()** function also allows to change all plot settings at one time. Only the name of the style without mentioning a specific parameter (**color style**, **color order style** and **plt style**) should be written in brackets for such change. 
 
 .. note::
 
