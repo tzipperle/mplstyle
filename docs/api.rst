@@ -20,7 +20,15 @@ List of commands, which can be applied on initialized instance of the chosen cla
 
 .. function:: get_color_order()
 
-  :return: list of colors from the chosen **color order style** in order of appearance. 
+  :return: list of colors from the chosen **color order style** in order of appearance.
+  
+.. function:: get_available_styles()
+
+  :return: all available styles for each plotting setting (**color**, **color order** and **plt style**).
+  
+.. function:: get_selected_style()
+
+  :return: chosen style for **color**, **color order** and **plt style**.
 
 
   
