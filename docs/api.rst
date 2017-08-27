@@ -7,10 +7,8 @@ API
 List of commands, which can be applied on initialized instance of the chosen class, is presented in the following. 
 
 .. function:: set_style(a,b)
-**parameters:** 
-
-* **a** - first input;
-* **b** - second input.
+:param a: first input;
+:param b: second input.
 
 **return:** dictionary of colors from the chosen style.
 
