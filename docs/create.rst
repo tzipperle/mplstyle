@@ -20,7 +20,7 @@ Four packages are included:
 * `matplotlib`_ is a plotting library which allows present results in a diagram form quite easily;
 * `matplotlib.pyplot`_ is a specified module of matplotlib;
 * `cycler`_ is the composable style cycles;
-* `base` is the file, where fundamental class **PLTbase** is described.
+* **base** is the file, where fundamental class **PLTbase** is described.
 
 ::
 
