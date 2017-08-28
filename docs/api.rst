@@ -41,8 +41,8 @@ List of commands, which can be applied on initialized instance of the chosen cla
   
   :return: **cmap** - a color map with equally spaced colors.
   
-  :Example: cmap = mpl-style.get_cmap(colors=[(255, 0, 0), (0, 157, 0)], bit=True)
-            cmap = mpl-style.get_cmap([(1, 1, 1), (0.5, 0, 0)], position=[0, 1]))
+  :Example cmap: = mpl-style.get_cmap(colors=[(255, 0, 0), (0, 157, 0)], bit=True)
+  :Example cmap: = mpl-style.get_cmap([(1, 1, 1), (0.5, 0, 0)], position=[0, 1]))
 
 
   
