@@ -50,8 +50,8 @@ List of commands, which can be applied on initialized instance of the chosen cla
   Sets ZBild number as a text in the chart.
    
   :param ax: instance of matplotlib axes; 
-  :param x: float for position (ymin=0, ymax=1); 
-  :param y: float for position (xmin=0, xmax=1);
+  :param x: float for position (xmin=0, xmax=1); 
+  :param y: float for position (ymin=0, ymax=1);
   :param text: string for the text; 
   :param tum: optional boolean for copyright, default: (tum=True); 
   :param fontsize: optional float for font size, default: (10);
