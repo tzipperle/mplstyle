@@ -44,6 +44,19 @@ List of commands, which can be applied on initialized instance of the chosen cla
   :Example1: cmap = mpl-style.get_cmap(colors=[(255, 0, 0), (0, 157, 0)], bit=True)
   
   :Example2: cmap = mpl-style.get_cmap([(1, 1, 1), (0.5, 0, 0)], position=[0, 1]))
+  
+.. function:: add_zbild(ax, x, y, text, tum=True, fontsize=10, color='grey')
+   
+   Sets ZBild number as a text in the chart.
+   
+  :param ax: instance of matplotlib axes; 
+  :param x: float for position (ymin=0, ymax=1); 
+  :param y: float for position (xmin=0, xmax=1);
+  :param text: string for the text; 
+  :param tum: optional boolean for copyright, default: (tum=True); 
+  :param fontsize: optional float for font size, default: (10);
+  :param color: optional string for mpl color, default: (grey).
+   
 
 
   
