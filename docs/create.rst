@@ -1,10 +1,10 @@
-.. currentmodule:: mpl-style
+.. currentmodule:: mplstyle
 
 .. _create:
 
 How to Create
 ========================
-Current section explains the procedure of creating your own class, where all desired styles for each plot setting (**color style**, **color order style**, **plt style**) will be stored. Mentioned before **PLTtz** class is taken as an example. Its script in the ``tz.py`` is explained below. 
+Current section explains the procedure of creating your own class, where all desired styles for each plot setting (**color style**, **color order style**, **plt style**) will be stored. Mentioned before **PLTtz** class is taken as an example. Its script in the ``tz.py`` is explained below.
 
 tz.py
 """""""""""""""""""""""
@@ -14,8 +14,8 @@ tz.py
     import matplotlib.pyplot as plt
     from cycler import cycler
     from .base import PLTbase
-    
-Four packages are included: 
+
+Four packages are included:
 
 * `matplotlib`_ is a plotting library which allows present results in a diagram form quite easily;
 * `matplotlib.pyplot`_ is a specified module of matplotlib;
@@ -30,7 +30,7 @@ Four packages are included:
       _BLUE = 'blue'
       _JUPYTER_NOTEBOOK = 'jupyter-notebook'
       _MPL_V2 = 'mpl2_colors'
-      
+
 Gives the name to the new class mentioning in brackets the so-called "father". Then links user-friendly names of all available styles stored inside this class with formal ones used in the script.
 
 ::
@@ -44,8 +44,8 @@ Gives the name to the new class mentioning in brackets the so-called "father". T
             'plt_style': [self._JUPYTER_NOTEBOOK]}
 
         self._add_available_styles(available_styles)
-        
-Function, which connects each plotting setting (**color style**, **color order style** and **plt style**) with corresponding list of available styles. 
+
+Function, which connects each plotting setting (**color style**, **color order style** and **plt style**) with corresponding list of available styles.
 
 ::
 
@@ -73,8 +73,8 @@ Function, which connects each plotting setting (**color style**, **color order s
                 'c9': '#17becf'
             }
         return None
-        
-Function, which is responsible for **color style** plot setting. Keeps available colors for corresponding style. Style **blue** uses RGB codes for identification, **mpl2_colors** - HEX codes. 
+
+Function, which is responsible for **color style** plot setting. Keeps available colors for corresponding style. Style **blue** uses RGB codes for identification, **mpl2_colors** - HEX codes.
 
 ::
 
@@ -120,7 +120,7 @@ Current function regulates **color order style** setting. Orders corresponding c
             return True
         return False
 
-These strings control **plt style** setting. All terms (font of the text, fontsize, legend, ticks on the axes, etc.), which form the view of the plot, are described here.  
+These strings control **plt style** setting. All terms (font of the text, fontsize, legend, ticks on the axes, etc.), which form the view of the plot, are described here.
 
 
 

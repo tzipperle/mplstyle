@@ -1,4 +1,4 @@
-.. currentmodule:: mpl-style
+.. currentmodule:: mplstyle
 
 .. _use:
 
@@ -9,7 +9,7 @@ This section explains and shows how any of the classes from **mplstyle** can be 
 
 trigonometric_functions.py
 """""""""""""""""""""""
-Several trigonometric functions are plotted fourfold in this file showing each time the change in current configuration of plot settings. All plots with chosen configuration are splitted between two figures presented in the middle and in the end of the description. Detailed comments of the script are in the following.  
+Several trigonometric functions are plotted fourfold in this file showing each time the change in current configuration of plot settings. All plots with chosen configuration are splitted between two figures presented in the middle and in the end of the description. Detailed comments of the script are in the following.
 
 ::
 
@@ -17,24 +17,24 @@ Several trigonometric functions are plotted fourfold in this file showing each t
     import numpy as np
     import os
     import sys
-    
-Four packages are included: 
+
+Four packages are included:
 
 * `matplotlib.pyplot`_ is a plotting library which allows present results in a diagram form quite easily;
 * `numpy`_ is the fundamental package for scientific computing with Python;
 * `os`_ is the module for using operating system according to its functionality in a portable way;
-* `sys`_ is the module, which provides access to variables and functions used by the interpreter. 
+* `sys`_ is the module, which provides access to variables and functions used by the interpreter.
 
 ::
 
-    sys.path.append('C:/.../mpl-style/')
-    
-This command allows to use **mplstyle** for the case, when the package wasn't added to Python search path. Written in the brackets part ``'C:/.../mpl-style/'`` is the path to the directory, where **mplstyle** is located. This step is really necessary, if, for example, you have just `downloaded`_ or cloned (with `git`_) this repository to a directory of your choice, and you want to run examples' codes **inside** or **outside** this directory trying to figure out how **mplstyle** is working. 
+    sys.path.append('C:/.../mplstyle/')
+
+This command allows to use **mplstyle** for the case, when the package wasn't added to Python search path. Written in the brackets part ``'C:/.../mplstyle/'`` is the path to the directory, where **mplstyle** is located. This step is really necessary, if, for example, you have just `downloaded`_ or cloned (with `git`_) this repository to a directory of your choice, and you want to run examples' codes **inside** or **outside** this directory trying to figure out how **mplstyle** is working.
 
 .. note::
 
-	
-        There are two ways of adding **mplstyle** package to the sys.path, which will allow to include it as installed site-package. This procedure can be done automatically by running ``setup.py`` file or manually according to the instruction written in the subsection `useful settings`_. 
+
+        There are two ways of adding **mplstyle** package to the sys.path, which will allow to include it as installed site-package. This procedure can be done automatically by running ``setup.py`` file or manually according to the instruction written in the subsection `useful settings`_.
 
 ::
 
@@ -45,15 +45,15 @@ Imports **PLTtz** class from a file ``tz.py``, where this class is described as 
 
 .. note::
 
-	
-        When a new initialized instance of the chosen class is obtained, all three settings (**color style**, **color order style** and **plt style**) are immediately rewritten. Since this moment each setting works according to its own **default** style, kept in **PLTbase** class. 
-        
+
+        When a new initialized instance of the chosen class is obtained, all three settings (**color style**, **color order style** and **plt style**) are immediately rewritten. Since this moment each setting works according to its own **default** style, kept in **PLTbase** class.
+
 ::
 
     fig1 = plt.figure(figsize=[8, 6])
     fig2 = plt.figure(figsize=[8, 6])
-    
-Chooses the size of two figures, where three plots will be printed. 
+
+Chooses the size of two figures, where three plots will be printed.
 
 ::
 
@@ -61,19 +61,19 @@ Chooses the size of two figures, where three plots will be printed.
 	#########
 	ax0 = fig1.add_subplot(211)
 
-	#setting four trigonometric functions and plotting them 
+	#setting four trigonometric functions and plotting them
 	x = np.arange(0, 2 * np.pi, 0.01)
 	for c in range(4):
     		y = np.sin(x) + c
     		ax0.plot(x, y, label=c)
 
-	#labeling axises, putting legend and title 
+	#labeling axises, putting legend and title
 	ax0.set_title('default - default - default')
 	ax0.set_ylabel(r'Pressure ($\mathrm{bar}_{\mathrm{g}}$)')
 	ax0.set_xlabel(r'Power ($kW$)')
 	ax0.legend()
-	
-Makes 1st plot by choosing its location on the first figure, setting trigonometric functions and configuring additional parameters. 
+
+Makes 1st plot by choosing its location on the first figure, setting trigonometric functions and configuring additional parameters.
 
 ::
 
@@ -83,7 +83,7 @@ Makes 1st plot by choosing its location on the first figure, setting trigonometr
 	tz_plt.set_style(color_style='mpl2_colors')
 	tz_plt.set_style(color_order_style='mpl2_colors')
 	tz_plt.set_style(plt_style='jupyter-notebook')
-	
+
 Changes each plot setting by **set_style()** function. Since now the initial configuration (**default - default - default**) is changed on the new one (**mpl2_colors - mpl2_colors - jupyter-notebook**).
 
 ::
@@ -99,19 +99,19 @@ Changes each plot setting by **set_style()** function. Since now the initial con
 	ax1.set_ylabel(r'Pressure ($\mathrm{bar}_{\mathrm{g}}$)')
 	ax1.set_xlabel(r'Power ($kW$)')
 	ax1.legend()
-	
+
 	fig1.tight_layout()
 	plt.show()
-	
+
 Does similar operations for making 2nd plot. Figure 4 illustrates these two plots with their respective configurations written in the title and placed near each plot.
 
 .. figure:: img/ddd-mmj.png
    :width: 100%
    :align: center
-   
+
    Figure 4: Comparison of two identical plots made with initial and specifically chosen configurations
 
-As can be seen from above written script, with **set_style()** function any from three plot settings (**color style**, **color order style** and **plt style**) can be changed quite easily. Other part of the script is described below.  
+As can be seen from above written script, with **set_style()** function any from three plot settings (**color style**, **color order style** and **plt style**) can be changed quite easily. Other part of the script is described below.
 
 ::
 
@@ -119,7 +119,7 @@ As can be seen from above written script, with **set_style()** function any from
 	#########
 	#changing only plt_style setting
 	tz_plt.set_style(plt_style='default')
-	
+
 Starts work with 3rd plot by changing only **plt_style** setting. According to it, configuration changes only partially from old (**mpl2_colors - mpl2_colors - jupyter-notebook**) to new (**mpl2_colors - mpl2_colors - default**).
 
 ::
@@ -163,21 +163,21 @@ Uses **set_style()** function once for changing all plot settings (**color style
 
 	fig2.tight_layout()
 	plt.show()
-	
+
 Does similar to previous operations for making the 4th plot. 3rd and 4th plots are presented in the figure 5 with their respective configurations written in the title and placed near each plot.
 
 .. figure:: img/mmd-ddd.png
    :width: 100%
    :align: center
-   
-   Figure 5: Comparison of two identical plots made with two different configurations 
 
-Comparing 2nd and 3rd plots partial change in the configuration can be observed. From the part of script dedicated to the 4th plot can be seen, that **set_style()** function also allows to change all plot settings at one time. Only the name of the style without mentioning a specific parameter (**color style**, **color order style** and **plt style**) should be written in brackets for such change. 
+   Figure 5: Comparison of two identical plots made with two different configurations
+
+Comparing 2nd and 3rd plots partial change in the configuration can be observed. From the part of script dedicated to the 4th plot can be seen, that **set_style()** function also allows to change all plot settings at one time. Only the name of the style without mentioning a specific parameter (**color style**, **color order style** and **plt style**) should be written in brackets for such change.
 
 .. note::
 
-	
-        All three settings (**color style**, **color order style** and **plt style**) can be changed at one time with **set_style()** function only to the style, which exists for all of them. The command won't work, if at least one plot setting doesn't have a style with name mentioned in brackets.  
+
+        All three settings (**color style**, **color order style** and **plt style**) can be changed at one time with **set_style()** function only to the style, which exists for all of them. The command won't work, if at least one plot setting doesn't have a style with name mentioned in brackets.
 
 
 
@@ -187,6 +187,6 @@ Comparing 2nd and 3rd plots partial change in the configuration can be observed.
 .. _os: https://docs.python.org/3/library/os.html#module-os
 .. _sys: https://docs.python.org/3/library/sys.html
 .. _git: http://git-scm.com/
-.. _downloaded: https://github.com/tzipperle/mpl-style/archive/master.zip
-.. _useful settings: https://github.com/tzipperle/mpl-style/tree/dev
+.. _downloaded: https://github.com/tzipperle/mplstyle/archive/master.zip
+.. _useful settings: https://github.com/tzipperle/mplstyle/tree/dev
 

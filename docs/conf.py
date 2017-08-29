@@ -11,7 +11,7 @@ extensions = [
 source_suffix = '.rst'
 master_doc = 'index'
 
-project = u'mpl-style'
+project = u'mplstyle'
 copyright = u'2017, Thomas Zipperle and Dennis Atabay'
 author = u'Thomas Zipperle and Dennis Atabay'
 version = '0.1'
@@ -22,7 +22,7 @@ exclude_patterns = ['_build']
 
 # HTML output
 
-htmlhelp_basename = 'mpl-styledoc'
+htmlhelp_basename = 'mplstyledoc'
 
 # LaTeX output
 
@@ -35,7 +35,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  (master_doc, 'mpl-style.tex', u'mpl-style Documentation',
+  (master_doc, 'mplstyle.tex', u'mplstyle Documentation',
    u'Thomas Zipperl and Dennis Atabay', 'manual'),
 ]
 
@@ -44,7 +44,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'mpl-style', u'mpl-style Documentation',
+    (master_doc, 'mplstyle', u'mplstyle Documentation',
      [author], 1)
 ]
 
@@ -55,14 +55,14 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  (master_doc, 'mpl-style', u'mpl-style Documentation',
-   author, 'mpl-style', 'Name Name',
+  (master_doc, 'mplstyle', u'mplstyle Documentation',
+   author, 'mplstyle', 'Name Name',
    'Miscellaneous'),
 ]
 # Epub output
 
 # Bibliographic Dublin Core info.
-epub_title = u'mpl-style'
+epub_title = u'mplstyle'
 epub_author = u'Thomas Zipperle and Dennis Atabay'
 epub_publisher = u'Thomas Zipperle and Dennis Atabay'
 epub_copyright = u'2017, Thomas Zipperle and Dennis Atabay'

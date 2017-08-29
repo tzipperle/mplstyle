@@ -1,4 +1,4 @@
-name: mpl-style
+name: mplstyle
 
 dependencies:
     - cycler

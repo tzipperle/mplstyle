@@ -1,8 +1,8 @@
-﻿.. mpl-style
+﻿.. mplstyle
 
-.. module:: mpl-style
+.. module:: mplstyle
 
-mpl-style: Automation of changing plot settings in matplotlib  
+mplstyle: Automation of changing plot settings in matplotlib
 ================================================================
 
 :Maintainers: Thomas Zipperle <thomas.zipperle@tum.de>, Dennis Atabay <dennis.atabay@tum.de>
@@ -11,7 +11,7 @@ mpl-style: Automation of changing plot settings in matplotlib
 :Version: |version|
 :Date: |today|
 :Copyright:
-  This documentation is licensed under a `Creative Commons Attribution 4.0 
+  This documentation is licensed under a `Creative Commons Attribution 4.0
   International`_ license.
 
 
@@ -29,7 +29,7 @@ This documentation contains the following pages:
    use
    create
    api
-   
+
 
 Get Started
 -----------
@@ -37,22 +37,22 @@ Get Started
 1. `download`_ or clone (with `git`_) this repository to a directory of your choice.
 
 
-.. __: http://stackoverflow.com/questions/17806673/where-shall-i-put-my-self-written-python-packages/17811151#17811151) 
+.. __: http://stackoverflow.com/questions/17806673/where-shall-i-put-my-self-written-python-packages/17811151#17811151)
 .. _how to: http://www.mathworks.com/help/matlab/matlab_env/add-remove-or-reorder-folders-on-the-search-path.html
 
 
 
-  
+
 Dependencies (Python)
 ------------
 
 * `numpy`_ for mathematical operations
 * `matplotlib`_ for making plots
-* `cycler`_ 
+* `cycler`_
 
 
 
-   
+
 .. _Institute for Energy Economy and Application Technology: http://www.ewk.ei.tum.de/
 .. _Creative Commons Attribution 4.0 International: http://creativecommons.org/licenses/by/4.0/
 .. _numpy: http://www.numpy.org/
