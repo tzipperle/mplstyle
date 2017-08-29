@@ -2,7 +2,7 @@
 
 **mplstyle** is a Python package, which allows **matplotlib** users to simplify the process of improving plots' quality. Quite often font, size, legend, colors and other settings should be changed for making plots look better. Such changes can be remembered and stored in your own style, which can automatically change the way of making plots by importing it as a usual Python toolbox. In other words, with **mplstyle** you can set plotting settings once and use created configuration many times.
 
-[![Documentation Status](https://readthedocs.org/projects/mpl-style/badge/?version=latest)](http://mpl-style.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/mplstyle/badge/?version=latest)](http://mplstyle.readthedocs.io/en/latest/?badge=latest)
 
 ## Screenshot
 <a href="docs/img/with_without.png"><img src="docs/img/with_without.png" alt="Plotting changes by applying **PLTbase** class" style="width:400px">
