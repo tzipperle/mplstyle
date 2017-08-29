@@ -14,12 +14,12 @@
   - [numpy](http://www.numpy.org/)
   
 ## Installation
-  - from GitHub: `pip install git+https://github.com/tzipperle/mpl-style.git@master`
+  - from GitHub: `pip install git+https://github.com/tzipperle/mplstyle.git@master`
   - from source: `pip . install`
 
 ## Useful settings: Custom directory for own packages
 
-Add the package `mpl-style` automatically to sys.path:
+Add the package `mplstyle` automatically to sys.path:
 
   1. Create a directory anywhere, e.g. `C:\Users\Name\Documents\Python\Libs`.
   2. Add the file `sitecustomize.py` to the site-packages folder of the Python installation, i.e. in `C:\Anaconda3\Lib\site-packages` (for all users) or site.USER_SITE (for a single user).
