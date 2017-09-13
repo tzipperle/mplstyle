@@ -1,14 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
-#import os
 import sys
 
 sys.path.append('C:/Users/Чигин Сергей/Desktop/mplstyle/')
-
-#sys.path.append(os.path.split(os.path.dirname(os.getcwd()))[-2])
-
-#path='C:/Users/Чигин Сергей/Desktop/mplstyle/'
-#sys.path.append(os.path.split(path))
 
 from mplstyle.tz import PLTtz
 
