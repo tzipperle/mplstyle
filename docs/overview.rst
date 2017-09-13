@@ -36,25 +36,3 @@ As can be seen **PLTtz** keeps **PLTbase** styles and also contains additionals.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
