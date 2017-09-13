@@ -8,10 +8,10 @@ List of commands, which can be applied on initialized instance of the chosen cla
 
 .. function:: set_style(*args, **kwargs)
   
-  Chooses style for **color**, **color order** and **plt style**. More detailed explanation about nature of input parameters is written `here`_.
+  Chooses style for **color**, **color order** and **plt style**. Arguments can be entered in two ways. First one assumes, that only a name of a style in the form of string is given. In this case all settings will be changed at one time. Second case allows to change a specific setting (**color**, **color order** and **plt style**) by putting a couple **setting:'style'** as an argument. Two or three arguments are also possible in this case. Concept of inputs *args and **kwargs make it possible. More detailed explanation about nature of this concept is written `here`_.
 
-  :param *args: first input;
-  :param **kwargs: second input.
+  :param *args: name of the style;
+  :param **kwargs: couple in the form setting='style'.
 
 .. function:: get_colors()
 
