@@ -26,6 +26,7 @@ This documentation contains the following pages:
    :maxdepth: 1
 
    overview
+   instal
    use
    create
    api
