@@ -6,12 +6,13 @@ API
 ========================
 List of commands, which can be applied on initialized instance of the chosen class, is presented in the following.
 
-.. function:: set_style(a, b)
+.. function:: set_style(*args, **kwargs)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  
+  Chooses style for **color**, **color order** and **plt style**. More detailed explanation about nature of input parameters is written `here`_.
 
-  Chooses style for **color**, **color order** and **plt style**.
-
-  :param a: first input;
-  :param b: second input.
+  :param *args: first input;
+  :param **kwargs: second input.
 
 .. function:: get_colors()
 
@@ -58,6 +59,7 @@ List of commands, which can be applied on initialized instance of the chosen cla
   :param color: optional string for mpl color, default: (grey).
 
 
+.. _here: https://stackoverflow.com/questions/3394835/args-and-kwargs
 
 
 
