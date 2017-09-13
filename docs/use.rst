@@ -175,7 +175,6 @@ Comparing 2nd and 3rd plots partial change in the configuration can be observed.
 .. _matplotlib.pyplot: https://matplotlib.org/index.html
 .. _os: https://docs.python.org/3/library/os.html#module-os
 .. _sys: https://docs.python.org/3/library/sys.html
-.. _git: http://git-scm.com/
-.. _downloaded: https://github.com/tzipperle/mplstyle/archive/master.zip
+
 
 
