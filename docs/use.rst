@@ -177,5 +177,5 @@ Comparing 2nd and 3rd plots partial change in the configuration can be observed.
 .. _sys: https://docs.python.org/3/library/sys.html
 .. _git: http://git-scm.com/
 .. _downloaded: https://github.com/tzipperle/mplstyle/archive/master.zip
-.. _useful settings: https://github.com/tzipperle/mplstyle/tree/dev
+
 
