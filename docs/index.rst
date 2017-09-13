@@ -32,18 +32,6 @@ This documentation contains the following pages:
    api
 
 
-Get Started
------------
-
-1. `download`_ or clone (with `git`_) this repository to a directory of your choice.
-
-
-.. __: http://stackoverflow.com/questions/17806673/where-shall-i-put-my-self-written-python-packages/17811151#17811151)
-.. _how to: http://www.mathworks.com/help/matlab/matlab_env/add-remove-or-reorder-folders-on-the-search-path.html
-
-
-
-
 Dependencies (Python)
 ------------
 
