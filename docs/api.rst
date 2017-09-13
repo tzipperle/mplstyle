@@ -7,7 +7,6 @@ API
 List of commands, which can be applied on initialized instance of the chosen class, is presented in the following.
 
 .. function:: set_style(*args, **kwargs)
-"""""""""""""""""""""""
   
   Chooses style for **color**, **color order** and **plt style**. More detailed explanation about nature of input parameters is written `here`_.
 
