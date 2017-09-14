@@ -1,11 +1,6 @@
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import pandas as pd
-import os
-import sys
-
-# add dir mplstyle to python path
-sys.path.append(os.path.split(os.path.dirname(os.getcwd()))[-2])
 from mplstyle.ewk import PLTewk
 
 

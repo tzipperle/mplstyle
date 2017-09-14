@@ -1,10 +1,5 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import os
-import sys
-
-# add dir mplstyle to python path
-sys.path.append(os.path.split(os.path.dirname(os.getcwd()))[-2])
 from mplstyle.ewk import PLTewk
 
 
@@ -38,7 +33,7 @@ def color_map_example():
     plt.colorbar()
     ax2.set_title('enfo style')
 
-    ewk_plt.add_zbild(ax2, xloc=.82, yloc=1.02, text='88-xxx-B16')
+    ewk_plt.add_zbild(ax2, x=.82, y=1.02, text='88-xxx-B16')
     plt.show()
 
 

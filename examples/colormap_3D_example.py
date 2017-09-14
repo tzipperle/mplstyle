@@ -2,11 +2,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
-import os
-import sys
-
-# add dir mplstyle to python path
-sys.path.append(os.path.split(os.path.dirname(os.getcwd()))[-2])
 from mplstyle.base import PLTbase
 
 

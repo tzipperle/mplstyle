@@ -49,8 +49,6 @@ ax1.legend()
 fig1.tight_layout()
 plt.show()
 
-
-
 # 3rd plot
 #########
 # changing only plt_style setting
@@ -84,7 +82,6 @@ ax3.set_title('plot #4 (default - default - default)')
 ax3.set_ylabel(r'Pressure ($\mathrm{bar}_{\mathrm{g}}$)')
 ax3.set_xlabel(r'Power ($kW$)')
 ax3.legend()
-
 
 fig2.tight_layout()
 plt.show()
