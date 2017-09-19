@@ -1,4 +1,4 @@
 cycler
-matplotlib=2
+matplotlib
 numpy
 pytest
