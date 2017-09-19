@@ -1,6 +1,6 @@
-.. start-badges
 |doc| |build|
-.. end-badges
+
+-----
 
 # mplstyle
 
@@ -49,4 +49,3 @@ Source: [Stack Overflow](http://stackoverflow.com/q/17806673/2375855)
 .. |build| image:: https://travis-ci.org/tzipperle/mplstyle.svg?branch=master
         :alt: Build Status
         :target: https://travis-ci.org/tzipperle/mplstyle
-
