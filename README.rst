@@ -18,23 +18,23 @@ Screenshot
 Dependencies
 ~~~~~~~~~~~~~
 
-  - [matplotlib](http://matplotlib.org/)
-  - [cycler](http://matplotlib.org/cycler/)
-  - [numpy](http://www.numpy.org/)
+* `numpy`_ for mathematical operations
+* `matplotlib`_ for making plots
+* `cycler`_
   
 Installation
 ~~~~~~~~~~~~~
 
-  - from GitHub: `pip install git+https://github.com/tzipperle/mplstyle.git@master`
-  - from source: `pip . install`
+* from GitHub: ``pip install git+https://github.com/tzipperle/mplstyle.git@master``
+* from source: ``pip . install``
 
 Useful settings: Custom directory for own packages
 ~~~~~~~~~~~~~
 
-Add the package `mplstyle` automatically to sys.path:
+Add the package ``mplstyle`` automatically to sys.path:
 
-1. Create a directory anywhere, e.g. `C:\Users\Name\Documents\Python\Libs`.
-2. Add the file `sitecustomize.py` to the site-packages folder of the Python installation, i.e. in `C:\Anaconda3\Lib\site-packages` (for all users) or site.USER_SITE (for a single user).
+1. Create a directory anywhere, e.g. ``C:\Users\Name\Documents\Python\Libs``.
+2. Add the file ``sitecustomize.py`` to the site-packages folder of the Python installation, i.e. in ``C:\Anaconda3\Lib\site-packages`` (for all users) or site.USER_SITE (for a single user).
 3. This file then is filled with the following code:
 
 .. code-block:: python
@@ -46,7 +46,7 @@ Add the package `mplstyle` automatically to sys.path:
 
 Package site, that is automatically imported during every start of Python, also tries to import the package sitecustomize for custom package path modifications.
 
-Source: [Stack Overflow](http://stackoverflow.com/q/17806673/2375855)
+Source: `Stack Overflow <http://stackoverflow.com/q/17806673/2375855>`_
 
 .. |doc| image:: https://readthedocs.org/projects/mplstyle/badge/?version=latest
         :alt: Documentation
@@ -55,3 +55,8 @@ Source: [Stack Overflow](http://stackoverflow.com/q/17806673/2375855)
 .. |build| image:: https://travis-ci.org/tzipperle/mplstyle.svg?branch=master
         :alt: Build Status
         :target: https://travis-ci.org/tzipperle/mplstyle
+
+.. _numpy: http://www.numpy.org/
+.. _matplotlib: https://matplotlib.org/
+.. _cycler: http://matplotlib.org/cycler/
+
