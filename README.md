@@ -1,4 +1,6 @@
+.. start-badges
 |doc| |build|
+.. end-badges
 
 # mplstyle
 
