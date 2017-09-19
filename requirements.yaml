@@ -1,6 +1,0 @@
-name: mplstyle
-
-dependencies:
-    - cycler
-    - matplotlib=2
-    - numpy
