@@ -1,3 +1,5 @@
+|doc| |build|
+
 # mplstyle
 
 [![Documentation Status](https://readthedocs.org/projects/mplstyle/badge/?version=latest)](http://mplstyle.readthedocs.io/en/latest/?badge=latest)
@@ -37,3 +39,12 @@ Add the package `mplstyle` automatically to sys.path:
 Package site, that is automatically imported during every start of Python, also tries to import the package sitecustomize for custom package path modifications.
 
 Source: [Stack Overflow](http://stackoverflow.com/q/17806673/2375855)
+
+.. |doc| image:: https://readthedocs.org/projects/mplstyle/badge/?version=latest
+        :alt: Documentation
+        :target: http://mplstyle.readthedocs.io/en/latest/?badge=latest
+
+.. |build| image:: https://travis-ci.org/tzipperle/mplstyle.svg?branch=master
+        :alt: Build Status
+        :target: https://travis-ci.org/tzipperle/mplstyle
+
