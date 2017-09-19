@@ -1,4 +1,4 @@
-dependencies:
-    - cycler
-    - matplotlib=2
-    - numpy
+cycler
+matplotlib=2
+numpy
+pytest
