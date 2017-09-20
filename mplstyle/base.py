@@ -48,23 +48,18 @@ class PLTbase:
         font = {'family': 'arial', 'weight': 'normal', 'size': fntsz}
         mpl.rc('font', **font)
         mpl.rc('figure', figsize=[11, 7], titlesize=fntsz)
-        mpl.rc('legend', framealpha=None,
-               edgecolor='dimgray',
-               fontsize=fntsz - 2, numpoints=1, handlelength=1,
-               loc='best', frameon=True, shadow=False,
-               fancybox=False)
-        mpl.rcParams['text.color'] = fntcol
+        mpl.rc('legend', framealpha=None, edgecolor='dimgray',
+               fontsize=fntsz - 2, numpoints=1, handlelength=1, loc='best',
+               frameon=True, shadow=False, fancybox=False)
+        mpl.rc('text', color=fntcol)
         mpl.rc('axes', edgecolor='black', grid=True,
-               xmargin=0, labelsize=fntsz - 1, titlesize=fntsz, linewidth=0.9)
-        mpl.rcParams['axes.spines.right'] = False
-        mpl.rcParams['axes.spines.top'] = False
-        mpl.rc('grid', linestyle=':', color='dimgray',
-               linewidth=0.5)
+               xmargin=0, labelsize=fntsz - 1, titlesize=fntsz, linewidth=0.9,
+               prop_cycle=cycler('color', self._prop_cycle_colors))
+        mpl.rc('axes.spines', right=False, top=False)
+        mpl.rc('grid', linestyle=':', color='dimgray', linewidth=0.5)
         mpl.rc('lines', lw=lw, markersize=10)
         mpl.rc('xtick', color=fntcol, labelsize=fntsz - 2)
         mpl.rc('ytick', color=fntcol, labelsize=fntsz - 2)
-        mpl.rcParams['axes.prop_cycle'] = cycler('color',
-                                                 self._prop_cycle_colors)
 
     def __init__(self):
         self._color_style = self._DEFAULT_STYLE
