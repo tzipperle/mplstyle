@@ -273,15 +273,16 @@ class PLTbase:
             raise NotImplementedError(
                 'Color style \'{}\' not defined'.format(self._color_style))
 
-        self._colors = self._to_rgb_mpl(_colors)
+        self._colors = self.__to_rgb_mpl(_colors)
 
-    def _to_rgb_mpl(self, _colors):
-        _to_rgb = lambda r, g, b: tuple(x / 255. for x in (r, g, b))
-        for key, val in _colors.items():
-            if isinstance(val, tuple):
-                _colors[key] = _to_rgb(*val)
-            else:
-                _colors[key] = mpl.colors.to_rgb(val)
+    @staticmethod
+    def __to_rgb_mpl(_colors):
+        # if color tuple: RGB-8Bit
+        # else: HEX
+        _colors = {
+            key: tuple(x / 255. for x in val) if isinstance(val, tuple) else
+            mpl.colors.to_rgb(val) for key, val in _colors.items()}
+
         return _colors
 
     def _check_color_consistence(self):

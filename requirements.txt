@@ -2,3 +2,6 @@ cycler
 matplotlib
 numpy
 pytest
+pytest-cov
+flake8
+coveralls
