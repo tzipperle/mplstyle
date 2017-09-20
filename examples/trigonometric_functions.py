@@ -1,9 +1,5 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import sys
-
-sys.path.append('C:/Users/Чигин Сергей/Desktop/mplstyle/')
-
 from mplstyle.tz import PLTtz
 
 tz_plt = PLTtz()

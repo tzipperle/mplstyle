@@ -28,8 +28,8 @@ def plot_3d():
     X, Y = np.meshgrid(E_ch, E_dch)
     eff = Y / X * 100
 
-    surf = ax.plot_surface(x, y, eff, rstride=1, cstride=1, cmap=cmap,
-                           linewidth=0, antialiased=False)
+    ax.plot_surface(x, y, eff, rstride=1, cstride=1, cmap=cmap, linewidth=0,
+                    antialiased=False)
 
     ax.set_xlim(0, 1.5)
     ax.set_ylim(0, 2.75)
