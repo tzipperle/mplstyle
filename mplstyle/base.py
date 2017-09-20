@@ -48,23 +48,18 @@ class PLTbase:
         font = {'family': 'arial', 'weight': 'normal', 'size': fntsz}
         mpl.rc('font', **font)
         mpl.rc('figure', figsize=[11, 7], titlesize=fntsz)
-        mpl.rc('legend', framealpha=None,
-               edgecolor='dimgray',
-               fontsize=fntsz - 2, numpoints=1, handlelength=1,
-               loc='best', frameon=True, shadow=False,
-               fancybox=False)
-        mpl.rcParams['text.color'] = fntcol
+        mpl.rc('legend', framealpha=None, edgecolor='dimgray',
+               fontsize=fntsz - 2, numpoints=1, handlelength=1, loc='best',
+               frameon=True, shadow=False, fancybox=False)
+        mpl.rc('text', color=fntcol)
         mpl.rc('axes', edgecolor='black', grid=True,
-               xmargin=0, labelsize=fntsz - 1, titlesize=fntsz, linewidth=0.9)
-        mpl.rcParams['axes.spines.right'] = False
-        mpl.rcParams['axes.spines.top'] = False
-        mpl.rc('grid', linestyle=':', color='dimgray',
-               linewidth=0.5)
+               xmargin=0, labelsize=fntsz - 1, titlesize=fntsz, linewidth=0.9,
+               prop_cycle=cycler('color', self._prop_cycle_colors))
+        mpl.rc('axes.spines', right=False, top=False)
+        mpl.rc('grid', linestyle=':', color='dimgray', linewidth=0.5)
         mpl.rc('lines', lw=lw, markersize=10)
         mpl.rc('xtick', color=fntcol, labelsize=fntsz - 2)
         mpl.rc('ytick', color=fntcol, labelsize=fntsz - 2)
-        mpl.rcParams['axes.prop_cycle'] = cycler('color',
-                                                 self._prop_cycle_colors)
 
     def __init__(self):
         self._color_style = self._DEFAULT_STYLE
@@ -278,15 +273,16 @@ class PLTbase:
             raise NotImplementedError(
                 'Color style \'{}\' not defined'.format(self._color_style))
 
-        self._colors = self._to_rgb_mpl(_colors)
+        self._colors = self.__to_rgb_mpl(_colors)
 
-    def _to_rgb_mpl(self, _colors):
-        _to_rgb = lambda r, g, b: tuple(x / 255. for x in (r, g, b))
-        for key, val in _colors.items():
-            if isinstance(val, tuple):
-                _colors[key] = _to_rgb(*val)
-            else:
-                _colors[key] = mpl.colors.to_rgb(val)
+    @staticmethod
+    def __to_rgb_mpl(_colors):
+        # if color tuple: RGB-8Bit
+        # else: HEX
+        _colors = {
+            key: tuple(x / 255. for x in val) if isinstance(val, tuple) else
+            mpl.colors.to_rgb(val) for key, val in _colors.items()}
+
         return _colors
 
     def _check_color_consistence(self):
