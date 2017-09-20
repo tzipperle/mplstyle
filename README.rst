@@ -1,4 +1,4 @@
-|doc| |build|
+|doc| |build| |coverage|
 
 -----
 
@@ -21,7 +21,7 @@ Dependencies
 * `numpy`_ for mathematical operations
 * `matplotlib`_ for making plots
 * `cycler`_
-  
+
 Installation
 ~~~~~~~~~~~~~
 
@@ -55,6 +55,10 @@ Source: `Stack Overflow <http://stackoverflow.com/q/17806673/2375855>`_
 .. |build| image:: https://travis-ci.org/tzipperle/mplstyle.svg?branch=master
         :alt: Build Status
         :target: https://travis-ci.org/tzipperle/mplstyle
+
+.. |coverage| image:: https://coveralls.io/repos/github/tzipperle/mplstyle/badge.svg
+        :alt: Test coverage
+        :target: https://coveralls.io/github/tzipperle/mplstyle
 
 .. _numpy: http://www.numpy.org/
 .. _matplotlib: https://matplotlib.org/
