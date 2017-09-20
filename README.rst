@@ -56,9 +56,9 @@ Source: `Stack Overflow <http://stackoverflow.com/q/17806673/2375855>`_
         :alt: Build Status
         :target: https://travis-ci.org/tzipperle/mplstyle
 
-.. |coverage| image:: https://coveralls.io/repos/github/tzipperle/mplstyle/badge.svg
+.. |coverage| image:: https://coveralls.io/repos/github/tzipperle/mplstyle/badge.svg?branch=master
         :alt: Test coverage
-        :target: https://coveralls.io/github/tzipperle/mplstyle
+        :target: https://coveralls.io/github/tzipperle/mplstyle?branch=master
 
 .. _numpy: http://www.numpy.org/
 .. _matplotlib: https://matplotlib.org/
