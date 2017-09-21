@@ -268,7 +268,11 @@ class PLTbase:
         if self._color_style == 'default':
             _colors = self._DEFAULT_COLORS.copy()
         else:
-            _colors = self._get_colors(self._color_style).copy()
+            try:
+                _colors = self._get_colors(self._color_style).copy()
+            except Exception:
+                raise NotImplementedError(
+                    'Color style \'{}\' not defined'.format(self._color_style))
         if _colors is None:
             raise NotImplementedError(
                 'Color style \'{}\' not defined'.format(self._color_style))
