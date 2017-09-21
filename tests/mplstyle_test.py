@@ -10,8 +10,11 @@ class TestModel:
         return PLTbase()
 
     def get_default_color_order(self, base_style):
-        return [(r / 255., g / 255., b / 255.) for r, g, b in
-                base_style._DEFAULT_COLORS.values()]
+        color_order = base_style._DEFAULT_COLOR_ORDER
+        colors = base_style._DEFAULT_COLORS
+
+        return [tuple(x / 255. for x in colors[color]) for
+                color in color_order]
 
     def get_default_colors(self, base_style):
         return {key: (val[0] / 255., val[1] / 255., val[2] / 255.)
