@@ -56,7 +56,7 @@ Source: `Stack Overflow <http://stackoverflow.com/q/17806673/2375855>`_
         :alt: Build Status
         :target: https://travis-ci.org/tzipperle/mplstyle
 
-.. |coverage| image:: https://coveralls.io/repos/github/tzipperle/mplstyle/badge.svg?branch=master
+.. |coverage| image:: https://img.shields.io/coveralls/tzipperle/mplstyle.svg?style=flat-square
         :alt: Test coverage
         :target: https://coveralls.io/github/tzipperle/mplstyle?branch=master
 
