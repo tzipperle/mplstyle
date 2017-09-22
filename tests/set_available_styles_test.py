@@ -10,7 +10,6 @@ from mplstyle.tz import PLTtz
 @pytest.mark.parametrize('used_class',
                          [PLTtz(), PLTewk(), PLTenfo(), PLTdynamis(),
                           PLTdatabay(), PLTbase()])
-@pytest.mark.xfail(raises=NotImplementedError)
 def test_available_styles(used_class):
     available_styles = used_class._styles_available
 
