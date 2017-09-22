@@ -30,7 +30,7 @@ class TestModel(object):
     def test_color_order_style(self, used_class):
         with pytest.raises(NotImplementedError):
             used_class.set_style(color_order_style='no-style',
-                                 color_style='no-style')
+                                 color_style='default')
 
         with pytest.raises(NotImplementedError):
             used_class.set_style(color_order_style='no-style')
