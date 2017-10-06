@@ -4,7 +4,7 @@ from mplstyle.ewk import PLTewk
 
 
 def read_data(name):
-    df = pd.read_excel(name).set_index('jahr')
+    df = pd.read_csv(name).set_index('jahr')
     return df
 
 
@@ -32,6 +32,6 @@ if __name__ == '__main__':
     ewk_plt = PLTewk()
     ewk_plt.set_style('ewk')
 
-    data = read_data('ghd_bs.xlsx')
+    data = read_data('ghd_bs.csv')
 
     plot_fig(data, title='GHD Endenergieverbrauch in PJ nach Brennstoffen')
