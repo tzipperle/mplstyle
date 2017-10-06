@@ -61,7 +61,8 @@ class PLTbase:
         mpl.rc('xtick', color=fntcol, labelsize=fntsz - 2)
         mpl.rc('ytick', color=fntcol, labelsize=fntsz - 2)
 
-    def __init__(self):
+    def __init__(self, traceback=False):
+        self._verbose_traceback(traceback)
         self._color_style = self._DEFAULT_STYLE
         self._color_order_style = self._DEFAULT_STYLE
         self._plt_style = self._DEFAULT_STYLE
@@ -91,8 +92,11 @@ class PLTbase:
         if len(args) > 1:
             raise ValueError('Only ONE or NO argument is allowed.')
         else:
-            for arg in args:
-                enable_color_order = self._set_all_style(arg)
+            if args:
+                enable_color_order = self._set_all_style(args[0])
+                set_all_style = True
+            else:
+                set_all_style = False
 
         for k, v in kwargs.items():
             if k in self._styles_available.keys():
@@ -103,14 +107,16 @@ class PLTbase:
                     'Possible style types are: color_style, '
                     'color_order_style or plt_style.'.format(k))
 
-        self._set_colors()
+        if 'color_style' in kwargs.keys() or set_all_style is True:
+            self._set_colors()
 
         if 'color_order_style' in kwargs.keys() or enable_color_order is True:
             self._set_color_order()
             self._check_color_consistence()
             self.__sort_colors_cycle()
 
-        self._set_selected_plt_style()
+        if 'plt_style' in kwargs.keys() or set_all_style is True:
+            self._set_selected_plt_style()
 
     def get_colors(self):
         """ Get colors form chosen style.
@@ -229,9 +235,7 @@ class PLTbase:
         Args:
             all_style: string for chosen style; default: ('default')
         """
-
         enable_color_order = self._check_style_consistence(all_style)
-
         if enable_color_order is True:
             self._color_style = all_style
             self._color_order_style = all_style
@@ -347,3 +351,7 @@ class PLTbase:
                 ' and color_style'.format(
                     all_style))
         return enable_color_order
+
+    def _verbose_traceback(self, traceback):
+        if traceback is False:
+            sys.tracebacklimit = None
