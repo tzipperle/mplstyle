@@ -12,25 +12,25 @@ from mplstyle.tz import PLTtz
                           PLTdatabay(), PLTbase()])
 class TestModel(object):
     def test_two_args(self, used_class):
-        with pytest.raises(ValueError):
+        with pytest.raises(SystemExit):
             used_class.set_style('no-style', 'no-style2')
 
     def test_wrong_arg(self, used_class):
-        with pytest.raises(NotImplementedError):
+        with pytest.raises(SystemExit):
             used_class.set_style(wrong_arg='default')
 
     def test_plt_style(self, used_class):
-        with pytest.raises(NotImplementedError):
+        with pytest.raises(SystemExit):
             used_class.set_style(plt_style='no-style')
 
     def test_color_style(self, used_class):
-        with pytest.raises(NotImplementedError):
+        with pytest.raises(SystemExit):
             used_class.set_style(color_style='no-style')
 
     def test_color_order_style(self, used_class):
-        with pytest.raises(NotImplementedError):
+        with pytest.raises(SystemExit):
             used_class.set_style(color_order_style='no-style',
                                  color_style='default')
 
-        with pytest.raises(NotImplementedError):
+        with pytest.raises(SystemExit):
             used_class.set_style(color_order_style='no-style')
