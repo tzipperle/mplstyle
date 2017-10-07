@@ -17,14 +17,14 @@ def color_map_example():
     ax0.set_title('default style')
 
     ax1 = fig.add_subplot(312)
-    ewk_plt.set_style('example')
+    ewk_plt.set_style('ewk_ggplt')
     ewk_colors = ewk_plt.get_colors()
     colors = [ewk_colors['lightred'], ewk_colors['mdarkred']]
     plt.pcolor(np.random.rand(25, 50), cmap=ewk_plt.get_cmap(colors))
     plt.colorbar()
     ax1.set_title('example style: red color')
 
-    ewk_plt.set_style('ewk')
+    ewk_plt.set_style('ewk_ggplt')
     ax2 = fig.add_subplot(313)
     colors = [(0.4, 0.2, 0.0), (1, 1, 1), (1, 1, 0), (0, 0.3, 0.4)]
     position = [0, 0.2, 0.5, 1]
