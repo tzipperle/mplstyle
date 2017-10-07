@@ -3,6 +3,8 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 from cycler import cycler
+import logging
+import logging.config
 
 
 class PLTbase:
@@ -40,6 +42,11 @@ class PLTbase:
 
     _DEFAULT_STYLE = 'default'
 
+    _LOGGER_CONFIG = logging.basicConfig(level=logging.ERROR,
+                                         format='%(message)s')
+
+    DEBUG = False
+
     def _set_default_plt_style(self):
         plt.style.use('default')
         fntsz = 18
@@ -61,8 +68,7 @@ class PLTbase:
         mpl.rc('xtick', color=fntcol, labelsize=fntsz - 2)
         mpl.rc('ytick', color=fntcol, labelsize=fntsz - 2)
 
-    def __init__(self, traceback=False):
-        self._verbose_traceback(traceback)
+    def __init__(self):
         self._color_style = self._DEFAULT_STYLE
         self._color_order_style = self._DEFAULT_STYLE
         self._plt_style = self._DEFAULT_STYLE
@@ -87,35 +93,49 @@ class PLTbase:
             color_order_style: optional string for color order style;
                     (color_order_style='default')
         """
-        enable_color_order = False
 
         if len(args) > 1:
-            raise ValueError('Only ONE or NO argument is allowed.')
+            try:
+                raise ValueError
+            except Exception:
+                logging.error('set_style(*arg): Only ONE or NO argument is '
+                              'allowed.', exc_info=self.DEBUG)
+                sys.exit()
         else:
             if args:
-                enable_color_order = self._set_all_style(args[0])
+                self._set_all_style(args[0])
                 set_all_style = True
             else:
                 set_all_style = False
 
         for k, v in kwargs.items():
-            if k in self._styles_available.keys():
+            try:
+                s = self._styles_available[k]
                 setattr(self, '_{}'.format(k), v)
-            else:
-                raise NotImplementedError(
-                    'Invalid style type: {}\n\n'
-                    'Possible style types are: color_style, '
-                    'color_order_style or plt_style.'.format(k))
+            except Exception:
+                logging.error('Invalid style type: {}\n\n'
+                              'Possible style types are: color_style, '
+                              'color_order_style or plt_style.'.format(k),
+                              exc_info=self.DEBUG)
+                sys.exit()
 
         if 'color_style' in kwargs.keys() or set_all_style is True:
+            self._check_style_exists(style_type='color_style',
+                                     selected_style=self._color_style)
             self._set_colors()
 
-        if 'color_order_style' in kwargs.keys() or enable_color_order is True:
-            self._set_color_order()
-            self._check_color_consistence()
-            self.__sort_colors_cycle()
+        if 'color_order_style' in kwargs.keys() or set_all_style is True:
+            self._check_style_exists(style_type='color_order_style',
+                                     selected_style=self._color_order_style)
+            enable_color_order = self._check_color_and_order_consistence()
+            if enable_color_order is True:
+                self._set_color_order()
+                self._check_color_consistence()
+                self.__sort_colors_cycle()
 
         if 'plt_style' in kwargs.keys() or set_all_style is True:
+            self._check_style_exists(style_type='plt_style',
+                                     selected_style=self._plt_style)
             self._set_selected_plt_style()
 
     def get_colors(self):
@@ -235,17 +255,9 @@ class PLTbase:
         Args:
             all_style: string for chosen style; default: ('default')
         """
-        enable_color_order = self._check_style_consistence(all_style)
-        if enable_color_order is True:
-            self._color_style = all_style
-            self._color_order_style = all_style
-            self._plt_style = all_style
-
-        else:
-            self._color_style = all_style
-            self._plt_style = all_style
-
-        return enable_color_order
+        self._color_style = all_style
+        self._color_order_style = all_style
+        self._plt_style = all_style
 
     def _set_color_order(self):
         if self._color_order_style == 'default':
@@ -253,10 +265,6 @@ class PLTbase:
         else:
             self._colors_order = self._get_colors_order(
                 self._color_order_style)
-        if self._colors_order is None:
-            raise NotImplementedError(
-                'Color order style \'{}\' not defined'.format(
-                    self._color_order_style))
 
     def _set_selected_plt_style(self):
         if self._plt_style == 'default':
@@ -272,14 +280,7 @@ class PLTbase:
         if self._color_style == 'default':
             _colors = self._DEFAULT_COLORS.copy()
         else:
-            try:
-                _colors = self._get_colors(self._color_style).copy()
-            except Exception:
-                raise NotImplementedError(
-                    'Color style \'{}\' not defined'.format(self._color_style))
-        if _colors is None:
-            raise NotImplementedError(
-                'Color style \'{}\' not defined'.format(self._color_style))
+            _colors = self._get_colors(self._color_style).copy()
 
         self._colors = self.__to_rgb_mpl(_colors)
 
@@ -333,25 +334,30 @@ class PLTbase:
 
             self._styles_available = styles
 
-    def _check_style_consistence(self, all_style):
-        plt_style = set(self._styles_available['plt_style'])
-        color_style = set(self._styles_available['color_style'])
-        color_order_style = set(self._styles_available['color_order_style'])
-
-        # check consistence for all options
-        if set([all_style]).intersection(color_style, plt_style,
-                                         color_order_style):
+    def _check_color_and_order_consistence(self):
+        # check consistence for color_style and color_order_style
+        if self._color_style is self._color_order_style:
             enable_color_order = True
-        # check consistence for color_style and plt_style
-        elif set([all_style]).intersection(color_style, plt_style):
-            enable_color_order = False
         else:
-            raise AttributeError(
-                'Selected style \'{}\' does not exist for plt_style'
-                ' and color_style'.format(
-                    all_style))
+            try:
+                raise NotImplementedError
+            except Exception:
+                logging.error(
+                    'Selected color_style \'{}\' and color_order_style  \'{}\' is not consistent'.format(
+                        self._color_style, self._color_order_style),
+                    exc_info=self.DEBUG)
+                sys.exit()
+
         return enable_color_order
 
-    def _verbose_traceback(self, traceback):
-        if traceback is False:
-            sys.tracebacklimit = None
+    def _check_style_exists(self, style_type, selected_style):
+        styles_available = self._styles_available
+        styles = dict.fromkeys(styles_available[style_type], 1)
+        try:
+            styles[selected_style]
+        except Exception:
+            logging.error(
+                'NotImplementedError: {}: \'{}\' not '
+                'defined'.format(style_type, selected_style),
+                exc_info=self.DEBUG)
+            sys.exit()
