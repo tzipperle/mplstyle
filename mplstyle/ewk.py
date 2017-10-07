@@ -21,7 +21,6 @@ class PLTewk(PLTbase):
         self._add_available_styles(available_styles)
 
     def _get_colors(self, style):
-
         if style is self._EWK_GGPLT:
             return {
                 'mdarkred': (187, 63, 63),
