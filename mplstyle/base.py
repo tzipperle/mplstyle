@@ -94,30 +94,8 @@ class PLTbase:
                     (color_order_style='default')
         """
 
-        if len(args) > 1:
-            try:
-                raise ValueError
-            except Exception:
-                logging.error('set_style(*arg): Only ONE or NO argument is '
-                              'allowed.', exc_info=self.DEBUG)
-                sys.exit()
-        else:
-            if args:
-                self._set_all_style(args[0])
-                set_all_style = True
-            else:
-                set_all_style = False
-
-        for k, v in kwargs.items():
-            try:
-                s = self._styles_available[k]
-                setattr(self, '_{}'.format(k), v)
-            except Exception:
-                logging.error('Invalid style type: {}\n\n'
-                              'Possible style types are: color_style, '
-                              'color_order_style or plt_style.'.format(k),
-                              exc_info=self.DEBUG)
-                sys.exit()
+        set_all_style = self._set_all_style(args)
+        self._get_options_kwargs(kwargs)
 
         if 'color_style' in kwargs.keys() or set_all_style is True:
             self._check_style_exists(style_type='color_style',
@@ -249,15 +227,42 @@ class PLTbase:
 
         ax.text(x_loc, y_loc, text, fontsize=fontsize, color=color, zorder=10)
 
-    def _set_all_style(self, all_style):
+    def _set_all_style(self, args):
         """ Set same style for all options.
 
         Args:
             all_style: string for chosen style; default: ('default')
         """
-        self._color_style = all_style
-        self._color_order_style = all_style
-        self._plt_style = all_style
+        if len(args) > 1:
+            try:
+                raise ValueError
+            except Exception:
+                logging.error('set_style({}): Only ONE or NO argument is '
+                              'allowed.'.format(args), exc_info=self.DEBUG)
+                sys.exit()
+        else:
+            if args:
+                self._color_style = args[0]
+                self._color_order_style = args[0]
+                self._plt_style = args[0]
+                set_all_style = True
+            else:
+                set_all_style = False
+
+        return set_all_style
+
+    def _get_options_kwargs(self, kwargs):
+        styles = dict.fromkeys(self._styles_available, 1)
+        for k, v in kwargs.items():
+            try:
+                styles[k]
+                setattr(self, '_{}'.format(k), v)
+            except Exception:
+                logging.error('Invalid style type: {}\n\n'
+                              'Possible style types are: color_style, '
+                              'color_order_style or plt_style.'.format(k),
+                              exc_info=self.DEBUG)
+                sys.exit()
 
     def _set_color_order(self):
         if self._color_order_style == 'default':

@@ -48,7 +48,7 @@ def simple_subplot():
     plt_const(ax1)
     ax1.legend()
 
-    ewk_plt.set_style('ewk_ggplt', 'DF')
+    ewk_plt.set_style('ewk_ggplt')
     ax2 = fig.add_subplot(222)
     plt_sin(ax2)
     ax2.set_title('ewk_ggplt style')
@@ -66,6 +66,7 @@ def simple_subplot():
 
 if __name__ == "__main__":
     ewk_plt = PLTewk()
+    ewk_plt.set_style(plt_style='ewk_ggplt')
     ewk_plt.get_available_styles()
     plt_color_order(title='default style')
     simple_subplot()
