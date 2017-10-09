@@ -21,7 +21,7 @@ class PLTewk(PLTbase):
         self._add_available_styles(available_styles)
 
     def _get_colors(self, style):
-        if style is self._EWK_GGPLT:
+        if style == self._EWK_GGPLT:
             return {
                 'mdarkred': (187, 63, 63),
                 'mediumred': (244, 54, 5),
@@ -39,7 +39,7 @@ class PLTewk(PLTbase):
                 'mediumgrey': (127, 127, 127),
                 'mlightgrey': (178, 178, 178),
             }
-        elif style is self._EKW:
+        elif style == self._EKW:
             return {
                 'c0': '#1f77b4',
                 'c1': '#ff7f0e',
@@ -56,18 +56,18 @@ class PLTewk(PLTbase):
 
     def _get_colors_order(self, style):
 
-        if style is self._EWK_GGPLT:
+        if style == self._EWK_GGPLT:
             return ['mdarkred', 'mediumred', 'lightred', 'darkgreen',
                     'mediumgreen', 'mlightgreen', 'lightgreen', 'darkblue',
                     'mediumblue', 'lightblue', 'darkred', 'black', 'darkgrey',
                     'mediumgrey', 'mlightgrey']
-        elif style is self._EKW:
+        elif style == self._EKW:
             return ['c0', 'c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9']
         return None
 
     def _set_plt_style(self, style, colors, prop_cycle_colors):
 
-        if style is self._EWK_GGPLT:
+        if style == self._EWK_GGPLT:
             plt.style.use('ggplot')
             figsz = 12
             fntsz = 18
@@ -90,7 +90,7 @@ class PLTewk(PLTbase):
             mpl.rcParams['axes.prop_cycle'] = cycler('color',
                                                      prop_cycle_colors)
             return True
-        elif style is self._EKW:
+        elif style == self._EKW:
             plt.style.use('default')
             fntsz = 18
             lw = 2

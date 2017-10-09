@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 from cycler import cycler

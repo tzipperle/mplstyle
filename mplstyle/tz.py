@@ -22,7 +22,7 @@ class PLTtz(PLTbase):
         self._add_available_styles(available_styles)
 
     def _get_colors(self, style):
-        if style is self._BLUE:
+        if style == self._BLUE:
             return {
                 'darkblue': (11, 85, 159),
                 'mdarkblue': (42, 122, 185),
@@ -31,7 +31,7 @@ class PLTtz(PLTbase):
                 'lightblue': (186, 214, 234),
                 'pastelblue': (218, 232, 245),
             }
-        if style is self._MPL_V2:
+        if style == self._MPL_V2:
             return {
                 'c0': '#1f77b4',
                 'c1': '#ff7f0e',
@@ -47,15 +47,15 @@ class PLTtz(PLTbase):
         return None
 
     def _get_colors_order(self, style):
-        if style is self._BLUE:
+        if style == self._BLUE:
             return ['darkblue', 'mdarkblue', 'mediumblue', 'mlightblue',
                     'lightblue', 'pastelblue']
-        elif style is self._MPL_V2:
+        elif style == self._MPL_V2:
             return ['c0', 'c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9']
         return None
 
     def _set_plt_style(self, style, colors, prop_cycle_colors):
-        if style is self._JUPYTER_NOTEBOOK:
+        if style == self._JUPYTER_NOTEBOOK:
             plt.style.use('default')
             fntsz = 12
             lw = 2
