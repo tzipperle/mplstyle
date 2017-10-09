@@ -25,8 +25,8 @@ class PLTenfo(PLTbase):
                 'Braunkohle': (116, 66, 65),
                 'Mineralölprodukte': (120, 81, 80),
                 'Mineralöle': (120, 81, 80),
-                'Heizöl': (120, 81, 80),
-                'Gase': (255, 230, 72),
+                'Öl': (120, 81, 80),
+                'Gas': (255, 230, 72),
                 'Erdgas': (255, 230, 72),
                 'Nichterneuerbare Abfälle': (105, 8, 90),
                 'Strom': (147, 78, 136),
@@ -76,7 +76,5 @@ class PLTenfo(PLTbase):
             mpl.rc('lines', lw=lw, markersize=10)
             mpl.rc('xtick', color=fntcol, labelsize=fntsz - 2)
             mpl.rc('ytick', color=fntcol, labelsize=fntsz - 2)
-            mpl.rcParams['axes.prop_cycle'] = cycler('color',
-                                                     prop_cycle_colors)
             return True
         return False

@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from mplstyle.ewk import PLTewk
+from mplstyle.enfo import PLTenfo
 
 
 def read_data(name):
@@ -13,7 +13,7 @@ def plot_fig(df, title):
                                    gridspec_kw={'height_ratios': [1, 0.1]})
     ax1.axis('off')
 
-    colors = ewk_plt.get_colors()
+    colors = enfo_plt.get_colors()
     color = [colors[i] for i in df.columns]
     df.plot.bar(ax=ax0, stacked=True, width=0.5, edgecolor=None,
                 zorder=2, rot=0, legend=False, color=color)
@@ -29,8 +29,8 @@ def plot_fig(df, title):
 
 
 if __name__ == '__main__':
-    ewk_plt = PLTewk()
-    ewk_plt.set_style('ewk')
+    enfo_plt = PLTenfo()
+    enfo_plt.set_style('enfo')
 
     data = read_data('ghd_bs.csv')
 

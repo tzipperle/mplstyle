@@ -94,15 +94,16 @@ class PLTbase:
                     (color_order_style='default')
         """
 
-        set_all_style = self._set_all_style(args)
+        all_style = self._set_all_style(args)
         self._get_options_kwargs(kwargs)
 
-        if 'color_style' in kwargs.keys() or set_all_style is True:
+        if 'color_style' in kwargs.keys() or all_style is not None:
             self._check_style_exists(style_type='color_style',
                                      selected_style=self._color_style)
             self._set_colors()
 
-        if 'color_order_style' in kwargs.keys() or set_all_style is True:
+        if 'color_order_style' in kwargs.keys() or all_style in \
+                self._styles_available['color_order_style']:
             self._check_style_exists(style_type='color_order_style',
                                      selected_style=self._color_order_style)
             enable_color_order = self._check_color_and_order_consistence()
@@ -111,7 +112,7 @@ class PLTbase:
                 self._check_color_consistence()
                 self.__sort_colors_cycle()
 
-        if 'plt_style' in kwargs.keys() or set_all_style is True:
+        if 'plt_style' in kwargs.keys() or all_style is not None:
             self._check_style_exists(style_type='plt_style',
                                      selected_style=self._plt_style)
             self._set_selected_plt_style()
@@ -242,14 +243,14 @@ class PLTbase:
                 sys.exit()
         else:
             if args:
-                self._color_style = args[0]
-                self._color_order_style = args[0]
-                self._plt_style = args[0]
-                set_all_style = True
+                all_style = args[0]
+                self._color_style = all_style
+                self._color_order_style = all_style
+                self._plt_style = all_style
             else:
-                set_all_style = False
+                all_style = None
 
-        return set_all_style
+        return all_style
 
     def _get_options_kwargs(self, kwargs):
         styles = dict.fromkeys(self._styles_available, 1)
