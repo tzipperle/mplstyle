@@ -7,22 +7,21 @@ from .base import PLTbase
 class PLTewk(PLTbase):
     """ PLTewk class, child of PLTbase"""
 
-    _EXAMPLE = 'example'
+    _EWK_GGPLT = 'ewk_ggplt'
     _EKW = 'ewk'
 
     def __init__(self):
         PLTbase.__init__(self)
 
         available_styles = {
-            'color_style': [self._EXAMPLE, self._EKW],
-            'color_order_style': [self._EXAMPLE],
-            'plt_style': [self._EXAMPLE, self._EKW]}
+            'color_style': [self._EWK_GGPLT, self._EKW],
+            'color_order_style': [self._EWK_GGPLT, self._EKW],
+            'plt_style': [self._EWK_GGPLT, self._EKW]}
 
         self._add_available_styles(available_styles)
 
     def _get_colors(self, style):
-
-        if style is self._EXAMPLE:
+        if style == self._EWK_GGPLT:
             return {
                 'mdarkred': (187, 63, 63),
                 'mediumred': (244, 54, 5),
@@ -40,31 +39,35 @@ class PLTewk(PLTbase):
                 'mediumgrey': (127, 127, 127),
                 'mlightgrey': (178, 178, 178),
             }
-        elif style is self._EKW:
+        elif style == self._EKW:
             return {
-                'Steinkohle': (88, 88, 90),
-                'Braunkohle': (116, 66, 65),
-                'Öl': (120, 81, 80),
-                'Gas': (255, 230, 72),
-                'Strom': (147, 78, 136),
-                'Fernwärme': (214, 76, 19),
-                'Erneuerbare Energien': (0, 124, 48),
-                'Kernenergie': (196, 7, 27),
+                'c0': '#1f77b4',
+                'c1': '#ff7f0e',
+                'c2': '#2ca02c',
+                'c3': '#d62728',
+                'c4': '#9467bd',
+                'c5': '#8c564b',
+                'c6': '#e377c2',
+                'c7': '#7f7f7f',
+                'c8': '#bcbd22',
+                'c9': '#17becf'
             }
         return None
 
     def _get_colors_order(self, style):
 
-        if style is self._EXAMPLE:
+        if style == self._EWK_GGPLT:
             return ['mdarkred', 'mediumred', 'lightred', 'darkgreen',
                     'mediumgreen', 'mlightgreen', 'lightgreen', 'darkblue',
                     'mediumblue', 'lightblue', 'darkred', 'black', 'darkgrey',
                     'mediumgrey', 'mlightgrey']
+        elif style == self._EKW:
+            return ['c0', 'c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9']
         return None
 
     def _set_plt_style(self, style, colors, prop_cycle_colors):
 
-        if style is self._EXAMPLE:
+        if style == self._EWK_GGPLT:
             plt.style.use('ggplot')
             figsz = 12
             fntsz = 18
@@ -87,7 +90,7 @@ class PLTewk(PLTbase):
             mpl.rcParams['axes.prop_cycle'] = cycler('color',
                                                      prop_cycle_colors)
             return True
-        elif style is self._EKW:
+        elif style == self._EKW:
             plt.style.use('default')
             fntsz = 18
             lw = 2

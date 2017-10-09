@@ -1,5 +1,5 @@
 cycler
-matplotlib
+matplotlib>=2.1.0
 numpy
 pytest
 pytest-cov
