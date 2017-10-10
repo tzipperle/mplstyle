@@ -5,11 +5,11 @@
 How to Use
 ========================
 
-This section explains and shows how any of the classes from **mplstyle** can be used. **PLTtz** class, which was already mentioned in the :ref:`overview <overview>`, is taken as an example. Its implementation in the ``trigonometric_functions.py`` is explained very detailed by moving step by step through the script. Other classes are used completely similar.
+This section explains and shows how the **mplstyle** class can be used. **PLTtz** class, mentioned in the :ref:`overview <overview>`, is used as an example. Its implementation in the ``trigonometric_functions.py`` is explained in detail by going step by step through the script. The other classes are used similarly.
 
 trigonometric_functions.py
 """""""""""""""""""""""
-Several trigonometric functions are plotted fourfold in this file showing each time the change in current configuration of plot settings. All plots with chosen configuration are splitted between two figures presented in the middle and in the end of the description. Detailed comments of the script are in the following.
+Several trigonometric functions are plotted in this file, showing the change in the current configuration of plot settings each time. All plots with chosen configurations are split between two figures presented at the middle and in the end of the description. Detailed comments on the script are in the following.
 
 ::
 
@@ -20,29 +20,29 @@ Several trigonometric functions are plotted fourfold in this file showing each t
 
 Four packages are included:
 
-* `matplotlib.pyplot`_ is a plotting library which allows present results in a diagram form quite easily;
-* `numpy`_ is the fundamental package for scientific computing with Python;
-* `os`_ is the module for using operating system according to its functionality in a portable way;
-* `sys`_ is the module, which provides access to variables and functions used by the interpreter.
+* `matplotlib.pyplot`_ is a plotting library which enable presenting results graphically;
+* `numpy`_ is the basic package for scientific computing with Python;
+* `os`_  provides a portable way of using operating system dependent functionality;
+* `sys`_ provides access to variables and functions used by the Python interpreter.
 
 ::
 
     from mplstyle.tz import PLTtz
     tz_plt=PLTtz()
 
-Imports **PLTtz** class from a file ``tz.py``, where this class is described as a child of **PLTbase**. Then creates an instance of the class and assigns it to the local variable **tz_plt**.
+The command above imports **PLTtz** class from file ``tz.py``, where this class is described as a child of **PLTbase**. It then creates an instance of the class and assigns it to the local variable **tz_plt**.
 
 .. note::
 
 
-        When a new initialized instance of the chosen class is obtained, all three settings (**color style**, **color order style** and **plt style**) are immediately rewritten. Since this moment each setting works according to its own **default** style, kept in **PLTbase** class.
+        When a new initialized instance of the chosen class is obtained, all three settings (**color style**, **color order style** and **plt style**) are immediately rewritten. As of this moment each setting works according to its own **default** style, in the **PLTbase** class.
 
 ::
 
     fig1 = plt.figure(figsize=[8, 6])
     fig2 = plt.figure(figsize=[8, 6])
 
-Chooses the size of two figures, where three plots will be printed.
+The code block above chooses the size of two figures, where three plots will be printed.
 
 ::
 
@@ -62,7 +62,7 @@ Chooses the size of two figures, where three plots will be printed.
 	ax0.set_xlabel(r'Power ($kW$)')
 	ax0.legend()
 
-Makes 1st plot by choosing its location on the first figure, setting trigonometric functions and configuring additional parameters.
+This creates the first plot by choosing its location on the first figure, setting trigonometric functions and configuring additional parameters.
 
 ::
 
@@ -169,12 +169,7 @@ Comparing 2nd and 3rd plots partial change in the configuration can be observed.
         All three settings (**color style**, **color order style** and **plt style**) can be changed at one time with **set_style()** function only to the style, which exists for all of them. The command won't work, if at least one plot setting doesn't have a style with name mentioned in brackets.
 
 
-
-
 .. _numpy: https://docs.scipy.org/doc/numpy-dev/user/index.html
 .. _matplotlib.pyplot: https://matplotlib.org/index.html
 .. _os: https://docs.python.org/3/library/os.html#module-os
 .. _sys: https://docs.python.org/3/library/sys.html
-
-
-
