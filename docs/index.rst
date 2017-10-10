@@ -14,13 +14,8 @@ mplstyle: Automation of changing plot settings in matplotlib
   This documentation is licensed under a `Creative Commons Attribution 4.0
   International`_ license.
 
-
-
-
 Contents
 --------
-
-This documentation contains the following pages:
 
 .. toctree::
    :maxdepth: 1
@@ -31,16 +26,12 @@ This documentation contains the following pages:
    create
    api
 
-
 Dependencies (Python)
 ------------
 
 * `numpy`_ for mathematical operations
 * `matplotlib`_ for making plots
 * `cycler`_
-
-
-
 
 .. _Institute for Energy Economy and Application Technology: http://www.ewk.ei.tum.de/
 .. _Creative Commons Attribution 4.0 International: http://creativecommons.org/licenses/by/4.0/
