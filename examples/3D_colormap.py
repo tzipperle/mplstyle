@@ -7,7 +7,7 @@ from mplstyle.base import PLTbase
 
 def plot_3d():
     # read data
-    df = pd.read_csv('3D_example_data.csv')
+    df = pd.read_csv('data/3D_example_data.csv')
 
     # create colormap for 3D plot
     cc = base_style.get_colors()

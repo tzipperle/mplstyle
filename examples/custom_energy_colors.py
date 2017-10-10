@@ -32,6 +32,6 @@ if __name__ == '__main__':
     enfo_plt = PLTenfo()
     enfo_plt.set_style('enfo')
 
-    data = read_data('ghd_bs.csv')
+    data = read_data('data/ghd_bs.csv')
 
     plot_fig(data, title='GHD Endenergieverbrauch in PJ nach Brennstoffen')
