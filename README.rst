@@ -5,8 +5,7 @@
 mplstyle
 -----
 
-
-**mplstyle** is a Python package, which allows **matplotlib** users to simplify the process of improving plots' quality. Quite often font, size, legend, colors and other settings should be changed for making plots look better. Such changes can be remembered and stored in your own style, which can automatically change the way of making plots by importing it as a usual Python toolbox. In other words, with **mplstyle** you can set plotting settings once and use created configuration many times.
+**mplstyle** is a Python package, which allows **matplotlib** users to simplify the process of improving plots quality. Quite often font, size, legend, colors and other settings have to be changed to make graphs look better. Such changes can be saved and stored in your own plot style, which can automatically change the way of making plots by importing it as a usual Python toolbox. In other words, with **mplstyle** you can set plotting settings once and use your own configurations.
 
 Screenshot
 -----
